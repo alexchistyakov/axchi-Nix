@@ -20,20 +20,18 @@ with lib;
       {
         layer = "top";
         position = "top";
-        modules-center = [ "hyprland/workspaces" ];
+        modules-center = [ "hyprland/window" ];
         modules-left = [
           "custom/startmenu"
-          "hyprland/window"
-          "pulseaudio"
-          "cpu"
-          "memory"
           "idle_inhibitor"
+          "hyprland/workspaces"
         ];
         modules-right = [
-          "custom/hyprbindings"
           "custom/notification"
           "custom/exit"
-          "battery"
+          "cpu"
+          "memory"
+          "pulseaudio"
           "tray"
           "clock"
         ];
@@ -49,7 +47,7 @@ with lib;
           on-scroll-down = "hyprctl dispatch workspace e-1";
         };
         "clock" = {
-          format = if clock24h == true then '' {:L%H:%M}'' else '' {:L%I:%M %p}'';
+          format = if clock24h == true then '' {:L%H:%M} '' else '' {:L%I:%M %p} '';
           tooltip = true;
           tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
         };
@@ -57,7 +55,7 @@ with lib;
           max-length = 22;
           separate-outputs = false;
           rewrite = {
-            "" = " 🙈 No Windows? ";
+            "" = " you're staring at an empty screen, sir ";
           };
         };
         "memory" = {
@@ -121,7 +119,7 @@ with lib;
           tooltip = false;
           format = "";
           # exec = "rofi -show drun";
-          on-click = "sleep 0.1 && rofi-launcher";
+          on-click = "albert toggle";
         };
         "custom/hyprbindings" = {
           tooltip = false;
@@ -182,94 +180,84 @@ with lib;
     ];
     style = concatStrings [
       ''
+@define-color backgroundlight #FFFFFF;
+@define-color backgrounddark #FFFFFF;
+@define-color workspacesbackground1 #FFFFFF;
+@define-color workspacesbackground2 #CCCCCC;
+@define-color bordercolor #FFFFFF;
+@define-color textcolor1 #000000;
+@define-color textcolor2 #000000;
+@define-color textcolor3 #FFFFFF;
+@define-color iconcolor #FFFFFF;
         * {
-          font-family: JetBrainsMono Nerd Font Mono;
-          font-size: 16px;
-          border-radius: 0px;
+          font-family: "Fira Sans semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+        
           border: none;
-          min-height: 0px;
-        }
-        window#waybar {
-          background: rgba(0,0,0,0);
-        }
+          border-radius: 0px;
+      }
+
+  window#waybar {
+      background-color: rgba(0,0,0,0.65);
+      border-bottom: 0px solid #ffffff;
+      /* color: #FFFFFF; */
+      transition-property: background-color;
+      transition-duration: .5s;
+  }
         #workspaces {
-          color: #${config.stylix.base16Scheme.base00};
-          background: #${config.stylix.base16Scheme.base01};
-          margin: 4px 4px;
-          padding: 5px 5px;
-          border-radius: 16px;
+            margin: 3px 7px 3px 3px;
+            border: 0px;
+            font-size: 14px;
+            color: @textcolor1;
         }
+
         #workspaces button {
-          font-weight: bold;
-          padding: 0px 5px;
-          margin: 0px 3px;
-          border-radius: 16px;
-          color: #${config.stylix.base16Scheme.base00};
-          background: linear-gradient(45deg, #${config.stylix.base16Scheme.base08}, #${config.stylix.base16Scheme.base0D});
-          opacity: 0.5;
-          transition: ${betterTransition};
+            border: 0px;
+            margin:4px 5px 4px 0px;
+            padding:0px 4px 0px 4px;
+            color: @textcolor3;
+            transition: all 0.5s ease-in-out;
         }
-        #workspaces button.active {
-          font-weight: bold;
-          padding: 0px 5px;
-          margin: 0px 3px;
-          border-radius: 16px;
-          color: #${config.stylix.base16Scheme.base00};
-          background: linear-gradient(45deg, #${config.stylix.base16Scheme.base08}, #${config.stylix.base16Scheme.base0D});
-          transition: ${betterTransition};
-          opacity: 1.0;
-          min-width: 40px;
+
+        #workspaces button:active {
+            color: @textcolor1;
+            background: @workspacesbackground2;
         }
+
         #workspaces button:hover {
-          font-weight: bold;
-          border-radius: 16px;
-          color: #${config.stylix.base16Scheme.base00};
-          background: linear-gradient(45deg, #${config.stylix.base16Scheme.base08}, #${config.stylix.base16Scheme.base0D});
-          opacity: 0.8;
-          transition: ${betterTransition};
-        }
-        tooltip {
-          background: #${config.stylix.base16Scheme.base00};
-          border: 1px solid #${config.stylix.base16Scheme.base08};
-          border-radius: 12px;
-        }
-        tooltip label {
-          color: #${config.stylix.base16Scheme.base08};
-        }
-        #window, #pulseaudio, #cpu, #memory, #idle_inhibitor {
+            color: @textcolor1;
+            background: @workspacesbackground2;
+            border-radius: 15px;
+}
+        #idle_inhibitor {
+          background: rgba(0,0,0,0);
           font-weight: bold;
           margin: 4px 0px;
-          margin-left: 7px;
-          padding: 0px 18px;
-          background: #${config.stylix.base16Scheme.base04};
-          color: #${config.stylix.base16Scheme.base00};
-          border-radius: 24px 10px 24px 10px;
+          margin-right: 10px;
+          color: #FFFFFF;
         }
         #custom-startmenu {
-          color: #${config.stylix.base16Scheme.base0B};
-          background: #${config.stylix.base16Scheme.base02};
-          font-size: 28px;
+          font-size: 30px;
+          background: rgba(0,0,0,0);
+          color: #FFFFFF;
           margin: 0px;
           padding: 0px 30px 0px 15px;
           border-radius: 0px 0px 40px 0px;
         }
+        #window, #pulseaudio, #cpu, #memory, 
         #custom-hyprbindings, #network, #battery,
         #custom-notification, #tray, #custom-exit {
           font-weight: bold;
-          background: #${config.stylix.base16Scheme.base0F};
-          color: #${config.stylix.base16Scheme.base00};
+          background: rgba(0,0,0,0);
+          color: #FFFFFF;
           margin: 4px 0px;
-          margin-right: 7px;
-          border-radius: 10px 24px 10px 24px;
-          padding: 0px 18px;
+          margin-left: 14px;
         }
         #clock {
           font-weight: bold;
-          color: #0D0E15;
-          background: linear-gradient(90deg, #${config.stylix.base16Scheme.base0E}, #${config.stylix.base16Scheme.base0C});
+          background: rgba(0,0,0,0);
+          color: #FFFFFF;
           margin: 0px;
-          padding: 0px 15px 0px 30px;
-          border-radius: 0px 0px 0px 40px;
+          padding: 0px 7px 0px 8px;
         }
       ''
     ];

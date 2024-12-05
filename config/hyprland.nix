@@ -45,13 +45,13 @@ with lib;
           exec-once = killall -q swaync;sleep .5 && swaync
           exec-once = nm-applet --indicator
           exec-once = lxqt-policykit-agent
-          exec-once = sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/beautifulmountainscape.jpg
+          exec-once = albert &
           monitor=,preferred,auto,1
           ${extraMonitorSettings}
           general {
             gaps_in = 6
             gaps_out = 8
-            border_size = 2
+            border_size = 0
             layout = dwindle
             resize_on_border = true
             col.active_border = rgb(${config.stylix.base16Scheme.base08}) rgb(${config.stylix.base16Scheme.base0C}) 45deg
@@ -80,7 +80,8 @@ with lib;
           windowrulev2 = stayfocused, title:^()$,class:^(steam)$
           windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
           windowrulev2 = opacity 0.9 0.7, class:^(Brave)$
-          windowrulev2 = opacity 0.9 0.7, class:^(thunar)$
+          windowrulev2 = opacity 0.9 0.75, class:^(thunar)$
+          windowrulev2 = opacity 1.0 0.9, class:^(Neovide)$
           gestures {
             workspace_swipe = true
             workspace_swipe_fingers = 3
@@ -90,33 +91,73 @@ with lib;
             mouse_move_enables_dpms = true
             key_press_enables_dpms = false
           }
-          animations {
-            enabled = yes
-            bezier = wind, 0.05, 0.9, 0.1, 1.05
+          
+        animations {
+            enabled = true
+            bezier = linear, 0, 0, 1, 1
+            bezier = md3_standard, 0.2, 0, 0, 1
+            bezier = md3_decel, 0.05, 0.7, 0.1, 1
+            bezier = md3_accel, 0.3, 0, 0.8, 0.15
+            bezier = overshot, 0.05, 0.9, 0.1, 1.1
+            bezier = crazyshot, 0.1, 1.5, 0.76, 0.92 
+            bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
+            bezier = fluent_decel, 0.1, 1, 0, 1
+            bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+            bezier = easeOutCirc, 0, 0.55, 0.45, 1
+            bezier = easeOutExpo, 0.16, 1, 0.3, 1
+            # animation = windows, 1, 3, md3_decel, popin 60%
+            animation = border, 1, 10, default
+            #animation = fade, 1, 2.5, md3_decel
+            
+                # Define custom bezier curves for smoother animations
+            bezier = myBezier, 0.05, 0.9, 0.1, 1.00
+            bezier = linear, 0.0, 0.0, 1.0, 1.0
+            bezier = easeInOutQuint, 0.83, 0, 0.17, 1
+            bezier = easeOutQuint, 0.22, 1, 0.36, 1
+            bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+            bezier = wind, 0, 0.5, 0.5, 1.0	
             bezier = winIn, 0.1, 1.1, 0.1, 1.1
             bezier = winOut, 0.3, -0.3, 0, 1
-            bezier = liner, 1, 1, 1, 1
-            animation = windows, 1, 6, wind, slide
+            
+            animation = windows, 1, 3.5, wind, slide
             animation = windowsIn, 1, 6, winIn, slide
             animation = windowsOut, 1, 5, winOut, slide
-            animation = windowsMove, 1, 5, wind, slide
-            animation = border, 1, 1, liner
-            animation = fade, 1, 10, default
-            animation = workspaces, 1, 5, wind
-          }
+            animation = windowsMove, 1, 2, wind, slide
+            
+            bezier = easeInOutQuint, 0.83, 0, 0.17, 1
+            bezier = easeOutQuint, 0.22, 1, 0.36, 1
+            bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+            
+            # Fade animations
+            animation = fade, 1, 10, easeOutQuint
+            animation = fadeDim, 1, 10, easeOutQuint
+            animation = fadeSwitch, 1, 10, easeOutQuint
+            animation = fadeShadow, 1, 10, easeOutQuint
+
+            animation = workspaces, 1, 7, easeOutExpo, slide
+            animation = specialWorkspace, 1, 3, md3_decel, slidevert
+        }
           decoration {
-            rounding = 10
-            drop_shadow = true
-            shadow_range = 4
-            shadow_render_power = 3
-            col.shadow = rgba(1a1a1aee)
-            blur {
-                enabled = true
-                size = 5
-                passes = 3
-                new_optimizations = on
-                ignore_opacity = off
+              rounding = 15
+              blur {
+                  enabled = true
+                  size = 6
+                  passes = 2
+                  new_optimizations = on
+                  ignore_opacity = true
+                  xray = true
+              }
+              active_opacity = 0.95
+              inactive_opacity = 0.85
+              fullscreen_opacity = 1.0
+
+          shadow {
+              enabled = no
+              range = 30
+              render_power = 3
+              color = 0x66000000
             }
+
           }
           plugin {
             hyprtrails {
@@ -127,19 +168,18 @@ with lib;
             preserve_split = true
           }
           bind = ${modifier},Return,exec,${terminal}
-          bind = ${modifier}SHIFT,Return,exec,rofi-launcher
+          bind = ${modifier},SPACE,exec,albert toggle
           bind = ${modifier}SHIFT,W,exec,web-search
           bind = ${modifier}ALT,W,exec,wallsetter
           bind = ${modifier}SHIFT,N,exec,swaync-client -rs
-          bind = ${modifier},W,exec,${browser}
-          bind = ${modifier},E,exec,emopicker9000
+          bind = ${modifier},B,exec,${browser}
           bind = ${modifier},S,exec,screenshootin
           bind = ${modifier},D,exec,discord
           bind = ${modifier},O,exec,obs
           bind = ${modifier},C,exec,hyprpicker -a
           bind = ${modifier},G,exec,gimp
           bind = ${modifier}SHIFT,G,exec,godot4
-          bind = ${modifier},T,exec,thunar
+          bind = ${modifier},E,exec,thunar
           bind = ${modifier},M,exec,spotify
           bind = ${modifier},Q,killactive,
           bind = ${modifier},P,pseudo,
@@ -174,7 +214,6 @@ with lib;
           bind = ${modifier},9,workspace,9
           bind = ${modifier},0,workspace,10
           bind = ${modifier}SHIFT,SPACE,movetoworkspace,special
-          bind = ${modifier},SPACE,togglespecialworkspace
           bind = ${modifier}SHIFT,1,movetoworkspace,1
           bind = ${modifier}SHIFT,2,movetoworkspace,2
           bind = ${modifier}SHIFT,3,movetoworkspace,3
@@ -191,6 +230,12 @@ with lib;
           bind = ${modifier},mouse_up,workspace, e-1
           bindm = ${modifier},mouse:272,movewindow
           bindm = ${modifier},mouse:273,resizewindow
+
+          bind = ${modifier},TAB,workspace,m+1 # Open next workspace
+          bind = ${modifier}SHIFT,Tab,workspace, m-1 # Open previous workspace
+
+          bind = ${modifier},N,workspace,empty # Open previous workspace
+          
           bind = ALT,Tab,cyclenext
           bind = ALT,Tab,bringactivetotop
           bind = ,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+

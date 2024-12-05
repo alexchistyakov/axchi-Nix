@@ -1,9 +1,10 @@
 {
-  description = "ZaneyOS";
+  description = "AxchiOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
+    hyprland.url = "github:hyprwm/Hyprland";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     fine-cmdline = {
@@ -15,10 +16,17 @@
   outputs =
     { nixpkgs, home-manager, ... }@inputs:
     let
-      system = "aarch64-linux";
-      host = "nixbook";
-      username = "zaney";
+      system = "nixos";
+      host = "axchi-nix-desktop";
+      username = "axchi";
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+        };
+      };
     in
+    with pkgs;
     {
       nixosConfigurations = {
         "${host}" = nixpkgs.lib.nixosSystem {
@@ -45,6 +53,20 @@
             }
           ];
         };
-      };
+      devShells.x86_64-linux.default = mkShell {
+        buildInputs = [
+          cargo
+          rustc
+          SDL2
+          alsa-lib.dev
+          code-cursor
+          pkg-config
+        ];
+
+        shellHook = ''
+          export PKG_CONFIG_PATH=${pkgs.alsa-lib.dev}/lib/pkgconfig:$PKG_CONFIG_PATH
+        '';
+      };      
     };
+  };
 }
