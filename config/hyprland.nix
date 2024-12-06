@@ -79,9 +79,10 @@ with lib;
           windowrule = float, zoom
           windowrulev2 = stayfocused, title:^()$,class:^(steam)$
           windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
-          windowrulev2 = opacity 0.9 0.7, class:^(Brave)$
-          windowrulev2 = opacity 0.9 0.75, class:^(thunar)$
-          windowrulev2 = opacity 1.0 0.9, class:^(Neovide)$
+          windowrulev2 = opacity 0.9 0.7, class:^(google-chrome-stable)$
+          windowrulev2 = opacity 0.85 0.7, class:^(thunar)$
+          windowrulev2 = opacity 0.9 0.7, class:^(cursor)$
+          windowrulev2 = opacity 1.0 0.9, class:^(neovide)$
           gestures {
             workspace_swipe = true
             workspace_swipe_fingers = 3
@@ -90,83 +91,90 @@ with lib;
             initial_workspace_tracking = 0
             mouse_move_enables_dpms = true
             key_press_enables_dpms = false
+            disable_splash_rendering = true
+            disable_hyprland_logo = true
           }
           
-        animations {
-            enabled = true
-            bezier = linear, 0, 0, 1, 1
-            bezier = md3_standard, 0.2, 0, 0, 1
-            bezier = md3_decel, 0.05, 0.7, 0.1, 1
-            bezier = md3_accel, 0.3, 0, 0.8, 0.15
-            bezier = overshot, 0.05, 0.9, 0.1, 1.1
-            bezier = crazyshot, 0.1, 1.5, 0.76, 0.92 
-            bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
-            bezier = fluent_decel, 0.1, 1, 0, 1
-            bezier = easeInOutCirc, 0.85, 0, 0.15, 1
-            bezier = easeOutCirc, 0, 0.55, 0.45, 1
-            bezier = easeOutExpo, 0.16, 1, 0.3, 1
-            # animation = windows, 1, 3, md3_decel, popin 60%
-            animation = border, 1, 10, default
-            #animation = fade, 1, 2.5, md3_decel
-            
-                # Define custom bezier curves for smoother animations
-            bezier = myBezier, 0.05, 0.9, 0.1, 1.00
-            bezier = linear, 0.0, 0.0, 1.0, 1.0
-            bezier = easeInOutQuint, 0.83, 0, 0.17, 1
-            bezier = easeOutQuint, 0.22, 1, 0.36, 1
-            bezier = easeInOutCirc, 0.85, 0, 0.15, 1
-            bezier = wind, 0, 0.5, 0.5, 1.0	
-            bezier = winIn, 0.1, 1.1, 0.1, 1.1
-            bezier = winOut, 0.3, -0.3, 0, 1
-            
-            animation = windows, 1, 3.5, wind, slide
-            animation = windowsIn, 1, 6, winIn, slide
-            animation = windowsOut, 1, 5, winOut, slide
-            animation = windowsMove, 1, 2, wind, slide
-            
-            bezier = easeInOutQuint, 0.83, 0, 0.17, 1
-            bezier = easeOutQuint, 0.22, 1, 0.36, 1
-            bezier = easeInOutCirc, 0.85, 0, 0.15, 1
-            
-            # Fade animations
-            animation = fade, 1, 10, easeOutQuint
-            animation = fadeDim, 1, 10, easeOutQuint
-            animation = fadeSwitch, 1, 10, easeOutQuint
-            animation = fadeShadow, 1, 10, easeOutQuint
+          animations {
+              enabled = true
+              bezier = linear, 0, 0, 1, 1
+              bezier = md3_standard, 0.2, 0, 0, 1
+              bezier = md3_decel, 0.05, 0.7, 0.1, 1
+              bezier = md3_accel, 0.3, 0, 0.8, 0.15
+              bezier = overshot, 0.05, 0.9, 0.1, 1.1
+              bezier = crazyshot, 0.1, 1.5, 0.76, 0.92 
+              bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
+              bezier = fluent_decel, 0.1, 1, 0, 1
+              bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+              bezier = easeOutCirc, 0, 0.55, 0.45, 1
+              bezier = easeOutExpo, 0.16, 1, 0.3, 1
+              # animation = windows, 1, 3, md3_decel, popin 60%
+              animation = border, 1, 10, default
+              #animation = fade, 1, 2.5, md3_decel
+              
+              # Define custom bezier curves for smoother animations
+              bezier = myBezier, 0.05, 0.9, 0.1, 1.00
+              bezier = linear, 0.0, 0.0, 1.0, 1.0
+              bezier = easeInOutQuint, 0.83, 0, 0.17, 1
+              bezier = easeOutQuint, 0.22, 1, 0.36, 1
+              bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+              bezier = wind, 0, 0.5, 0.5, 1.0	
+              bezier = winIn, 0.1, 1.1, 0.1, 1.1
+              bezier = winOut, 0.3, -0.3, 0, 1
+              
+              animation = windows, 1, 3.5, wind, slide
+              animation = windowsIn, 1, 6, winIn, slide
+              animation = windowsOut, 1, 5, winOut, slide
+              animation = windowsMove, 1, 2, wind, slide
+              
+              bezier = easeInOutQuint, 0.83, 0, 0.17, 1
+              bezier = easeOutQuint, 0.22, 1, 0.36, 1
+              bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+              
+              # Fade animations
+              animation = fade, 1, 10, easeOutQuint
+              animation = fadeDim, 1, 10, easeOutQuint
+              animation = fadeSwitch, 1, 10, easeOutQuint
+              animation = fadeShadow, 1, 10, easeOutQuint
 
-            animation = workspaces, 1, 7, easeOutExpo, slide
-            animation = specialWorkspace, 1, 3, md3_decel, slidevert
-        }
+              animation = workspaces, 1, 7, easeOutExpo, slide
+              animation = specialWorkspace, 1, 3, md3_decel, slidevert
+          }
+
           decoration {
-              rounding = 15
-              blur {
-                  enabled = true
-                  size = 6
-                  passes = 2
-                  new_optimizations = on
-                  ignore_opacity = true
-                  xray = true
-              }
-              active_opacity = 0.95
-              inactive_opacity = 0.85
+            rounding = 15
+            blur {
+                enabled = true
+                size = 6
+                passes = 2
+                new_optimizations = on
+                ignore_opacity = true
+                xray = true
+            }
+            active_opacity = 0.95
+            inactive_opacity = 0.88
               fullscreen_opacity = 1.0
 
-          shadow {
-              enabled = no
-              range = 30
-              render_power = 3
-              color = 0x66000000
+            shadow {
+                enabled = true
+                range = 30
+                render_power = 2
+                color = 0x00000000
             }
 
           }
+
           plugin {
             hyprtrails {
             }
           }
+
           dwindle {
             pseudotile = true
             preserve_split = true
           }
+          
+          # KEYBINDS
           bind = ${modifier},Return,exec,${terminal}
           bind = ${modifier},SPACE,exec,albert toggle
           bind = ${modifier}SHIFT,W,exec,web-search

@@ -28,7 +28,6 @@ with lib;
         ];
         modules-right = [
           "custom/notification"
-          "custom/exit"
           "cpu"
           "memory"
           "pulseaudio"
@@ -117,9 +116,8 @@ with lib;
         };
         "custom/startmenu" = {
           tooltip = false;
-          format = "";
-          # exec = "rofi -show drun";
-          on-click = "albert toggle";
+          format = "";
+          on-click = "wlogout";
         };
         "custom/hyprbindings" = {
           tooltip = false;
@@ -197,30 +195,33 @@ with lib;
       }
 
   window#waybar {
-      background-color: rgba(0,0,0,0.65);
+      background-color: rgba(0,0,0,0.5);
       border-bottom: 0px solid #ffffff;
       /* color: #FFFFFF; */
       transition-property: background-color;
       transition-duration: .5s;
-  }
+      }
         #workspaces {
             margin: 3px 7px 3px 3px;
             border: 0px;
             font-size: 14px;
             color: @textcolor1;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
         }
 
         #workspaces button {
             border: 0px;
-            margin:4px 5px 4px 0px;
+            margin:4px 5px 4px 4px;
             padding:0px 4px 0px 4px;
             color: @textcolor3;
             transition: all 0.5s ease-in-out;
         }
 
-        #workspaces button:active {
+        #workspaces button.active {
             color: @textcolor1;
-            background: @workspacesbackground2;
+            background-color: #FFFFFF;
+            border-radius: 5px;
         }
 
         #workspaces button:hover {
@@ -228,20 +229,25 @@ with lib;
             background: @workspacesbackground2;
             border-radius: 15px;
 }
+
         #idle_inhibitor {
           background: rgba(0,0,0,0);
           font-weight: bold;
           margin: 4px 0px;
-          margin-right: 10px;
+          margin-right: 15px;
           color: #FFFFFF;
         }
         #custom-startmenu {
-          font-size: 30px;
-          background: rgba(0,0,0,0);
+          font-size: 32px;
+          background: rgba(16,16,16,0.3);
           color: #FFFFFF;
-          margin: 0px;
-          padding: 0px 30px 0px 15px;
-          border-radius: 0px 0px 40px 0px;
+          margin-right: 10px;
+          margin-left: 10px;
+          padding: 0px 7px 0px 7px;
+          border-radius: 0px 0px 15px 15px;
+        }
+        #custom-startmenu:hover {
+          color: rgba(117,207,255,1);
         }
         #window, #pulseaudio, #cpu, #memory, 
         #custom-hyprbindings, #network, #battery,
@@ -249,8 +255,7 @@ with lib;
           font-weight: bold;
           background: rgba(0,0,0,0);
           color: #FFFFFF;
-          margin: 4px 0px;
-          margin-left: 14px;
+          margin-right: 5px;
         }
         #clock {
           font-weight: bold;
@@ -258,6 +263,8 @@ with lib;
           color: #FFFFFF;
           margin: 0px;
           padding: 0px 7px 0px 8px;
+          margin-right: 8px;
+          margin-left: 5px;
         }
       ''
     ];

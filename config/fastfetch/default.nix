@@ -12,12 +12,12 @@
 
       logo = {
         source = ./nix.png;
-        type = "small";
+        type = "kitty-direct";
         height = 15;
-        width = 30;
+        width = 37;
         padding = {
           top = 3;
-          left = 3;
+          left = 2;
         };
       };
 
@@ -50,7 +50,7 @@
           }
           {
               type = "custom";
-              format = " OS -> ZaneyOS 2.2";
+              format = " OS -> NixOS (axchi config)";
           }
           {
               type = "kernel";

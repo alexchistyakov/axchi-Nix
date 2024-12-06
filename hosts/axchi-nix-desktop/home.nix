@@ -165,10 +165,10 @@ in
         inactive_tab_font_style bold
       '';
     };
-     starship = {
-            enable = true;
-            package = pkgs.starship;
-     };
+    starship = {
+           enable = true;
+           package = pkgs.starship;
+    };
     bash = {
       enable = true;
       enableCompletion = true;
@@ -182,6 +182,7 @@ in
         if [ -f $HOME/.bashrc-personal ]; then
           source $HOME/.bashrc-personal
         fi
+        fish
       '';
       shellAliases = {
         sv = "sudo nvim";

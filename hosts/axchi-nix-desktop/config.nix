@@ -27,6 +27,7 @@ in
     kernelPackages = pkgs.linuxPackages_zen;
     # This is for OBS Virtual Cam Support
     kernelModules = [ "v4l2loopback" ];
+    kernelParams = ["quiet"];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     # Needed For Some Steam Games
     kernel.sysctl = {
@@ -92,16 +93,16 @@ in
         name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {
-        package = pkgs.montserrat;
-        name = "Montserrat";
+        package = pkgs.nerd-fonts.fira-mono;
+        name = "Fira Sans";
       };
       serif = {
-        package = pkgs.montserrat;
-        name = "Montserrat";
+        package = pkgs.nerd-fonts.fira-mono;
+        name = "Fira Sans";
       };
       sizes = {
         applications = 12;
-        terminal = 12;
+        terminal = 13;
         desktop = 11;
         popups = 12;
       };
@@ -305,6 +306,7 @@ in
     code-cursor
     google-chrome
     hyprpaper
+    fish
   ];
 
   fonts = {
@@ -341,11 +343,15 @@ in
   # Services to start
   services = {
     xserver = {
-      enable = false;
+      enable = true;
       xkb = {
         layout = "${keyboardLayout}";
         variant = "";
       };
+    };
+    displayManager.sddm = {
+      enable = false;
+      wayland.enable = false;
     };
     greetd = {
       enable = true;
@@ -421,6 +427,8 @@ in
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
+
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   # Security / Polkit
   security.rtkit.enable = true;
