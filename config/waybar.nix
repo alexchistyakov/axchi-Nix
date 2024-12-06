@@ -117,7 +117,7 @@ with lib;
         "custom/startmenu" = {
           tooltip = false;
           format = "";
-          on-click = "wlogout";
+          on-click = "albert toggle";
         };
         "custom/hyprbindings" = {
           tooltip = false;
@@ -237,17 +237,22 @@ with lib;
           margin-right: 15px;
           color: #FFFFFF;
         }
+        #idle_inhibitor.active {
+          color: rgba(117,207,255,1);
+        }
         #custom-startmenu {
-          font-size: 32px;
+          font-size: 28px;
           background: rgba(16,16,16,0.3);
           color: #FFFFFF;
           margin-right: 10px;
-          margin-left: 10px;
+          margin-left: 5px;
           padding: 0px 7px 0px 7px;
           border-radius: 0px 0px 15px 15px;
+          transition: all 0.2s ease-in-out;
+          margin-bottom: 3px;
         }
         #custom-startmenu:hover {
-          color: rgba(117,207,255,1);
+          color: rgba(153,213,255,1);
         }
         #window, #pulseaudio, #cpu, #memory, 
         #custom-hyprbindings, #network, #battery,

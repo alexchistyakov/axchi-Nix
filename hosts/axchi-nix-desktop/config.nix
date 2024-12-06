@@ -307,6 +307,7 @@ in
     google-chrome
     hyprpaper
     fish
+    tigervnc
   ];
 
   fonts = {

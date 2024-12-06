@@ -73,6 +73,7 @@ with lib;
           windowrule = noborder,^(wofi)$
           windowrule = center,^(wofi)$
           windowrule = center,^(steam)$
+          windowrule = center,^(x0vnxserver)
           windowrule = float, nm-connection-editor|blueman-manager
           windowrule = float, swayimg|vlc|Viewnior|pavucontrol
           windowrule = float, nwg-look|qt5ct|mpv
@@ -189,9 +190,10 @@ with lib;
           bind = ${modifier}SHIFT,G,exec,godot4
           bind = ${modifier},E,exec,thunar
           bind = ${modifier},M,exec,spotify
+          bind = ${modifier},V,exec,vncviewer
           bind = ${modifier},Q,killactive,
           bind = ${modifier},P,pseudo,
-          bind = ${modifier}SHIFT,I,togglesplit,
+          bind = ${modifier}SHIFT,J,togglesplit,
           bind = ${modifier},F,fullscreen,
           bind = ${modifier}SHIFT,F,togglefloating,
           bind = ${modifier}SHIFT,C,exit,
