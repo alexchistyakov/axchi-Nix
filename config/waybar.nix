@@ -202,7 +202,7 @@ with lib;
       transition-duration: .5s;
       }
         #workspaces {
-            margin: 3px 7px 3px 3px;
+            margin: 3px 3px 3px 3px;
             border: 0px;
             font-size: 14px;
             color: @textcolor1;
@@ -247,9 +247,7 @@ with lib;
           margin-right: 10px;
           margin-left: 5px;
           padding: 0px 7px 0px 7px;
-          border-radius: 0px 0px 15px 15px;
           transition: all 0.2s ease-in-out;
-          margin-bottom: 3px;
         }
         #custom-startmenu:hover {
           color: rgba(153,213,255,1);

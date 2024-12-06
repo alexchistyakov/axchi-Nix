@@ -89,7 +89,8 @@ in
     cursor.size = 24;
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
+        #package = pkgs.nerd-fonts.jetbrains-mono;
+        package = pkgs.nerd-fonts.fira-mono;
         name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {
@@ -288,7 +289,6 @@ in
     nixfmt-rfc-style
     discord
     libvirt
-    swww
     grim
     slurp
     file-roller
@@ -305,9 +305,9 @@ in
     albert
     code-cursor
     google-chrome
-    hyprpaper
     fish
     tigervnc
+    hyprpaper
   ];
 
   fonts = {
@@ -322,8 +322,8 @@ in
   };
 
   environment.variables = {
-    ZANEYOS_VERSION = "2.2";
-    ZANEYOS = "true";
+    AXCHIOS_VERSION = "0.0.1";
+    AXCHIOS = "true";
   };
 
   # Extra Portal Configuration

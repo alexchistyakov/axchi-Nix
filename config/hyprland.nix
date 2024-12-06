@@ -40,7 +40,7 @@ with lib;
           env = MOZ_ENABLE_WAYLAND, 1
           exec-once = dbus-update-activation-environment --systemd --all
           exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-          exec-once = killall -q swww;sleep .5 && swww init
+          exec-once = killall swww
           exec-once = killall -q waybar;sleep .5 && waybar
           exec-once = killall -q swaync;sleep .5 && swaync
           exec-once = nm-applet --indicator
@@ -94,6 +94,8 @@ with lib;
             key_press_enables_dpms = false
             disable_splash_rendering = true
             disable_hyprland_logo = true
+            render_ahead_of_time = true
+            render_ahead_safezone = 60
           }
           
           animations {
@@ -146,7 +148,7 @@ with lib;
             rounding = 15
             blur {
                 enabled = true
-                size = 6
+                size = 8
                 passes = 2
                 new_optimizations = on
                 ignore_opacity = true
@@ -159,8 +161,8 @@ with lib;
             shadow {
                 enabled = true
                 range = 30
-                render_power = 2
-                color = 0x00000000
+                render_power = 3
+                color = 0x66000000
             }
 
           }
@@ -259,5 +261,12 @@ with lib;
           bind = ,XF86MonBrightnessUp,exec,brightnessctl set +5%
         ''
       ];
+  };
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = lib.mkForce "/home/axchi/Pictures/wallpapers/thisdaone3.jpg";
+      wallpaper = lib.mkForce ", /home/axchi/Pictures/thisdaone3.jpg";
+    };
   };
 }

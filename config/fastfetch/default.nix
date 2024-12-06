@@ -17,7 +17,7 @@
         width = 37;
         padding = {
           top = 3;
-          left = 2;
+          left = 1;
         };
       };
 
@@ -40,6 +40,10 @@
               key = "│ 󰑭 ";
           }
           {
+              "type"= "disk";
+              "key"= "│ 󰋊 ";
+          }
+          {
               type = "custom";
               format = "└────────────────────────────────────────────────────┘";
           }
@@ -50,7 +54,7 @@
           }
           {
               type = "custom";
-              format = " OS -> NixOS (axchi config)";
+              format = " OS -> NixOS (axchi-style)";
           }
           {
               type = "kernel";
