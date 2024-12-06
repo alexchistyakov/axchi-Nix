@@ -22,6 +22,8 @@ in
     ../../modules/local-hardware-clock.nix
   ];
 
+  nixpkgs.config.allowBroken = true;
+
   boot = {
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;

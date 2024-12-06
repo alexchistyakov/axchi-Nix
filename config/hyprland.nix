@@ -266,7 +266,7 @@ with lib;
     enable = true;
     settings = {
       preload = lib.mkForce "/home/axchi/Pictures/wallpapers/thisdaone3.jpg";
-      wallpaper = lib.mkForce ", /home/axchi/Pictures/thisdaone3.jpg";
+      wallpaper = lib.mkForce ", /home/axchi/Pictures/wallpapers/thisdaone3.jpg";
     };
   };
 }

@@ -2,6 +2,7 @@
   pkgs,
   username,
 #inputs,
+  lib,
   host,
   ...
 }:
@@ -208,9 +209,9 @@ in
           hide_cursor = true;
           no_fade_in = false;
         };
-        background = [
+        background = lib.mkForce [
           {
-            path = "/home/${username}/Pictures/Wallpapers/zaney-wallpaper.jpg";
+            path = "/home/${username}/Pictures/wallpapers/thisdaone3.jpg";
             blur_passes = 3;
             blur_size = 8;
           }
@@ -227,7 +228,7 @@ in
             valign = "center";
           }
         ];
-        input-field = [
+        input-field = lib.mkForce [
           {
             size = "200, 50";
             position = "0, -80";

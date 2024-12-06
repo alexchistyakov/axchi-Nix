@@ -116,7 +116,7 @@ with lib;
         };
         "custom/startmenu" = {
           tooltip = false;
-          format = "";
+          format = " ";
           on-click = "albert toggle";
         };
         "custom/hyprbindings" = {
@@ -243,10 +243,14 @@ with lib;
         #custom-startmenu {
           font-size: 28px;
           background: rgba(16,16,16,0.3);
+          background-image: url('nix.png');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
           color: #FFFFFF;
           margin-right: 10px;
           margin-left: 5px;
-          padding: 0px 7px 0px 7px;
+          padding: 0px 8px 0px 8px;
           transition: all 0.2s ease-in-out;
         }
         #custom-startmenu:hover {
