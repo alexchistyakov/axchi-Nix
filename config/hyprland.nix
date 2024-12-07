@@ -13,7 +13,7 @@ let
     extraMonitorSettings
     keyboardLayout
     ;
-  rice = import ./rice.nix { inherit lib config username; };
+  rice = import ../rice { inherit lib config username; };
 in
 with lib;
 {

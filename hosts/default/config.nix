@@ -4,7 +4,7 @@
   ...
 }:
 let
-  rice = import ../../config/rice.nix { inherit lib username; };
+  rice = import ../../rice { inherit lib username; };
 in
 {
   imports = [
