@@ -2,6 +2,10 @@
   lib,
   username,
   config,
+  pkgs,
+  host,
+  inputs,
+  options
   ...
 }:
 let
