@@ -3,6 +3,7 @@
   username,
   host,
   config,
+  pkgs,
   ...
 }:
 
@@ -13,7 +14,7 @@ let
     extraMonitorSettings
     keyboardLayout
     ;
-  rice = import ../rice { inherit lib config username; };
+  rice = import ../rice { inherit lib config username pkgs; };
 in
 with lib;
 {

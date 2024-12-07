@@ -2,10 +2,11 @@
   lib,
   config,
   username,
+  pkgs,
   ...
 }:
 let
   # The currently active rice theme
-  activeRice = "default";
+  activeRice = "arctic";
 in
-import ./${activeRice} { inherit lib config username; } 
+import ./${activeRice} { inherit lib config username pkgs; } 

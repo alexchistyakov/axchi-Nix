@@ -1,10 +1,12 @@
 {
   lib,
   username,
+  pkgs,
+  config,
   ...
 }:
 let
-  rice = import ../../rice { inherit lib username; };
+  rice = import ../../rice { inherit lib username pkgs config; };
 in
 {
   imports = [

@@ -5,12 +5,12 @@
   pkgs,
   host,
   inputs,
-  options
+  options,
   ...
 }:
 let
   inherit (import ./variables.nix) keyboardLayout;
-  rice = import ../../rice { inherit lib config username; };
+  rice = import ../../rice { inherit lib config username pkgs; };
 in
 {
   imports = [
@@ -207,7 +207,12 @@ in
     mutableUsers = true;
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; 
+    let
+      ricePackagesList = rice.packages;
+    in
+    ricePackagesList ++ [
+    # Existing packages
     vim
     wget
     killall
@@ -270,17 +275,6 @@ in
     tigervnc
     hyprpaper
   ];
-
-  fonts = {
-    packages = with pkgs; [
-      noto-fonts-emoji
-      noto-fonts-cjk-sans
-      font-awesome
-      # Commenting Symbola out to fix install this will need to be fixed or an alternative found.
-      # symbola
-      material-icons
-    ];
-  };
 
   environment.variables = {
     AXCHIOS_VERSION = "0.0.1";

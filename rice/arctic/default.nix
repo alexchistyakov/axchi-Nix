@@ -2,9 +2,33 @@
   lib,
   config,
   username,
+  pkgs,
   ...
 }:
+
+let
+  # Define rice-specific packages
+  ricePackages = with pkgs; [
+    bibata-cursors
+    montserrat
+    # Font packages
+    noto-fonts-emoji
+    noto-fonts-cjk-sans
+    font-awesome
+    # symbola  # Commented out as noted in original config
+    material-icons
+    pkgs.nerd-fonts.jetbrains-mono
+  ];
+in
 {
+  # Package management for this rice
+  packages = ricePackages;
+
+  # Fonts configuration
+  fonts = {
+    packages = ricePackages;
+  };
+
   # Hyprland styling configuration
   hyprland = {
     decoration = {
@@ -197,7 +221,7 @@
       }
       {
         type = "custom";
-        format = "└────────────────────────────────────────────────────┘";
+        format = "└───────────────────────────────────────────────────────┘";
       }
       "break"
     ];
@@ -208,21 +232,21 @@
     polarity = "dark";
     opacity.terminal = 0.8;
     cursor = {
-      package = "bibata-cursors";
+      package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
       size = 24;
     };
     fonts = {
       monospace = {
-        package = "nerdfonts";
+        package = pkgs.nerd-fonts.jetbrains-mono ;
         name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {
-        package = "montserrat";
+        package = pkgs.montserrat;
         name = "Montserrat";
       };
       serif = {
-        package = "montserrat";
+        package = pkgs.montserrat;
         name = "Montserrat";
       };
       sizes = {
