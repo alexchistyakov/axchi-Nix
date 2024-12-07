@@ -1,14 +1,12 @@
 {
-  config,
-  pkgs,
-  host,
+  lib,
   username,
-  inputs,
-  options,
+  config,
   ...
 }:
 let
   inherit (import ./variables.nix) keyboardLayout;
+  rice = import ../../rice { inherit lib config username; };
 in
 {
   imports = [
@@ -66,50 +64,7 @@ in
   stylix = {
     enable = true;
     image = ../../config/wallpapers/zaney-wallpaper.jpg;
-      #base16Scheme = {
-      #base00 = "0E060F";
-      #base01 = "712336";
-      #base02 = "312E50";
-      #base03 = "3A3B63";
-      #base04 = "533351";
-      #base05 = "44446C";
-      #base06 = "90272E";
-      #base07 = "d19e94";
-      #base08 = "926e67";
-      #base09 = "712336";
-      #base0A = "312e50";
-      #base0B = "3a3b63";
-      #base0C = "533351";
-      #base0D = "44446C";
-      #base0E = "f6c177";
-      #base0F = "d19e94";
-    #};
-    polarity = "dark";
-    opacity.terminal = 1.0;
-    cursor.package = pkgs.bibata-cursors;
-    cursor.name = "Bibata-Modern-Ice";
-    cursor.size = 24;
-    fonts = {
-      monospace = {
-        #package = pkgs.nerd-fonts.jetbrains-mono;
-        package = pkgs.nerd-fonts.fira-mono;
-        name = "JetBrainsMono Nerd Font Mono";
-      };
-      sansSerif = {
-        package = pkgs.nerd-fonts.fira-mono;
-        name = "Fira Sans";
-      };
-      serif = {
-        package = pkgs.nerd-fonts.fira-mono;
-        name = "Fira Sans";
-      };
-      sizes = {
-        applications = 12;
-        terminal = 13;
-        desktop = 11;
-        popups = 12;
-      };
-    };
+    inherit (rice.stylix) polarity opacity cursor fonts;
   };
 
   # Extra Module Options
