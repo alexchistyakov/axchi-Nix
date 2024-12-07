@@ -65,7 +65,7 @@ in
   # Styling Options
   stylix = {
     enable = true;
-    image = ../../config/wallpapers/zaney-wallpaper.jpg;
+    image = ../../config/wallpapers/abstr.jpg;
       #base16Scheme = {
       #base00 = "0E060F";
       #base01 = "712336";
@@ -430,8 +430,6 @@ in
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
-
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   # Security / Polkit
   security.rtkit.enable = true;

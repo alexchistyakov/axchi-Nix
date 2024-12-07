@@ -197,7 +197,7 @@ with lib;
           bind = ${modifier},P,pseudo,
           bind = ${modifier}SHIFT,J,togglesplit,
           bind = ${modifier},F,fullscreen,
-          bind = ${modifier}SHIFT,F,togglefloating,
+          bind = ${modifier}SHIFT,T,togglefloating,
           bind = ${modifier}SHIFT,C,exit,
           bind = ${modifier}SHIFT,left,movewindow,l
           bind = ${modifier}SHIFT,right,movewindow,r
@@ -267,6 +267,40 @@ with lib;
     settings = {
       preload = lib.mkForce "/home/axchi/Pictures/wallpapers/thisdaone3.jpg";
       wallpaper = lib.mkForce ", /home/axchi/Pictures/wallpapers/thisdaone3.jpg";
+    };
+  };
+
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      general = {
+        disable_loading_bar = true;
+        grace = 10;
+        hide_cursor = true;
+        no_fade_in = false;
+      };
+      background = lib.mkForce [
+        {
+          path = "/home/${username}/Pictures/wallpapers/thisdaone3.jpg";
+          blur_passes = 2;
+          blur_size = 8;
+        }
+      ];
+      input-field = lib.mkForce [
+        {
+          size = "200, 50";
+          position = "0, -80";
+          monitor = "";
+          dots_center = true;
+          fade_on_empty = false;
+          font_color = "rgb(222222)";
+          inner_color = "rgb(657DC2)";
+          outer_color = "rgb(0D0E15)";
+          outline_thickness = 0;
+          placeholder_text = "Password...";
+          shadow_passes = 2;
+        }
+      ];
     };
   };
 }

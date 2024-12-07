@@ -22,7 +22,8 @@ with lib;
         position = "top";
         modules-center = [ "hyprland/window" ];
         modules-left = [
-          "custom/startmenu"
+          #"custom/startmenu"
+          "custom/exit"
           "idle_inhibitor"
           "hyprland/workspaces"
         ];
@@ -54,7 +55,7 @@ with lib;
           max-length = 22;
           separate-outputs = false;
           rewrite = {
-            "" = " you're staring at an empty screen, sir ";
+            "" = "empty screen, do something";
           };
         };
         "memory" = {
@@ -112,11 +113,11 @@ with lib;
         "custom/exit" = {
           tooltip = false;
           format = "";
-          on-click = "sleep 0.1 && wlogout";
+          on-click = "hyprlock";
         };
         "custom/startmenu" = {
           tooltip = false;
-          format = " ";
+          format = "  ";
           on-click = "albert toggle";
         };
         "custom/hyprbindings" = {
@@ -176,6 +177,7 @@ with lib;
         };
       }
     ];
+    # TODO hardcoded background image. Use a variable
     style = concatStrings [
       ''
 @define-color backgroundlight #FFFFFF;
@@ -202,7 +204,7 @@ with lib;
       transition-duration: .5s;
       }
         #workspaces {
-            margin: 3px 3px 3px 3px;
+            margin: 3px 10px 3px 3px;
             border: 0px;
             font-size: 14px;
             color: @textcolor1;
@@ -228,7 +230,11 @@ with lib;
             color: @textcolor1;
             background: @workspacesbackground2;
             border-radius: 15px;
-}
+        }
+
+        .modules-left {
+          margin-left: 7px;
+        }
 
         #idle_inhibitor {
           background: rgba(0,0,0,0);
@@ -243,26 +249,36 @@ with lib;
         #custom-startmenu {
           font-size: 28px;
           background: rgba(16,16,16,0.3);
-          background-image: url('nix.png');
+          background-image: url("/home/axchi/zaneyos/config/nix.png");
           background-position: center;
           background-repeat: no-repeat;
           background-size: contain;
           color: #FFFFFF;
           margin-right: 10px;
           margin-left: 5px;
-          padding: 0px 8px 0px 8px;
+          padding: 5px 10px 5px 10px;
+          min-width: 25px;
+          min-height: 25px;
           transition: all 0.2s ease-in-out;
+          border-radius: 0px 0px 15px 15px;
         }
         #custom-startmenu:hover {
           color: rgba(153,213,255,1);
         }
         #window, #pulseaudio, #cpu, #memory, 
         #custom-hyprbindings, #network, #battery,
-        #custom-notification, #tray, #custom-exit {
+        #custom-notification, #tray {
           font-weight: bold;
           background: rgba(0,0,0,0);
           color: #FFFFFF;
           margin-right: 5px;
+        }
+        #custom-exit {
+          margin-right: 15px;
+          margin-left: 10px;
+        }
+        #custom-exit:hover {
+          color: rgba(153,213,255,1);
         }
         #clock {
           font-weight: bold;
