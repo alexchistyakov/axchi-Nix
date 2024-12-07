@@ -65,7 +65,7 @@ in
   # Styling Options
   stylix = {
     enable = true;
-    image = ../../config/wallpapers/abstr.jpg;
+    image = ../../config/wallpapers/zaney-wallpaper.jpg;
       #base16Scheme = {
       #base00 = "0E060F";
       #base01 = "712336";

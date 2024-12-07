@@ -13,6 +13,7 @@ let
     extraMonitorSettings
     keyboardLayout
     ;
+  rice = import ./rice.nix { inherit lib config username; };
 in
 with lib;
 {
@@ -48,15 +49,17 @@ with lib;
           exec-once = albert &
           monitor=,preferred,auto,1
           ${extraMonitorSettings}
+
           general {
-            gaps_in = 6
-            gaps_out = 8
-            border_size = 0
-            layout = dwindle
-            resize_on_border = true
-            col.active_border = rgb(${config.stylix.base16Scheme.base08}) rgb(${config.stylix.base16Scheme.base0C}) 45deg
-            col.inactive_border = rgb(${config.stylix.base16Scheme.base01})
+            gaps_in = ${toString rice.hyprland.general.gaps_in}
+            gaps_out = ${toString rice.hyprland.general.gaps_out}
+            border_size = ${toString rice.hyprland.general.border_size}
+            layout = ${rice.hyprland.general.layout}
+            resize_on_border = ${if rice.hyprland.general.resize_on_border then "true" else "false"}
+            col.active_border = ${rice.hyprland.general.col.active_border}
+            col.inactive_border = ${rice.hyprland.general.col.inactive_border}
           }
+
           input {
             kb_layout = ${keyboardLayout}
             kb_options = grp:alt_shift_toggle
@@ -67,9 +70,38 @@ with lib;
               disable_while_typing = true
               scroll_factor = 0.8
             }
-            sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+            sensitivity = 0
             accel_profile = flat
           }
+
+          decoration {
+            rounding = ${toString rice.hyprland.decoration.rounding}
+            blur {
+              enabled = ${if rice.hyprland.decoration.blur.enabled then "true" else "false"}
+              size = ${toString rice.hyprland.decoration.blur.size}
+              passes = ${toString rice.hyprland.decoration.blur.passes}
+              new_optimizations = ${if rice.hyprland.decoration.blur.new_optimizations then "on" else "off"}
+              ignore_opacity = ${if rice.hyprland.decoration.blur.ignore_opacity then "true" else "false"}
+              xray = ${if rice.hyprland.decoration.blur.xray then "true" else "false"}
+            }
+            active_opacity = ${toString rice.hyprland.decoration.active_opacity}
+            inactive_opacity = ${toString rice.hyprland.decoration.inactive_opacity}
+            fullscreen_opacity = ${toString rice.hyprland.decoration.fullscreen_opacity}
+
+            shadow {
+              enabled = ${if rice.hyprland.decoration.shadow.enabled then "true" else "false"}
+              range = ${toString rice.hyprland.decoration.shadow.range}
+              render_power = ${toString rice.hyprland.decoration.shadow.render_power}
+              color = ${rice.hyprland.decoration.shadow.color}
+            }
+          }
+
+          animations {
+            enabled = ${if rice.hyprland.animations.enabled then "true" else "false"}
+            ${concatStringsSep "\n            " (map (b: "bezier = ${b}") rice.hyprland.animations.bezier)}
+            ${concatStringsSep "\n            " (map (a: "animation = ${a}") rice.hyprland.animations.animation)}
+          }
+
           windowrule = noborder,^(wofi)$
           windowrule = center,^(wofi)$
           windowrule = center,^(steam)$
@@ -84,10 +116,12 @@ with lib;
           windowrulev2 = opacity 0.85 0.7, class:^(thunar)$
           windowrulev2 = opacity 0.9 0.7, class:^(cursor)$
           windowrulev2 = opacity 1.0 0.9, class:^(neovide)$
+
           gestures {
             workspace_swipe = true
             workspace_swipe_fingers = 3
           }
+
           misc {
             initial_workspace_tracking = 0
             mouse_move_enables_dpms = true
@@ -97,86 +131,7 @@ with lib;
             render_ahead_of_time = true
             render_ahead_safezone = 60
           }
-          
-          animations {
-              enabled = true
-              bezier = linear, 0, 0, 1, 1
-              bezier = md3_standard, 0.2, 0, 0, 1
-              bezier = md3_decel, 0.05, 0.7, 0.1, 1
-              bezier = md3_accel, 0.3, 0, 0.8, 0.15
-              bezier = overshot, 0.05, 0.9, 0.1, 1.1
-              bezier = crazyshot, 0.1, 1.5, 0.76, 0.92 
-              bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
-              bezier = fluent_decel, 0.1, 1, 0, 1
-              bezier = easeInOutCirc, 0.85, 0, 0.15, 1
-              bezier = easeOutCirc, 0, 0.55, 0.45, 1
-              bezier = easeOutExpo, 0.16, 1, 0.3, 1
-              # animation = windows, 1, 3, md3_decel, popin 60%
-              animation = border, 1, 10, default
-              #animation = fade, 1, 2.5, md3_decel
-              
-              # Define custom bezier curves for smoother animations
-              bezier = myBezier, 0.05, 0.9, 0.1, 1.00
-              bezier = linear, 0.0, 0.0, 1.0, 1.0
-              bezier = easeInOutQuint, 0.83, 0, 0.17, 1
-              bezier = easeOutQuint, 0.22, 1, 0.36, 1
-              bezier = easeInOutCirc, 0.85, 0, 0.15, 1
-              bezier = wind, 0, 0.5, 0.5, 1.0	
-              bezier = winIn, 0.1, 1.1, 0.1, 1.1
-              bezier = winOut, 0.3, -0.3, 0, 1
-              
-              animation = windows, 1, 3.5, wind, slide
-              animation = windowsIn, 1, 6, winIn, slide
-              animation = windowsOut, 1, 5, winOut, slide
-              animation = windowsMove, 1, 2, wind, slide
-              
-              bezier = easeInOutQuint, 0.83, 0, 0.17, 1
-              bezier = easeOutQuint, 0.22, 1, 0.36, 1
-              bezier = easeInOutCirc, 0.85, 0, 0.15, 1
-              
-              # Fade animations
-              animation = fade, 1, 10, easeOutQuint
-              animation = fadeDim, 1, 10, easeOutQuint
-              animation = fadeSwitch, 1, 10, easeOutQuint
-              animation = fadeShadow, 1, 10, easeOutQuint
 
-              animation = workspaces, 1, 7, easeOutExpo, slide
-              animation = specialWorkspace, 1, 3, md3_decel, slidevert
-          }
-
-          decoration {
-            rounding = 15
-            blur {
-                enabled = true
-                size = 8
-                passes = 2
-                new_optimizations = on
-                ignore_opacity = true
-                xray = true
-            }
-            active_opacity = 0.95
-            inactive_opacity = 0.88
-              fullscreen_opacity = 1.0
-
-            shadow {
-                enabled = true
-                range = 30
-                render_power = 3
-                color = 0x66000000
-            }
-
-          }
-
-          plugin {
-            hyprtrails {
-            }
-          }
-
-          dwindle {
-            pseudotile = true
-            preserve_split = true
-          }
-          
           # KEYBINDS
           bind = ${modifier},Return,exec,${terminal}
           bind = ${modifier},SPACE,exec,albert toggle
@@ -238,25 +193,25 @@ with lib;
           bind = ${modifier}SHIFT,0,movetoworkspace,10
           bind = ${modifier}CONTROL,right,workspace,e+1
           bind = ${modifier}CONTROL,left,workspace,e-1
-          bind = ${modifier},mouse_down,workspace, e+1
-          bind = ${modifier},mouse_up,workspace, e-1
+          bind = ${modifier},mouse_down,workspace,e+1
+          bind = ${modifier},mouse_up,workspace,e-1
           bindm = ${modifier},mouse:272,movewindow
           bindm = ${modifier},mouse:273,resizewindow
 
-          bind = ${modifier},TAB,workspace,m+1 # Open next workspace
-          bind = ${modifier}SHIFT,Tab,workspace, m-1 # Open previous workspace
+          bind = ${modifier},TAB,workspace,m+1
+          bind = ${modifier}SHIFT,Tab,workspace,m-1
 
-          bind = ${modifier},N,workspace,empty # Open previous workspace
+          bind = ${modifier},N,workspace,empty
           
           bind = ALT,Tab,cyclenext
           bind = ALT,Tab,bringactivetotop
           bind = ,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
           bind = ,XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-          binde = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-          bind = ,XF86AudioPlay, exec, playerctl play-pause
-          bind = ,XF86AudioPause, exec, playerctl play-pause
-          bind = ,XF86AudioNext, exec, playerctl next
-          bind = ,XF86AudioPrev, exec, playerctl previous
+          binde = ,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+          bind = ,XF86AudioPlay,exec,playerctl play-pause
+          bind = ,XF86AudioPause,exec,playerctl play-pause
+          bind = ,XF86AudioNext,exec,playerctl next
+          bind = ,XF86AudioPrev,exec,playerctl previous
           bind = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
           bind = ,XF86MonBrightnessUp,exec,brightnessctl set +5%
         ''
@@ -282,23 +237,35 @@ with lib;
       background = lib.mkForce [
         {
           path = "/home/${username}/Pictures/wallpapers/thisdaone3.jpg";
-          blur_passes = 2;
-          blur_size = 8;
+          blur_passes = rice.hyprlock.background.blur_passes;
+          blur_size = rice.hyprlock.background.blur_size;
+        }
+      ];
+      image = [
+        {
+          path = "/home/${username}/.config/face.jpg";
+          size = 150;
+          border_size = 4;
+          border_color = "rgb(0C96F9)";
+          rounding = -1;
+          position = "0, 200";
+          halign = "center";
+          valign = "center";
         }
       ];
       input-field = lib.mkForce [
         {
-          size = "200, 50";
+          size = rice.hyprlock.input-field.size;
           position = "0, -80";
           monitor = "";
-          dots_center = true;
-          fade_on_empty = false;
-          font_color = "rgb(222222)";
-          inner_color = "rgb(657DC2)";
-          outer_color = "rgb(0D0E15)";
-          outline_thickness = 0;
+          dots_center = rice.hyprlock.input-field.dots_center;
+          fade_on_empty = rice.hyprlock.input-field.fade_on_empty;
+          font_color = rice.hyprlock.input-field.font_color;
+          inner_color = rice.hyprlock.input-field.inner_color;
+          outer_color = rice.hyprlock.input-field.outer_color;
+          outline_thickness = rice.hyprlock.input-field.outline_thickness;
           placeholder_text = "Password...";
-          shadow_passes = 2;
+          shadow_passes = rice.hyprlock.input-field.shadow_passes;
         }
       ];
     };
