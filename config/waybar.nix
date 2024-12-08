@@ -180,29 +180,29 @@ with lib;
     # TODO hardcoded background image. Use a variable
     style = concatStrings [
       ''
-@define-color backgroundlight #FFFFFF;
-@define-color backgrounddark #FFFFFF;
-@define-color workspacesbackground1 #FFFFFF;
-@define-color workspacesbackground2 #CCCCCC;
-@define-color bordercolor #FFFFFF;
-@define-color textcolor1 #000000;
-@define-color textcolor2 #000000;
-@define-color textcolor3 #FFFFFF;
-@define-color iconcolor #FFFFFF;
+        @define-color backgroundlight #FFFFFF;
+        @define-color backgrounddark #FFFFFF;
+        @define-color workspacesbackground1 #FFFFFF;
+        @define-color workspacesbackground2 #CCCCCC;
+        @define-color bordercolor #FFFFFF;
+        @define-color textcolor1 #000000;
+        @define-color textcolor2 #000000;
+        @define-color textcolor3 #FFFFFF;
+        @define-color iconcolor #FFFFFF;
+
         * {
           font-family: "Fira Sans semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
         
           border: none;
           border-radius: 0px;
-      }
+        }
 
-  window#waybar {
-      background-color: rgba(0,0,0,0.5);
-      border-bottom: 0px solid #ffffff;
-      /* color: #FFFFFF; */
-      transition-property: background-color;
-      transition-duration: .5s;
-      }
+        window#waybar {
+            background-color: rgba(0,0,0,0.5);
+            transition-property: background-color;
+            transition-duration: .5s;
+        }
+
         #workspaces {
             margin: 3px 10px 3px 3px;
             border: 0px;
@@ -275,7 +275,7 @@ with lib;
           margin-right: 5px;
         }
         #custom-exit {
-          margin-right: 9px;
+          margin-right: 8px;
           margin-left: 5px;
         }
         #custom-exit:hover {
@@ -285,7 +285,6 @@ with lib;
           font-weight: bold;
           background: rgba(0,0,0,0);
           color: #FFFFFF;
-          margin: 0px;
           padding: 0px 7px 0px 8px;
           margin-right: 8px;
           margin-left: 5px;

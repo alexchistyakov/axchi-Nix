@@ -48,6 +48,7 @@ with lib;
           exec-once = nm-applet --indicator
           exec-once = lxqt-policykit-agent
           exec-once = albert &
+          exec-once = hyprlock 
           monitor=,preferred,auto,1
           ${extraMonitorSettings}
 
@@ -131,8 +132,8 @@ with lib;
             disable_hyprland_logo = true
             render_ahead_of_time = true
             render_ahead_safezone = 10
-            vfr = true
-            vrr = true
+            vfr = false
+            vrr = false
           }
 
           # KEYBINDS
