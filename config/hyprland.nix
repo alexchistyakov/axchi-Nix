@@ -30,15 +30,22 @@ with lib;
         ''
           env = NIXOS_OZONE_WL, 1
           env = NIXPKGS_ALLOW_UNFREE, 1
+          env = LIBVA_DRIVER_NAME,nvidia
+          env = XDG_SESSION_TYPE,wayland
+          env = GBM_BACKEND,nvidia-drm
+          env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+          env = WLR_NO_HARDWARE_CURSORS,1
+          env = WLR_RENDERER,vulkan
+          env = __GL_GSYNC_ALLOWED,1
+          env = __GL_VRR_ALLOWED,1
+          env = XCURSOR_SIZE,24
           env = XDG_CURRENT_DESKTOP, Hyprland
-          env = XDG_SESSION_TYPE, wayland
-          env = XDG_SESSION_DESKTOP, Hyprland
           env = GDK_BACKEND, wayland, x11
           env = CLUTTER_BACKEND, wayland
           env = QT_QPA_PLATFORM=wayland;xcb
           env = QT_WAYLAND_DISABLE_WINDOWDECORATION, 1
           env = QT_AUTO_SCREEN_SCALE_FACTOR, 1
-          env = SDL_VIDEODRIVER, x11
+          env = SDL_VIDEODRIVER, wayland
           env = MOZ_ENABLE_WAYLAND, 1
           exec-once = dbus-update-activation-environment --systemd --all
           exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -76,6 +83,14 @@ with lib;
             accel_profile = flat
           }
 
+          cursor {
+            no_hardware_cursors = true
+          }
+
+          xwayland {
+            force_zero_scaling = true
+          }
+
           decoration {
             rounding = ${toString rice.hyprland.decoration.rounding}
             blur {
@@ -98,6 +113,10 @@ with lib;
             }
           }
 
+          render {
+            explicit_sync = 0
+          }
+
           animations {
             enabled = ${if rice.hyprland.animations.enabled then "true" else "false"}
             ${concatStringsSep "\n            " (map (b: "bezier = ${b}") rice.hyprland.animations.bezier)}
@@ -115,7 +134,7 @@ with lib;
           windowrulev2 = stayfocused, title:^()$,class:^(steam)$
           windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
           windowrulev2 = opacity 0.9 0.7, class:^(google-chrome-stable)$
-          windowrulev2 = opacity 0.85 0.7, class:^(thunar)$
+          windowrulev2 = opacity 0.80 0.7, class:^(thunar)$
           windowrulev2 = opacity 0.9 0.7, class:^(cursor)$
           windowrulev2 = opacity 1.0 0.9, class:^(neovide)$
 
@@ -127,13 +146,13 @@ with lib;
           misc {
             initial_workspace_tracking = 0
             mouse_move_enables_dpms = true
-            key_press_enables_dpms = false
+            key_press_enables_dpms = true
             disable_splash_rendering = true
             disable_hyprland_logo = true
             render_ahead_of_time = true
-            render_ahead_safezone = 10
-            vfr = false
-            vrr = false
+            render_ahead_safezone =  100
+            vfr = true
+            vrr = true 
           }
 
           # KEYBINDS

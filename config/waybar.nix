@@ -240,8 +240,8 @@ with lib;
           background: rgba(0,0,0,0);
           font-weight: bold;
           margin: 4px 0px;
-          margin-right: 15px;
-          margin-left: 6px;
+          margin-right: 10px;
+          margin-left: 5px;
           color: #FFFFFF;
         }
         #idle_inhibitor.active {

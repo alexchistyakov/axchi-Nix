@@ -46,6 +46,9 @@ in
       useOSProber = true;
       efiSupport = true;
       theme = rice.grub.theme;
+      gfxmodeEfi = "1920x1080";
+      font = rice.grub.font;
+      fontSize = rice.grub.fontSize;
     };
     loader.efi = { 
       canTouchEfiVariables = true;

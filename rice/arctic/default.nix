@@ -18,6 +18,8 @@ let
     # symbola  # Commented out as noted in original config
     material-icons
     pkgs.nerd-fonts.jetbrains-mono
+    terminus_font  # For GRUB terminal font
+    unifont       # For GRUB menu items
   ];
 in
 {
@@ -114,22 +116,23 @@ in
         path = "${./wallpaper/wallpaper.jpg}";
       };
       input-field = {
-        size = "200, 50";
-        outline_thickness = 3;
-        dots_size = 0.33; # Scale of input-field height, 0.2 - 0.8
+        size = "250, 50";
+        outline_thickness = 0;
+        dots_size = 0.25; # Scale of input-field height, 0.2 - 0.8
         dots_spacing = 0.15; # Scale of dots' absolute size, 0.0 - 1.0
         dots_center = true;
         dots_rounding = -1; # -1 default circle, -2 follow input-field rounding
+        dots_fade_time = 100;
         outer_color = "rgb(151515)";
         inner_color = "rgb(FFFFFF)";
-        font_color = "rgb(10, 10, 10)";
+        font_color = "rgba(15,15,15,0.8)";
         fade_on_empty = true;
         fade_timeout = 1000; # Milliseconds before fade_on_empty is triggered.
-        placeholder_text = "<i>Input Password...</i>"; # Text rendered in the input box when it's empty.
+        placeholder_text = "Password"; # Text rendered in the input box when it's empty.
         hide_input = false;
-        rounding = 5; # -1 means complete rounding (circle/oval)
-        check_color = "rgb(204, 136, 34)";
-        fail_color = "rgb(204, 34, 34)"; # if authentication failed, changes outer_color and fail message color
+        rounding = 10; # -1 means complete rounding (circle/oval)
+        check_color = "rgba(150, 150, 150, 0.5)";
+        fail_color = "rgb(200, 200, 200)"; # if authentication failed, changes outer_color and fail message color
         fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>"; # can be set to empty
         fail_transition = 300; # transition time in ms between normal outer_color and fail_color
         capslock_color = -1;
@@ -346,5 +349,7 @@ in
   # GRUB theme configuration
   grub = {
     theme = lib.mkForce ./grub/vimix;
+    fontSize = 18;
+    font = lib.mkForce ./grub/vimix/terminus-16.pf2;
   };
 } 
