@@ -29,10 +29,10 @@ with lib;
         ];
         modules-right = [
           "custom/notification"
-          "cpu"
-          "memory"
+          "group/hardware"
           "pulseaudio"
-          "tray"
+          "bluetooth"
+          "network"
           "clock"
         ];
 
@@ -81,34 +81,56 @@ with lib;
             "󰤨"
           ];
           format-ethernet = " {bandwidthDownOctets}";
-          format-wifi = "{icon} {signalStrength}%";
+          format-wifi = "{icon}  {signalStrength}%";
           format-disconnected = "󰤮";
           tooltip = false;
         };
+        "group/hardware" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 300;
+            children-class = "not-memory";
+            transition-left-to-right = false;
+          };
+          modules = [
+            "memory"
+            "disk"
+            "cpu"
+          ];
+        };
+        "bluetooth" = {
+          format = " {status}";
+          format-disabled = "";
+          format-off = "";
+          interval = 30;
+          on-click = "blueman-manager";
+          format-no-controller = "";
+        };
+        
         "tray" = {
           spacing = 12;
         };
         "pulseaudio" = {
-          format = "{icon} {volume}% {format_source}";
+          format = "{icon}   {volume}%";
           format-bluetooth = "{volume}% {icon} {format_source}";
           format-bluetooth-muted = " {icon} {format_source}";
           format-muted = " {format_source}";
-          format-source = " {volume}%";
+          format-source = "{volume}% ";
           format-source-muted = "";
           format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
+            headphone = " ";
+            hands-free = " ";
+            headset = "0 ";
+            phone = " ";
+            portable = " ";
+            car = " ";
             default = [
               ""
-              ""
+              ""
               ""
             ];
           };
-          on-click = "sleep 0.1 && pavucontrol";
+          on-click = "pavucontrol";
         };
         "custom/exit" = {
           tooltip = false;
@@ -266,13 +288,25 @@ with lib;
         #custom-startmenu:hover {
           color: rgba(153,213,255,1);
         }
-        #window, #pulseaudio, #cpu, #memory, 
+        #window, #pulseaudio,
         #custom-hyprbindings, #network, #battery,
         #custom-notification, #tray {
-          font-weight: bold;
           background: rgba(0,0,0,0);
           color: #FFFFFF;
           margin-right: 5px;
+          font-size: 14px;
+        }
+
+        #pulseaudio {
+          font-size: 14px;
+          color: #FFFFFF;
+          margin-right: 10px;
+        }
+        #disk,#memory,#cpu {
+          margin:0px;
+          padding:0px 5px 0px 5px;
+          font-size:14px;
+          color:#FFFFFF;
         }
         #custom-exit {
           margin-right: 8px;
@@ -281,13 +315,18 @@ with lib;
         #custom-exit:hover {
           color: rgba(153,213,255,1);
         }
+        #bluetooth, #bluetooth.on, #bluetooth.connected {
+          font-size: 14px;
+          color: @textcolor;
+          border-radius: 15px;
+          margin: 0px 5px 0px 0px;
+        }
         #clock {
           font-weight: bold;
           background: rgba(0,0,0,0);
           color: #FFFFFF;
-          padding: 0px 7px 0px 8px;
+          padding: 0px 7px 0px 0px;
           margin-right: 8px;
-          margin-left: 5px;
         }
       ''
     ];

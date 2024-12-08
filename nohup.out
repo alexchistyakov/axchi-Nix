@@ -1,0 +1,120 @@
+[2024-12-08 16:48:05.979] [info] Using configuration file /home/axchi/.config/waybar/config
+[2024-12-08 16:48:05.981] [info] Discovered appearance 'dark'
+[2024-12-08 16:48:05.981] [info] Using CSS file /home/axchi/.config/waybar/style.css
+[2024-12-08 16:48:05.985] [info] Hyprland IPC starting
+[2024-12-08 16:48:05.985] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:48:06.005] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:48:06.011] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:48:06.700] [info] Bar configured (width: 3840, height: 41) for output: HDMI-A-1
+[2024-12-08 16:48:06.700] [info] Bar configured (width: 1080, height: 41) for output: DP-1
+[2024-12-08 16:48:06.700] [info] Bar configured (width: 1920, height: 41) for output: DP-2
+[2024-12-08 16:48:29.270] [info] Reloading...
+[2024-12-08 16:48:29.280] [info] Using configuration file /home/axchi/.config/waybar/config
+[2024-12-08 16:48:29.280] [info] Using CSS file /home/axchi/.config/waybar/style.css
+[2024-12-08 16:48:29.291] [info] Reloading...
+[2024-12-08 16:48:29.291] [info] Using configuration file /home/axchi/.config/waybar/config
+[2024-12-08 16:48:29.291] [info] Using CSS file /home/axchi/.config/waybar/style.css
+[2024-12-08 16:48:29.346] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:48:29.361] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:48:29.408] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:48:29.531] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:48:29.567] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:48:29.592] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:48:30.143] [info] Bar configured (width: 3840, height: 41) for output: HDMI-A-1
+[2024-12-08 16:48:30.143] [info] Bar configured (width: 1080, height: 41) for output: DP-1
+[2024-12-08 16:48:30.143] [info] Bar configured (width: 1920, height: 41) for output: DP-2
+[2024-12-08 16:48:30.143] [info] Bar configured (width: 3840, height: 41) for output: HDMI-A-1
+[2024-12-08 16:48:30.143] [info] Bar configured (width: 1080, height: 41) for output: DP-1
+[2024-12-08 16:48:30.143] [info] Bar configured (width: 1920, height: 41) for output: DP-2
+[2024-12-08 16:51:11.276] [info] Reloading...
+[2024-12-08 16:51:11.285] [info] Using configuration file /home/axchi/.config/waybar/config
+[2024-12-08 16:51:11.285] [info] Using CSS file /home/axchi/.config/waybar/style.css
+[2024-12-08 16:51:11.412] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:51:11.490] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:51:11.534] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:51:11.862] [info] Bar configured (width: 3840, height: 41) for output: HDMI-A-1
+[2024-12-08 16:51:11.862] [info] Bar configured (width: 1080, height: 41) for output: DP-1
+[2024-12-08 16:51:11.862] [info] Bar configured (width: 1920, height: 41) for output: DP-2
+blueman-manager 16.51.18 WARNING  ManagerDeviceList:421 _monitor_power_levels: Failed to get power levels, probably a LE device.
+[2024-12-08 16:54:16.403] [info] Reloading...
+[2024-12-08 16:54:16.409] [info] Using configuration file /home/axchi/.config/waybar/config
+[2024-12-08 16:54:16.409] [info] Using CSS file /home/axchi/.config/waybar/style.css
+[2024-12-08 16:54:16.545] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:54:16.610] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:54:16.660] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:54:16.986] [info] Bar configured (width: 3840, height: 41) for output: HDMI-A-1
+[2024-12-08 16:54:16.986] [info] Bar configured (width: 1080, height: 41) for output: DP-1
+[2024-12-08 16:54:16.986] [info] Bar configured (width: 1920, height: 41) for output: DP-2
+[2024-12-08 16:56:42.921] [info] Reloading...
+[2024-12-08 16:56:42.928] [info] Using configuration file /home/axchi/.config/waybar/config
+[2024-12-08 16:56:42.928] [info] Using CSS file /home/axchi/.config/waybar/style.css
+[2024-12-08 16:56:43.061] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:56:43.092] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:56:43.120] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:56:43.485] [info] Bar configured (width: 3840, height: 41) for output: HDMI-A-1
+[2024-12-08 16:56:43.485] [info] Bar configured (width: 1080, height: 41) for output: DP-1
+[2024-12-08 16:56:43.485] [info] Bar configured (width: 1920, height: 41) for output: DP-2
+[2024-12-08 16:58:55.160] [info] Reloading...
+[2024-12-08 16:58:55.165] [info] Using configuration file /home/axchi/.config/waybar/config
+[2024-12-08 16:58:55.166] [info] Using CSS file /home/axchi/.config/waybar/style.css
+[2024-12-08 16:58:55.266] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:58:55.342] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:58:55.400] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 16:58:55.730] [info] Bar configured (width: 3840, height: 41) for output: HDMI-A-1
+[2024-12-08 16:58:55.730] [info] Bar configured (width: 1080, height: 41) for output: DP-1
+[2024-12-08 16:58:55.730] [info] Bar configured (width: 1920, height: 41) for output: DP-2
+[2024-12-08 17:00:08.259] [info] Reloading...
+[2024-12-08 17:00:08.264] [info] Using configuration file /home/axchi/.config/waybar/config
+[2024-12-08 17:00:08.264] [info] Using CSS file /home/axchi/.config/waybar/style.css
+[2024-12-08 17:00:08.427] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:00:08.500] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:00:08.508] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:00:08.860] [info] Bar configured (width: 3840, height: 41) for output: HDMI-A-1
+[2024-12-08 17:00:08.861] [info] Bar configured (width: 1080, height: 41) for output: DP-1
+[2024-12-08 17:00:08.861] [info] Bar configured (width: 1920, height: 41) for output: DP-2
+[2024-12-08 17:01:58.361] [info] Reloading...
+[2024-12-08 17:01:58.366] [info] Using configuration file /home/axchi/.config/waybar/config
+[2024-12-08 17:01:58.367] [info] Using CSS file /home/axchi/.config/waybar/style.css
+[2024-12-08 17:01:58.538] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:01:58.598] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:01:58.650] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:01:59.051] [info] Bar configured (width: 3840, height: 41) for output: HDMI-A-1
+[2024-12-08 17:01:59.051] [info] Bar configured (width: 1080, height: 41) for output: DP-1
+[2024-12-08 17:01:59.051] [info] Bar configured (width: 1920, height: 41) for output: DP-2
+[2024-12-08 17:03:23.497] [info] Reloading...
+[2024-12-08 17:03:23.503] [info] Using configuration file /home/axchi/.config/waybar/config
+[2024-12-08 17:03:23.503] [info] Using CSS file /home/axchi/.config/waybar/style.css
+[2024-12-08 17:03:23.520] [info] Reloading...
+[2024-12-08 17:03:23.521] [info] Using configuration file /home/axchi/.config/waybar/config
+[2024-12-08 17:03:23.521] [info] Using CSS file /home/axchi/.config/waybar/style.css
+[2024-12-08 17:03:23.645] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:03:23.699] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:03:23.717] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:03:23.843] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:03:23.852] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:03:23.860] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:03:24.390] [info] Bar configured (width: 3840, height: 41) for output: HDMI-A-1
+[2024-12-08 17:03:24.390] [info] Bar configured (width: 1080, height: 41) for output: DP-1
+[2024-12-08 17:03:24.390] [info] Bar configured (width: 1920, height: 41) for output: DP-2
+[2024-12-08 17:03:24.390] [info] Bar configured (width: 3840, height: 41) for output: HDMI-A-1
+[2024-12-08 17:03:24.390] [info] Bar configured (width: 1080, height: 41) for output: DP-1
+[2024-12-08 17:03:24.390] [info] Bar configured (width: 1920, height: 41) for output: DP-2
+[2024-12-08 17:04:32.357] [info] Reloading...
+[2024-12-08 17:04:32.367] [info] Using configuration file /home/axchi/.config/waybar/config
+[2024-12-08 17:04:32.367] [info] Using CSS file /home/axchi/.config/waybar/style.css
+[2024-12-08 17:04:32.495] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:04:32.527] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:04:32.555] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:04:32.915] [info] Bar configured (width: 3840, height: 41) for output: HDMI-A-1
+[2024-12-08 17:04:32.915] [info] Bar configured (width: 1080, height: 41) for output: DP-1
+[2024-12-08 17:04:32.915] [info] Bar configured (width: 1920, height: 41) for output: DP-2
+[2024-12-08 17:05:51.711] [info] Reloading...
+[2024-12-08 17:05:51.717] [info] Using configuration file /home/axchi/.config/waybar/config
+[2024-12-08 17:05:51.717] [info] Using CSS file /home/axchi/.config/waybar/style.css
+[2024-12-08 17:05:51.848] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:05:51.892] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:05:51.912] [info] Loading persistent workspaces from Hyprland workspace rules
+[2024-12-08 17:05:52.260] [info] Bar configured (width: 3840, height: 41) for output: HDMI-A-1
+[2024-12-08 17:05:52.260] [info] Bar configured (width: 1080, height: 41) for output: DP-1
+[2024-12-08 17:05:52.260] [info] Bar configured (width: 1920, height: 41) for output: DP-2
+Gdk-Message: 17:07:12.356: Error reading events from display: Connection reset by peer
