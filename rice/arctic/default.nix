@@ -235,7 +235,7 @@ in
               current=$(date +%s)
               delta=$((current - birth_install))
               delta_days=$((delta / 86400))
-              echo "Uptime: $(uptime | awk -F'( |,|:)+' '{print $6,$7",",$8,"hours,",$9,"minutes."}') | Age: $delta_days days"
+              echo "Uptime: $(awk '{printf "%d hours, %d minutes\n", int($1/3600), int(($1%3600)/60)}' /proc/uptime) | Age: $delta_days days"
             '';
         }
         "break"

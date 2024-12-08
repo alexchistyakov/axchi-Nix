@@ -60,7 +60,7 @@ with lib;
         };
         "memory" = {
           interval = 5;
-          format = " {}%";
+          format = "  {}%";
           tooltip = true;
         };
         "cpu" = {
