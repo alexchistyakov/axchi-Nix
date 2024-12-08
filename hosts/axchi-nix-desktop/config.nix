@@ -30,7 +30,9 @@ in
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;
     # This is for OBS Virtual Cam Support
-    kernelModules = [ "v4l2loopback" ];
+    kernelModules = [ 
+      "v4l2loopback" 
+    ];
     kernelParams = ["quiet"];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     # Needed For Some Steam Games
@@ -43,6 +45,7 @@ in
       device = "nodev";
       useOSProber = true;
       efiSupport = true;
+      theme = rice.grub.theme;
     };
     loader.efi = { 
       canTouchEfiVariables = true;
@@ -65,11 +68,7 @@ in
   };
 
   # Styling Options
-  stylix = {
-    enable = true;
-    image = ../../config/wallpapers/zaney-wallpaper.jpg;
-    inherit (rice.stylix) polarity opacity cursor fonts;
-  };
+  stylix = rice.stylix;
 
   # Extra Module Options
   drivers.amdgpu.enable = false;
@@ -266,7 +265,6 @@ in
     tree
     spotify
     neovide
-    greetd.tuigreet
     albert
     code-cursor
     google-chrome
@@ -304,10 +302,15 @@ in
         variant = "";
       };
     };
-    displayManager.sddm = {
-      enable = false;
-      wayland.enable = false;
-    };
+      displayManager.sddm = {
+        enable = false; 
+        wayland.enable = true;
+        settings = {
+          General = {
+            DisplayServer = "wayland";
+          };
+        };
+      };
     greetd = {
       enable = true;
       vt = 3;
@@ -382,6 +385,10 @@ in
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
+
+  # AMD CPU stuff
+  hardware.cpu.amd.updateMicrocode = true;
+  powerManagement.cpuFreqGovernor = "schedutil";
 
   # Security / Polkit
   security.rtkit.enable = true;

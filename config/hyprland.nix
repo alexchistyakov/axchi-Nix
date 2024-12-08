@@ -42,6 +42,7 @@ with lib;
           env = MOZ_ENABLE_WAYLAND, 1
           exec-once = dbus-update-activation-environment --systemd --all
           exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+          exec-once = killall -q hyprpaper;sleep .5 && hyprpaper
           exec-once = killall -q waybar;sleep .5 && waybar
           exec-once = killall -q swaync;sleep .5 && swaync
           exec-once = nm-applet --indicator
@@ -129,7 +130,9 @@ with lib;
             disable_splash_rendering = true
             disable_hyprland_logo = true
             render_ahead_of_time = true
-            render_ahead_safezone = 60
+            render_ahead_safezone = 10
+            vfr = true
+            vrr = true
           }
 
           # KEYBINDS

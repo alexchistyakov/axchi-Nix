@@ -112,7 +112,7 @@ with lib;
         };
         "custom/exit" = {
           tooltip = false;
-          format = "";
+          format = "";
           on-click = "hyprlock";
         };
         "custom/startmenu" = {
@@ -275,7 +275,7 @@ with lib;
           margin-right: 5px;
         }
         #custom-exit {
-          margin-right: 15px;
+          margin-right: 9px;
           margin-left: 5px;
         }
         #custom-exit:hover {

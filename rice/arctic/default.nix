@@ -104,27 +104,27 @@ in
     settings = {
       general = {
         disable_loading_bar = true;
-        grace = 10;
+        grace = 0;
         hide_cursor = true;
         no_fade_in = false;
       };
     background = {
       blur_passes = 2;
       blur_size = 8;
-      path = "./wallpaper/wallpaper.jpg";
+      path = "${./wallpaper/wallpaper.jpg}";
     };
     input-field = {
         size = "200, 50";
         position = "0, -80";
-        monitor = "";
+        monitor = "HDMI-A-1";
         dots_center = true;
         fade_on_empty = false;
-        font_color = "rgb(222222)";
-        inner_color = "rgb(657DC2)";
-        outer_color = "rgb(0D0E15)";
+        font_color = "${config.stylix.base16Scheme.base00}";
         outline_thickness = 0;
-        placeholder_text = "Password...";
-        shadow_passes = 2;
+        placeholder_text = "Password";
+        shadow_passes = 3;
+        shadow_size = 3;
+        shadow_color = "${config.stylix.base16Scheme.base00}";
       };
     };
   };
@@ -132,8 +132,8 @@ in
   # Hyprpaper configuration
   hyprpaper = {
     settings = {
-      preload = "./wallpaper/wallpaper.jpg";
-      wallpaper = ", ./wallpaper/wallpaper.jpg";
+      preload = ["~/axchios/rice/arctic/wallpaper/wallpaper.jpg"];
+      wallpaper = ", ~/axchios/rice/arctic/wallpaper/wallpaper.jpg";
     };
   };
 
@@ -212,11 +212,12 @@ in
             key = " ";
             text = #bash
             ''
+              # Calculate age of system in days
               birth_install=$(stat -c %W /)
               current=$(date +%s)
               delta=$((current - birth_install))
               delta_days=$((delta / 86400))
-              echo "Uptime: $(uptime | awk '{print $3}') Age: $delta_days days"
+              echo "Uptime: $(uptime | awk -F'( |,|:)+' '{print $6,$7",",$8,"hours,",$9,"minutes."}') | Age: $delta_days days"
             '';
         }
         "break"
@@ -226,13 +227,46 @@ in
 
   # Global styling configuration
   stylix = {
+    image = ./wallpaper/wallpaper.jpg;
+    enable = true;
     polarity = "dark";
     opacity.terminal = 0.95;
-    targets = {
-      waybar.enable = false;
-      rofi.enable = false;
-      hyprland.enable = false;
+    base16Scheme = {
+      base00 = "191b27";
+      base01 = "374284";
+      base02 = "4467b8";
+      base03 = "7b9fd9";
+      base04 = "3cc8ec";
+      base05 = "cfe6f4";
+      base06 = "c0fbf9";
+      base07 = "bffbfc";
+      base08 = "c338fa";
+      base09 = "249ada";
+      base0A = "7b8fce";
+      base0B = "158ee6";
+      base0C = "5093e2";
+      base0D = "6d94bd";
+      base0E = "7b90c9";
+      base0F = "2ad186";
     };
+    #base16Scheme = {
+      #base00 = "0E060F";
+      #base01 = "712336";
+      #base02 = "312E50";
+      #base03 = "3A3B63";
+      #base04 = "533351";
+      #base05 = "44446C";
+      #base06 = "90272E";
+      #base07 = "d19e94";
+      #base08 = "926e67";
+      #base09 = "712336";
+      #base0A = "312e50";
+      #base0B = "3a3b63";
+      #base0C = "533351";
+      #base0D = "44446C";
+      #base0E = "f6c177";
+      #base0F = "d19e94";
+    #};
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
@@ -292,5 +326,10 @@ in
         inactive_tab_font_style = "bold";
       };
     };
+  };
+
+  # GRUB theme configuration
+  grub = {
+    theme = lib.mkForce ./grub/vimix;
   };
 } 
