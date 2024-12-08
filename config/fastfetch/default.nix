@@ -11,10 +11,6 @@ in
 {
   programs.fastfetch = {
     enable = true;
-    settings = {
-      display = rice.fastfetch.display;
-      logo = rice.fastfetch.logo;
-      modules = rice.fastfetch.modules;
-    };
+    settings = lib.mkForce rice.fastfetch.settings;
   };
 }

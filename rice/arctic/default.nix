@@ -42,7 +42,7 @@ in
         xray = true;
       };
       active_opacity = 0.95;
-      inactive_opacity = 0.88;
+      inactive_opacity = 0.86;
       fullscreen_opacity = 1.0;
       shadow = {
         enabled = true;
@@ -139,89 +139,89 @@ in
 
   # Fastfetch styling configuration
   fastfetch = {
-    display = {
-      color = {
-        keys = "35";
-        output = "90";
+    settings = {
+      display = {
+        color = {
+          keys = "35";
+          output = "90";
+        };
       };
-    };
-    logo = {
-      type = "kitty-direct";
-      source = ./nix.png;
-      height = 15;
-      width = 34;
-      padding = {
-        top = 1;
-        left = 2;
+      logo = {
+        type = "kitty-direct";
+        source = ./nix.png;
+        height = 15;
+        width = 34;
+        padding = {
+          top = 1;
+          left = 2;
+        };
       };
+      modules = [
+        "break"
+        {
+            type = "custom";
+            format = "┌──────────────────── Hardware ────────────────────┐";
+        }
+        {
+            type = "cpu";
+            key = "│  ";
+        }
+        {
+            type = "gpu";
+            key = "│ 󰍛 ";
+        }
+        {
+            type = "memory";
+            key = "│ 󰑭 ";
+        }
+        {
+            "type"= "disk";
+            "key"= "│ 󰋊 ";
+        }
+        {
+            type = "custom";
+            format = "└──────────────────────────────────────────────────┘";
+        }
+        "break"
+        {
+            type = "custom";
+            format = "┌──────────────────── Software ────────────────────┐";
+        }
+        {
+            type = "custom";
+            format = " OS -> NixOS (axchi-style)";
+        }
+        {
+            type = "kernel";
+            key = "│ ├ ";
+        }
+        {
+            type = "packages";
+            key = "│ ├󰏖 ";
+        }
+        {
+            type = "shell";
+            key = "│ └ ";
+        }
+        {
+            type = "custom";
+            format = "└──────────────────────────────────────────────────┘";
+        }
+        {
+            type = "command";
+            key = " ";
+            text = #bash
+            ''
+              birth_install=$(stat -c %W /)
+              current=$(date +%s)
+              delta=$((current - birth_install))
+              delta_days=$((delta / 86400))
+              echo "Uptime: $(uptime | awk '{print $3}') Age: $delta_days days"
+            '';
+        }
+        "break"
+      ];
     };
-    modules = [
-      "break"
-      {
-          type = "custom";
-          format = "┌──────────────────── Hardware ────────────────────┐";
-      }
-      {
-          type = "cpu";
-          key = "│  ";
-      }
-      {
-          type = "gpu";
-          key = "│ 󰍛 ";
-      }
-      {
-          type = "memory";
-          key = "│ 󰑭 ";
-      }
-      {
-          "type"= "disk";
-          "key"= "│ 󰋊 ";
-      }
-      {
-          type = "custom";
-          format = "└──────────────────────────────────────────────────┘";
-      }
-      "break"
-      {
-          type = "custom";
-          format = "┌──────────────────── Software ────────────────────┐";
-      }
-      {
-          type = "custom";
-          format = " OS -> NixOS (axchi-style)";
-      }
-      {
-          type = "kernel";
-          key = "│ ├ ";
-      }
-      {
-          type = "packages";
-          key = "│ ├󰏖 ";
-      }
-      {
-          type = "shell";
-          key = "│ └ ";
-      }
-      {
-          type = "custom";
-          format = "└──────────────────────────────────────────────────┘";
-      }
-      {
-          type = "command";
-          key = " ";
-          text = #bash
-          ''
-            birth_install=$(stat -c %W /)
-            current=$(date +%s)
-            delta=$((current - birth_install))
-            delta_days=$((delta / 86400))
-            echo "Uptime: $(uptime | awk '{print $3}') Age: $delta_days days"
-          '';
-      }
-      "break"
-    ];
-
-
   };
 
   # Global styling configuration

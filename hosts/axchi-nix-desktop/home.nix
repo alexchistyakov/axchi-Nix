@@ -1,13 +1,14 @@
 {
   pkgs,
   username,
-#inputs,
+  config,
   lib,
   host,
   ...
 }:
 let
   inherit (import ./variables.nix) gitUsername gitEmail;
+  rice = import ../../rice { inherit lib config username pkgs; };
 in
 {
   # Home Manager Settings
@@ -22,14 +23,9 @@ in
     ../../config/fastfetch
     ../../config/hyprland.nix
     ../../config/neovim.nix
-    ../../config/rofi/rofi.nix
-    ../../config/rofi/config-emoji.nix
-    ../../config/rofi/config-long.nix
     ../../config/swaync.nix
     ../../config/waybar.nix
     ../../config/wlogout.nix
-    ../../config/fastfetch
-    ../../rice/arctic
   ];
 
   # Place Files Inside Home Directory
@@ -79,7 +75,8 @@ in
   };
 
   # Enable Qt (styling is handled in rice/arctic)
-  qt.enable = true;
+  gtk = rice.gtk;
+  qt = rice.qt;
 
   # Scripts
   home.packages = [
@@ -134,12 +131,7 @@ in
     kitty = {
       enable = true;
       package = pkgs.kitty;
-      settings = {
-        scrollback_lines = 50000;
-        wheel_scroll_min_lines = 1;
-        window_padding_width = 4;
-        confirm_os_window_close = 0;
-      };
+      settings = lib.mkForce rice.terminal.kitty.settings;
       extraConfig = ''
         tab_bar_style fade
         tab_fade 1
@@ -148,8 +140,8 @@ in
       '';
     };
     starship = {
-      enable = true;
-      package = pkgs.starship;
+           enable = true;
+           package = pkgs.starship;
     };
     bash = {
       enable = true;
@@ -182,4 +174,4 @@ in
     };
     home-manager.enable = true;
   };
-}
+} 
