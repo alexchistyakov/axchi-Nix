@@ -101,19 +101,41 @@ in
 
   # Hyprlock styling configuration
   hyprlock = {
+    settings = {
+      general = {
+        disable_loading_bar = true;
+        grace = 10;
+        hide_cursor = true;
+        no_fade_in = false;
+      };
     background = {
       blur_passes = 2;
       blur_size = 8;
+      path = "./wallpaper/wallpaper.jpg";
     };
     input-field = {
-      size = "200, 50";
-      dots_center = true;
-      fade_on_empty = false;
-      font_color = "rgb(CFE6F4)";
-      inner_color = "rgb(657DC2)";
-      outer_color = "rgb(0D0E15)";
-      outline_thickness = 5;
-      shadow_passes = 2;
+        size = "200, 50";
+        position = "0, -80";
+        monitor = "";
+        dots_center = true;
+        fade_on_empty = false;
+        font_color = "rgb(222222)";
+        inner_color = "rgb(657DC2)";
+        outer_color = "rgb(0D0E15)";
+        outline_thickness = 0;
+        placeholder_text = "Password...";
+        shadow_passes = 2;
+      };
+    };
+  };
+  };
+
+  # Hyprpaper configuration
+  hyprpaper = {
+    enable = true;
+    settings = {
+      preload = [ ./wallpaper/wallpaper.jpg ];
+      wallpapers = [ ", ./wallpaper/wallpaper.jpg" ];
     };
   };
 
@@ -129,108 +151,85 @@ in
       type = "kitty-direct";
       source = ./nix.png;
       height = 15;
-      width = 37;
+      width = 34;
       padding = {
-        top = 3;
-        left = 1;
+        top = 1;
+        left = 2;
       };
     };
     modules = [
       "break"
       {
-        type = "custom";
-        format = "┌──────────────────────Hardware──────────────────────┐";
+          type = "custom";
+          format = "┌──────────────────── Hardware ────────────────────┐";
       }
       {
-        type = "cpu";
-        key = "│  ";
+          type = "cpu";
+          key = "│  ";
       }
       {
-        type = "gpu";
-        key = "│ 󰍛 ";
+          type = "gpu";
+          key = "│ 󰍛 ";
       }
       {
-        type = "memory";
-        key = "│ 󰑭 ";
+          type = "memory";
+          key = "│ 󰑭 ";
       }
       {
-        type = "disk";
-        key = "│ 󰋊 ";
+          "type"= "disk";
+          "key"= "│ 󰋊 ";
       }
       {
-        type = "custom";
-        format = "└────────────────────────────────────────────────────┘";
-      }
-      "break"
-      {
-        type = "custom";
-        format = "┌──────────────────────Software──────────────────────┐";
-      }
-      {
-        type = "custom";
-        format = " OS -> NixOS (axchi-style)";
-      }
-      {
-        type = "kernel";
-        key = "│ ├ ";
-      }
-      {
-        type = "packages";
-        key = "│ ├󰏖 ";
-      }
-      {
-        type = "shell";
-        key = "└ └ ";
+          type = "custom";
+          format = "└──────────────────────────────────────────────────┘";
       }
       "break"
       {
-        type = "wm";
-        key = " WM";
+          type = "custom";
+          format = "┌──────────────────── Software ────────────────────┐";
       }
       {
-        type = "wmtheme";
-        key = "│ ├󰉼 ";
+          type = "custom";
+          format = " OS -> NixOS (axchi-style)";
       }
       {
-        type = "terminal";
-        key = "└ └ ";
+          type = "kernel";
+          key = "│ ├ ";
       }
       {
-        type = "custom";
-        format = "└────────────────────────────────────────────────────┘";
-      }
-      "break"
-      {
-        type = "custom";
-        format = "┌────────────────────Uptime / Age────────────────────┐";
+          type = "packages";
+          key = "│ ├󰏖 ";
       }
       {
-        type = "command";
-        key = "│  ";
-        text = ''
-          birth_install=$(stat -c %W /)
-          current=$(date +%s)
-          delta=$((current - birth_install))
-          delta_days=$((delta / 86400))
-          echo $delta_days days
-        '';
+          type = "shell";
+          key = "│ └ ";
       }
       {
-        type = "uptime";
-        key = "│  ";
+          type = "custom";
+          format = "└──────────────────────────────────────────────────┘";
       }
       {
-        type = "custom";
-        format = "└───────────────────────────────────────────────────────┘";
+          type = "command";
+          key = " ";
+          text = #bash
+          ''
+            birth_install=$(stat -c %W /)
+            current=$(date +%s)
+            delta=$((current - birth_install))
+            delta_days=$((delta / 86400))
+            echo "Uptime: $(uptime | awk '{print $3}') Age: $delta_days days"
+          '';
       }
       "break"
     ];
+
+
   };
 
   # Global styling configuration
   stylix = {
     polarity = "dark";
-    opacity.terminal = 0.8;
+    opacity.terminal = 0.95;
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
@@ -251,7 +250,7 @@ in
       };
       sizes = {
         applications = 12;
-        terminal = 15;
+        terminal = 13;
         desktop = 11;
         popups = 12;
       };

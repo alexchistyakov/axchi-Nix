@@ -221,8 +221,8 @@ with lib;
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = lib.mkForce "/home/axchi/Pictures/wallpapers/thisdaone3.jpg";
-      wallpaper = lib.mkForce ", /home/axchi/Pictures/wallpapers/thisdaone3.jpg";
+      preload = rice.hyprpaper.settings.preload;
+      wallpaper = rice.hyprpaper.settings.wallpaper;
     };
   };
 
@@ -230,43 +230,32 @@ with lib;
     enable = true;
     settings = {
       general = {
-        disable_loading_bar = true;
-        grace = 10;
-        hide_cursor = true;
-        no_fade_in = false;
+        disable_loading_bar = rice.hyprlock.settings.general.disable_loading_bar;
+        grace = rice.hyprlock.settings.general.grace;
+        hide_cursor = rice.hyprlock.settings.general.hide_cursor;
+        no_fade_in = rice.hyprlock.settings.general.no_fade_in;
       };
       background = lib.mkForce [
         {
-          path = "/home/${username}/Pictures/wallpapers/thisdaone3.jpg";
-          blur_passes = rice.hyprlock.background.blur_passes;
-          blur_size = rice.hyprlock.background.blur_size;
+          path = rice.hyprlock.settings.background.path;
+          blur_passes = rice.hyprlock.settings.background.blur_passes;
+          blur_size = rice.hyprlock.settings.background.blur_size;
         }
       ];
-      image = [
-        {
-          path = "/home/${username}/.config/face.jpg";
-          size = 150;
-          border_size = 4;
-          border_color = "rgb(0C96F9)";
-          rounding = -1;
-          position = "0, 200";
-          halign = "center";
-          valign = "center";
-        }
-      ];
+
       input-field = lib.mkForce [
         {
-          size = rice.hyprlock.input-field.size;
-          position = "0, -80";
-          monitor = "";
-          dots_center = rice.hyprlock.input-field.dots_center;
-          fade_on_empty = rice.hyprlock.input-field.fade_on_empty;
-          font_color = rice.hyprlock.input-field.font_color;
-          inner_color = rice.hyprlock.input-field.inner_color;
-          outer_color = rice.hyprlock.input-field.outer_color;
-          outline_thickness = rice.hyprlock.input-field.outline_thickness;
-          placeholder_text = "Password...";
-          shadow_passes = rice.hyprlock.input-field.shadow_passes;
+          size = rice.hyprlock.settings.input-field.size;
+          position = rice.hyprlock.settings.input-field.position;
+          monitor = rice.hyprlock.settings.input-field.monitor;
+          dots_center = rice.hyprlock.settings.input-field.dots_center;
+          fade_on_empty = rice.hyprlock.settings.input-field.fade_on_empty;
+          font_color = rice.hyprlock.settings.input-field.font_color;
+          inner_color = rice.hyprlock.settings.input-field.inner_color;
+          outer_color = rice.hyprlock.settings.input-field.outer_color;
+          outline_thickness = rice.hyprlock.settings.input-field.outline_thickness;
+          placeholder_text = rice.hyprlock.settings.input-field.placeholder_text;
+          shadow_passes = rice.hyprlock.settings.input-field.shadow_passes;
         }
       ];
     };

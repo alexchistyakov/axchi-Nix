@@ -55,7 +55,7 @@ with lib;
           max-length = 22;
           separate-outputs = false;
           rewrite = {
-            "" = "empty screen, do something";
+            "" = "empty screen";
           };
         };
         "memory" = {
@@ -241,6 +241,7 @@ with lib;
           font-weight: bold;
           margin: 4px 0px;
           margin-right: 15px;
+          margin-left: 6px;
           color: #FFFFFF;
         }
         #idle_inhibitor.active {
@@ -275,7 +276,7 @@ with lib;
         }
         #custom-exit {
           margin-right: 15px;
-          margin-left: 10px;
+          margin-left: 5px;
         }
         #custom-exit:hover {
           color: rgba(153,213,255,1);
