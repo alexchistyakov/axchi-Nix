@@ -29,6 +29,7 @@ in
     ../../config/waybar.nix
     ../../config/wlogout.nix
     ../../config/fastfetch
+    ../../rice/arctic
   ];
 
   # Place Files Inside Home Directory
@@ -77,28 +78,8 @@ in
     };
   };
 
-  # Styling Options
-  stylix.targets.waybar.enable = false;
-  stylix.targets.rofi.enable = false;
-  stylix.targets.hyprland.enable = false;
-  gtk = {
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-  };
-  qt = {
-    enable = true;
-    style.name = "adwaita";
-    platformTheme.name = "gtk4";
-  };
-
+  # Enable Qt (styling is handled in rice/arctic)
+  qt.enable = true;
 
   # Scripts
   home.packages = [
@@ -167,8 +148,8 @@ in
       '';
     };
     starship = {
-           enable = true;
-           package = pkgs.starship;
+      enable = true;
+      package = pkgs.starship;
     };
     bash = {
       enable = true;
@@ -200,50 +181,5 @@ in
       };
     };
     home-manager.enable = true;
-    hyprlock = {
-      enable = true;
-      settings = {
-        general = {
-          disable_loading_bar = true;
-          grace = 10;
-          hide_cursor = true;
-          no_fade_in = false;
-        };
-        background = lib.mkForce [
-          {
-            path = "/home/${username}/Pictures/wallpapers/thisdaone3.jpg";
-            blur_passes = 3;
-            blur_size = 8;
-          }
-        ];
-        image = [
-          {
-            path = "/home/${username}/.config/face.jpg";
-            size = 150;
-            border_size = 4;
-            border_color = "rgb(0C96F9)";
-            rounding = -1; # Negative means circle
-            position = "0, 200";
-            halign = "center";
-            valign = "center";
-          }
-        ];
-        input-field = lib.mkForce [
-          {
-            size = "200, 50";
-            position = "0, -80";
-            monitor = "";
-            dots_center = true;
-            fade_on_empty = false;
-            font_color = "rgb(CFE6F4)";
-            inner_color = "rgb(657DC2)";
-            outer_color = "rgb(0D0E15)";
-            outline_thickness = 5;
-            placeholder_text = "Password...";
-            shadow_passes = 2;
-          }
-        ];
-      };
-    };
   };
 }

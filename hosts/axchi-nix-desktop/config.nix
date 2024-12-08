@@ -267,7 +267,6 @@ in
     spotify
     neovide
     greetd.tuigreet
-    alacritty
     albert
     code-cursor
     google-chrome

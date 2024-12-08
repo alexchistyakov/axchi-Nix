@@ -42,7 +42,6 @@ with lib;
           env = MOZ_ENABLE_WAYLAND, 1
           exec-once = dbus-update-activation-environment --systemd --all
           exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-          exec-once = killall swww
           exec-once = killall -q waybar;sleep .5 && waybar
           exec-once = killall -q swaync;sleep .5 && swaync
           exec-once = nm-applet --indicator
@@ -220,44 +219,11 @@ with lib;
   };
   services.hyprpaper = {
     enable = true;
-    settings = {
-      preload = rice.hyprpaper.settings.preload;
-      wallpaper = rice.hyprpaper.settings.wallpaper;
-    };
+    settings = lib.mkForce rice.hyprpaper.settings;
   };
 
   programs.hyprlock = {
     enable = true;
-    settings = {
-      general = {
-        disable_loading_bar = rice.hyprlock.settings.general.disable_loading_bar;
-        grace = rice.hyprlock.settings.general.grace;
-        hide_cursor = rice.hyprlock.settings.general.hide_cursor;
-        no_fade_in = rice.hyprlock.settings.general.no_fade_in;
-      };
-      background = lib.mkForce [
-        {
-          path = rice.hyprlock.settings.background.path;
-          blur_passes = rice.hyprlock.settings.background.blur_passes;
-          blur_size = rice.hyprlock.settings.background.blur_size;
-        }
-      ];
-
-      input-field = lib.mkForce [
-        {
-          size = rice.hyprlock.settings.input-field.size;
-          position = rice.hyprlock.settings.input-field.position;
-          monitor = rice.hyprlock.settings.input-field.monitor;
-          dots_center = rice.hyprlock.settings.input-field.dots_center;
-          fade_on_empty = rice.hyprlock.settings.input-field.fade_on_empty;
-          font_color = rice.hyprlock.settings.input-field.font_color;
-          inner_color = rice.hyprlock.settings.input-field.inner_color;
-          outer_color = rice.hyprlock.settings.input-field.outer_color;
-          outline_thickness = rice.hyprlock.settings.input-field.outline_thickness;
-          placeholder_text = rice.hyprlock.settings.input-field.placeholder_text;
-          shadow_passes = rice.hyprlock.settings.input-field.shadow_passes;
-        }
-      ];
-    };
+    settings = lib.mkForce rice.hyprlock.settings;
   };
 }

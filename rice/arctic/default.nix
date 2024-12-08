@@ -128,14 +128,12 @@ in
       };
     };
   };
-  };
 
   # Hyprpaper configuration
   hyprpaper = {
-    enable = true;
     settings = {
-      preload = [ ./wallpaper/wallpaper.jpg ];
-      wallpapers = [ ", ./wallpaper/wallpaper.jpg" ];
+      preload = "./wallpaper/wallpaper.jpg";
+      wallpaper = ", ./wallpaper/wallpaper.jpg";
     };
   };
 
@@ -230,6 +228,11 @@ in
   stylix = {
     polarity = "dark";
     opacity.terminal = 0.95;
+    targets = {
+      waybar.enable = false;
+      rofi.enable = false;
+      hyprland.enable = false;
+    };
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
@@ -253,6 +256,40 @@ in
         terminal = 13;
         desktop = 11;
         popups = 12;
+      };
+    };
+  };
+
+  # GTK Theme Configuration
+  gtk = {
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+  };
+
+  # Qt Theme Configuration
+  qt = {
+    enable = true;
+    style.name = "adwaita";
+    platformTheme.name = "gtk4";
+  };
+
+  # Terminal styling
+  terminal = {
+    kitty = {
+      settings = {
+        window_padding_width = 4;
+        tab_bar_style = "fade";
+        tab_fade = 1;
+        active_tab_font_style = "bold";
+        inactive_tab_font_style = "bold";
       };
     };
   };
