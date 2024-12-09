@@ -175,7 +175,7 @@ in
         "fadeDim, 1, 10, easeOutQuint"
         "fadeSwitch, 1, 10, easeOutQuint"
         "fadeShadow, 1, 10, easeOutQuint"
-        "workspaces, 1, 7, easeOutExpo, slide"
+        "workspaces, 1, 5, easeOutExpo, slide"
         "specialWorkspace, 1, 3, md3_decel, slidevert"
       ];
     };
