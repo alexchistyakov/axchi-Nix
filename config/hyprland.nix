@@ -127,7 +127,8 @@ with lib;
           windowrule = noborder,^(wofi)$
           windowrule = center,^(wofi)$
           windowrule = center,^(steam)$
-          windowrule = center,^(x0vnxserver)
+          windowrulev2 = center,title:(VNC Viewer: Connection Details)
+          windowrulev2 = center,title:(VNC authentication)
           windowrule = float, nm-connection-editor|blueman-manager
           windowrule = float, swayimg|vlc|Viewnior|pavucontrol
           windowrule = float, nwg-look|qt5ct|mpv

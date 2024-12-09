@@ -20,6 +20,8 @@ let
     pkgs.nerd-fonts.jetbrains-mono
     terminus_font  # For GRUB terminal font
     unifont       # For GRUB menu items
+    powerline-fonts
+    powerline-symbols
   ];
 in
 {
@@ -37,23 +39,17 @@ in
         line_break = {
           disabled = true;
         };
-        format = "$vimcmd_symbol $directory$git_branch$character";
+        #format = "$username $directory$git_branch|$character";
+        format = "$username$hostname| $directory$git_branch|$character";
       
-        vimcmd_symbol = {
-          format = "[$symbol](bold $style)";
-          normal_mode_symbol = "█";
-          insert_mode_symbol = "█";
-          visual_mode_symbol = "█";
-        };
-
         username = {
-          format = "[$user]($style)";
+          format = "[ $user ](bg:white fg:yellow bold)";
           style_user = "white";
           show_always = true;
         };
 
         hostname = {
-          format = "[$hostname]($style)";
+          format = "[ $hostname ](bg:cyan fg:white bold)";
           style = "white";
           ssh_only = false;
         };
