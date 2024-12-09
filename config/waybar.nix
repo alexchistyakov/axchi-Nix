@@ -52,10 +52,10 @@ with lib;
           tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
         };
         "hyprland/window" = {
-          max-length = 22;
+          max-length = 100;
           separate-outputs = false;
           rewrite = {
-            "" = "empty screen";
+            "" = "empty screen, do something";
           };
         };
         "memory" = {
@@ -288,7 +288,7 @@ with lib;
         #custom-startmenu:hover {
           color: rgba(153,213,255,1);
         }
-        #window, #pulseaudio,
+        #pulseaudio,
         #custom-hyprbindings, #network, #battery,
         #custom-notification, #tray {
           background: rgba(0,0,0,0);
@@ -296,6 +296,12 @@ with lib;
           margin-right: 5px;
           font-size: 14px;
         }
+
+        #window {
+          font-size: 16px;
+          color: #FFFFFF;
+          font-weight: bold;
+        } 
 
         #pulseaudio {
           font-size: 14px;

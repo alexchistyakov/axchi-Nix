@@ -39,11 +39,12 @@ in
         line_break = {
           disabled = true;
         };
-        #format = "$username $directory$git_branch|$character";
-        format = "$username$hostname| $directory$git_branch|$character";
+        format = "$username $directory$git_branch$character";
+        #format = "$username| $directory$git_branch|$character";
+        #format = "$username$hostname| $directory$git_branch|$character";
       
         username = {
-          format = "[ $user ](bg:white fg:yellow bold)";
+          format = "[ $user ](bg:white fg:black bold)";
           style_user = "white";
           show_always = true;
         };
@@ -133,7 +134,7 @@ in
         xray = false;
       };
       active_opacity = 0.95;
-      inactive_opacity = 0.86;
+      inactive_opacity = 0.84;
       fullscreen_opacity = 1.0;
       shadow = {
         enabled = true;
