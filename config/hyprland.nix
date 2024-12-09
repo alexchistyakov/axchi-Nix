@@ -61,10 +61,7 @@ with lib;
         "albert &"
       ];
 
-      # Monitor configuration
-      monitor = extraMonitorSettings;
 
-      animations = rice.hyprland.animations;
 
       general = {
         gaps_in = rice.hyprland.general.gaps_in;
@@ -96,7 +93,6 @@ with lib;
 
       xwayland.force_zero_scaling = true;
 
-      decoration = rice.hyprland.decoration;
 
       render.explicit_sync = 1;
 
@@ -133,9 +129,9 @@ with lib;
         key_press_enables_dpms = true;
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
-        render_ahead_of_time = true;
+        render_ahead_of_time = false;
         render_ahead_safezone = 70;
-        vfr = false;
+        vfr = true;
         vrr = false;
       };
 
@@ -222,7 +218,15 @@ with lib;
       bindm = [
         "${modifier},mouse:272,movewindow"
         "${modifier},mouse:273,resizewindow"
-      ];
+      ];      # Monitor configuration
+
+      # User-defined settings coming from elsewhere
+
+      monitor = extraMonitorSettings;
+
+      animations = rice.hyprland.animations;
+      decoration = rice.hyprland.decoration;
+
     };
   };
 

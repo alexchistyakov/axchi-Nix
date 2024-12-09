@@ -55,6 +55,12 @@ in
           ssh_only = false;
         };
 
+        character = {
+          success_symbol = "[❯❯](bold white)";
+          error_symbol = "[❯](bold red)";
+          vimcmd_symbol = "[❯](bold green)";
+        };
+
         buf = {
           symbol = " ";
         };
@@ -218,7 +224,7 @@ in
         dots_fade_time = 100;
         outer_color = "rgb(151515)";
         inner_color = "rgb(FFFFFF)";
-        font_color = "rgba(15,15,15,0.8)";
+        font_color = "${config.stylix.base16Scheme.base00}";
         fade_on_empty = true;
         fade_timeout = 1000; # Milliseconds before fade_on_empty is triggered.
         placeholder_text = "Password"; # Text rendered in the input box when it's empty.
@@ -226,7 +232,7 @@ in
         rounding = 10; # -1 means complete rounding (circle/oval)
         check_color = "rgba(150, 150, 150, 0.5)";
         fail_color = "rgb(250, 250, 250)"; # if authentication failed, changes outer_color and fail message color
-        fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>"; # can be set to empty
+        fail_text = "Incorrect"; # can be set to empty
         fail_transition = 300; # transition time in ms between normal outer_color and fail_color
         capslock_color = -1;
         numlock_color = -1;
