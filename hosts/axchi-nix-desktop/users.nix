@@ -19,6 +19,8 @@ in
         "libvirtd"
         "scanner"
         "lp"
+        "video"
+        "gdm"
       ];
       shell = pkgs.bash;
       ignoreShellProgramCheck = true;

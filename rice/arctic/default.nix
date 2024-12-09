@@ -40,8 +40,8 @@ in
         size = 8;
         passes = 2;
         new_optimizations = true;
-        ignore_opacity = true;
-        xray = true;
+        ignore_opacity = false;
+        xray = false;
       };
       active_opacity = 0.95;
       inactive_opacity = 0.86;
@@ -100,7 +100,10 @@ in
       col.inactive_border = "rgb(${config.stylix.base16Scheme.base01})";
     };
   };
-
+  # GDM Styling 
+  gdm = {
+    background = ./wallpaper/wallpaper.jpg;
+  };  
   # Hyprlock styling configuration
   hyprlock = {
     settings = {

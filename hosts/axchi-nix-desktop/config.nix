@@ -30,15 +30,31 @@ in
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;
     # This is for OBS Virtual Cam Support
+    consoleLogLevel = 3;
     kernelModules = [ 
-      "v4l2loopback" 
+      "v4l2loopback"
+      "nvidia"
+      "nvidia_modeset"
+      "nvidia_uvm"
+      "nvidia_drm"
     ];
-    kernelParams = ["quiet"];
+    initrd = {
+      #verbose = false;  # Reduce boot messages
+      systemd.enable = true;  # Use systemd in initrd
+    };
+    kernelParams = [
+      "quiet"
+    ];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+    plymouth = {
+      enable = true;
+    };
     # Needed For Some Steam Games
     kernel.sysctl = {
       "vm.max_map_count" = 2147483642;
     };
+
+
     # Bootloader.
     loader.grub = { 
       enable = true;
@@ -46,7 +62,7 @@ in
       useOSProber = true;
       efiSupport = true;
       theme = rice.grub.theme;
-      gfxmodeEfi = "1920x1080";
+      gfxmodeEfi = "1920x1080, auto";
       font = rice.grub.font;
       fontSize = rice.grub.fontSize;
     };
@@ -67,7 +83,6 @@ in
       mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
-    plymouth.enable = true;
   };
 
   # Styling Options
@@ -275,6 +290,7 @@ in
     tigervnc
     hyprpaper
     conda
+    plymouth
   ];
 
   environment.variables = {
@@ -306,23 +322,37 @@ in
         variant = "";
       };
     };
-      displayManager.sddm = {
-        enable = false; 
-        wayland.enable = true;
-        settings = {
-          General = {
-            DisplayServer = "wayland";
-          };
-        };
+    displayManager = {
+      autoLogin = {
+        enable = true;
+        user = "${username}";
       };
-    greetd = {
+      sessionPackages = [
+        pkgs.hyprland
+      ];
+      defaultSession = "hyprland";
+    };
+    #greetd = {
+    #  enable = true;
+    #  vt = 3;
+    #  settings = #{
+    #    default_session = {
+    #      command = "Hyprland";
+    #      user = "${username}";
+    #    };
+    #    initial_session = {
+    #      command = "Hyprland";
+    #      user = "${username}";
+    #    };
+    #  };
+    #};
+    tlp = {
       enable = true;
-      vt = 3;
       settings = {
-        default_session = {
-          command = "Hyprland";
-          user = "${username}";
-        };
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MAX_PERF_ON_AC = 100;
       };
     };
     smartd = {
@@ -388,7 +418,7 @@ in
 
   # AMD CPU stuff
   hardware.cpu.amd.updateMicrocode = true;
-  powerManagement.cpuFreqGovernor = "schedutil";
+  powerManagement.cpuFreqGovernor = "performance";
 
   # Security / Polkit
   security.rtkit.enable = true;
