@@ -134,7 +134,7 @@ in
       blur = {
         enabled = true;
         size = 8;
-        passes = 2;
+        passes = 5;
         new_optimizations = true;
         ignore_opacity = false;
         xray = false;
@@ -210,7 +210,7 @@ in
         no_fade_in = false;
       };
       background = {
-        blur_passes = 2;
+        blur_passes = 3;
         blur_size = 8;
         path = "${./wallpaper/wallpaper.jpg}";
       };

@@ -105,12 +105,17 @@ with lib;
         "float,swayimg|vlc|Viewnior|pavucontrol"
         "float,nwg-look|qt5ct|mpv"
         "float,zoom"
+        "dimaround,title:(Albert)"
+        "dimaround,title:(VNC Viewer: Connection Details)"
+        "dimaround,title:(VNC authentication)"
       ];
 
       windowrulev2 = [
         "center,title:(VNC Viewer: Connection Details)"
         "center,title:(VNC authentication)"
         "stayfocused,title:^()$,class:^(steam)$"
+        "stayfocused,title:(VNC Viewer: Connection Details)"
+        "stayfocused,title:(VNC authentication)"
         "minsize 1 1,title:^()$,class:^(steam)$"
         "opacity 0.9 0.7,class:^(google-chrome-stable)$"
         "opacity 0.75 0.7,class:^(thunar)$"
@@ -129,7 +134,7 @@ with lib;
         key_press_enables_dpms = true;
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
-        render_ahead_of_time = false;
+        render_ahead_of_time = true;
         render_ahead_safezone = 70;
         vfr = true;
         vrr = false;
