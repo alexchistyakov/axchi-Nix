@@ -132,7 +132,7 @@ in
         hide_input = false;
         rounding = 10; # -1 means complete rounding (circle/oval)
         check_color = "rgba(150, 150, 150, 0.5)";
-        fail_color = "rgb(200, 200, 200)"; # if authentication failed, changes outer_color and fail message color
+        fail_color = "rgb(250, 250, 250)"; # if authentication failed, changes outer_color and fail message color
         fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>"; # can be set to empty
         fail_transition = 300; # transition time in ms between normal outer_color and fail_color
         capslock_color = -1;
@@ -143,6 +143,7 @@ in
         position = "0, -20";
         halign = "center";
         valign = "center";
+        monitor = "HDMI-A-1";
       };
     };
   };

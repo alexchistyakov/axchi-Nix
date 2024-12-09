@@ -274,6 +274,7 @@ in
     fish
     tigervnc
     hyprpaper
+    conda
   ];
 
   environment.variables = {

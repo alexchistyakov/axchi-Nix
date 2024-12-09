@@ -173,5 +173,13 @@ in
       };
     };
     home-manager.enable = true;
+    fish = {
+      # Need to run from bash to get fish to work
+      enable = false;
+      interactiveShellInit = ''
+        # Vi mode
+        fish_vi_key_bindings
+      '';
+    };
   };
 } 
