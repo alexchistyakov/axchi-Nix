@@ -16,6 +16,19 @@ in
   home.homeDirectory = "/home/${username}";
   home.stateVersion = "23.11";
 
+  home.shellAliases = {
+    sv = "sudo nvim";
+    fr = "nh os switch --hostname ${host} /home/${username}/axchios";
+    fu = "nh os switch --hostname ${host} --update /home/${username}/axchios";
+    ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
+    v = "nvim";
+    cat = "bat";
+    ls = "eza --icons";
+    ll = "eza -lh --icons --grid --group-directories-first";
+    la = "eza -lah --icons --grid --group-directories-first";
+    ".." = "cd ..";
+  };
+
   # Import Program Configurations
   imports = [
     #inputs.hyprland.nixosModules.default
@@ -140,8 +153,8 @@ in
       '';
     };
     starship = {
-           enable = true;
-           package = pkgs.starship;
+      enable = true;
+      package = pkgs.starship;
     };
     bash = {
       enable = true;
@@ -158,11 +171,21 @@ in
         fi
         fish
       '';
+
+    };
+    home-manager.enable = true;
+    fish = {
+      # Need to run from bash to get the prompt to show (no, it isn't a starship issue)
+      enable = true;
+      interactiveShellInit = ''
+        # Vi mode
+        fish_vi_key_bindings
+        source (/etc/profiles/per-user/axchi/bin/starship init fish --print-full-init | psub) 
+      '';      
       shellAliases = {
         sv = "sudo nvim";
-        fr = "nh os switch --hostname ${host} /home/${username}/zaneyos";
-        fu = "nh os switch --hostname ${host} --update /home/${username}/zaneyos";
-        zu = "sh <(curl -L https://gitlab.com/Zaney/zaneyos/-/raw/main/install-zaneyos.sh)";
+        fr = "nh os switch --hostname ${host} /home/${username}/axchios";
+        fu = "nh os switch --hostname ${host} --update /home/${username}/axchios";
         ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
         v = "nvim";
         cat = "bat";
@@ -171,15 +194,6 @@ in
         la = "eza -lah --icons --grid --group-directories-first";
         ".." = "cd ..";
       };
-    };
-    home-manager.enable = true;
-    fish = {
-      # Need to run from bash to get fish to work
-      enable = false;
-      interactiveShellInit = ''
-        # Vi mode
-        fish_vi_key_bindings
-      '';
     };
   };
 } 

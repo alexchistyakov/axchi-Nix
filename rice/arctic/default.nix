@@ -31,6 +31,99 @@ in
     packages = ricePackages;
   };
 
+  starship = {
+    settings = {
+        add_newline = false;
+        line_break = {
+          disabled = true;
+        };
+        format = "$vimcmd_symbol $directory$git_branch$character";
+      
+        vimcmd_symbol = {
+          format = "[$symbol](bold $style)";
+          normal_mode_symbol = "█";
+          insert_mode_symbol = "█";
+          visual_mode_symbol = "█";
+        };
+
+        username = {
+          format = "[$user]($style)";
+          style_user = "white";
+          show_always = true;
+        };
+
+        hostname = {
+          format = "[$hostname]($style)";
+          style = "white";
+          ssh_only = false;
+        };
+
+        buf = {
+          symbol = " ";
+        };
+        c = {
+          symbol = " ";
+        };
+        directory = {
+          read_only = " 󰌾";
+        };
+        docker_context = {
+          symbol = " ";
+        };
+        fossil_branch = {
+          symbol = " ";
+        };
+        git_branch = {
+          symbol = " ";
+        };
+        golang = {
+          symbol = " ";
+        };
+        hg_branch = {
+          symbol = " ";
+        };
+        hostname = {
+          ssh_symbol = " ";
+        };
+        lua = {
+          symbol = " ";
+        };
+        memory_usage = {
+          symbol = "󰍛 ";
+        };
+        meson = {
+          symbol = "󰔷 ";
+        };
+        nim = {
+          symbol = "󰆥 ";
+        };
+        nix_shell = {
+          symbol = " ";
+        };
+        nodejs = {
+          symbol = " ";
+        };
+        ocaml = {
+          symbol = " ";
+        };
+        package = {
+          symbol = "󰏗 ";
+        };
+        python = {
+          symbol = " ";
+        };
+        rust = {
+          symbol = " ";
+        };
+        swift = {
+          symbol = " ";
+        };
+        zig = {
+          symbol = " ";
+        };
+      };
+    };
+
   # Hyprland styling configuration
   hyprland = {
     decoration = {
