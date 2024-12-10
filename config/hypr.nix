@@ -85,7 +85,6 @@ with lib;
 
       xwayland.force_zero_scaling = true;
 
-
       render.explicit_sync = 1;
 
       # Window rules
@@ -124,7 +123,7 @@ with lib;
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
         render_ahead_of_time = true;
-        render_ahead_safezone = 70;
+        render_ahead_safezone = 50;
         vfr = true;
         vrr = false;
       };

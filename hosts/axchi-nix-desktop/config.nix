@@ -33,19 +33,14 @@ in
     consoleLogLevel = 3;
     kernelModules = [ 
       "v4l2loopback"
-      "nvidia"
-      "nvidia_modeset"
-      "nvidia_uvm"
-      "nvidia_drm"
     ];
     initrd = {
-      #verbose = false;  # Reduce boot messages
+      verbose = false;  # Reduce boot messages
       systemd.enable = true;  # Use systemd in initrd
     };
     kernelParams = [
       "quiet"
-      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-      "nvidia.NVreg_UsePageAttributeTable=1"
+      "loglevel=3"
     ];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     plymouth = {
@@ -93,7 +88,10 @@ in
 
   # Extra Module Options
   drivers.amdgpu.enable = false;
-  drivers.nvidia.enable = true;
+  drivers.nvidia = {
+    enable = true;
+    maxPerformance = true;
+  };
   drivers.nvidia-prime = {
     enable = false;
     intelBusID = "";

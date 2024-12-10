@@ -11,6 +11,11 @@ in
 {
   options.drivers.nvidia = {
     enable = mkEnableOption "Enable Nvidia Drivers";
+    maxPerformance = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Enable maximum performance mode for NVIDIA GPU";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -37,5 +42,9 @@ in
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
       package = config.boot.kernelPackages.nvidiaPackages.production;
     };
+
+    boot.kernelParams = mkIf cfg.maxPerformance [
+      "NVreg_RegistryDwords=PowerMizerEnable=0x1;PerfLevelSrc=0x2222;PowerMizerDefault=0x1;PowerMizerDefaultAC=0x1"
+    ];
   };
 }
