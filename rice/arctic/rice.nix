@@ -153,6 +153,12 @@ in
       };
     };
 
+    windowrulev2 = [
+      "opacity 0.9 0.7,class:^(google-chrome-stable)$"
+      "opacity 0.75 0.7,class:^(thunar)$"
+      "opacity 1.0 0.9,class:(Neovide)"
+    ];
+
     animations = {
       enabled = true;
       bezier = [
@@ -184,7 +190,7 @@ in
         "fadeDim, 1, 10, easeOutQuint"
         "fadeSwitch, 1, 10, easeOutQuint"
         "fadeShadow, 1, 10, easeOutQuint"
-        "workspaces, 1, 5, easeOutExpo, slide"
+        "workspaces, 1, 6.2831, easeOutExpo, slide"
         "specialWorkspace, 1, 3, md3_decel, slidevert"
       ];
     };
@@ -195,8 +201,8 @@ in
       border_size = 0;
       layout = "dwindle";
       resize_on_border = true;
-      col.active_border = "rgb(${config.stylix.base16Scheme.base08}) rgb(${config.stylix.base16Scheme.base0C}) 45deg";
-      col.inactive_border = "rgb(${config.stylix.base16Scheme.base01})";
+      "col.active_border" = "rgb(${config.stylix.base16Scheme.base08}) rgb(${config.stylix.base16Scheme.base0C}) 45deg";
+      "col.inactive_border" = "rgb(${config.stylix.base16Scheme.base01})";
     };
   };
   # GDM Styling 

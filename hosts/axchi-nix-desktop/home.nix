@@ -21,7 +21,7 @@ in
     #inputs.hyprland.nixosModules.default
     ../../config/emoji.nix
     ../../config/fastfetch
-    ../../config/hyprland.nix
+    ../../config/hypr.nix
     ../../config/neovim.nix
     ../../config/swaync.nix
     ../../config/terminal.nix

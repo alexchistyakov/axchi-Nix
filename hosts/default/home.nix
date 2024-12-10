@@ -17,7 +17,7 @@ in
   imports = [
     ../../config/emoji.nix
     ../../config/fastfetch
-    ../../config/hyprland.nix
+    ../../config/hypr.nix
     ../../config/neovim.nix
     ../../config/rofi/rofi.nix
     ../../config/rofi/config-emoji.nix

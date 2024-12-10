@@ -63,15 +63,7 @@ with lib;
 
 
 
-      general = {
-        gaps_in = rice.hyprland.general.gaps_in;
-        gaps_out = rice.hyprland.general.gaps_out;
-        border_size = rice.hyprland.general.border_size;
-        layout = rice.hyprland.general.layout;
-        resize_on_border = rice.hyprland.general.resize_on_border;
-        "col.active_border" = rice.hyprland.general.col.active_border;
-        "col.inactive_border" = rice.hyprland.general.col.inactive_border;
-      };
+      general = rice.hyprland.general;
 
       input = {
         kb_layout = keyboardLayout;
@@ -110,16 +102,13 @@ with lib;
         "dimaround,title:(VNC authentication)"
       ];
 
-      windowrulev2 = [
+      windowrulev2 = rice.hyprland.windowrulev2 ++ [
         "center,title:(VNC Viewer: Connection Details)"
         "center,title:(VNC authentication)"
         "stayfocused,title:^()$,class:^(steam)$"
         "stayfocused,title:(VNC Viewer: Connection Details)"
         "stayfocused,title:(VNC authentication)"
         "minsize 1 1,title:^()$,class:^(steam)$"
-        "opacity 0.9 0.7,class:^(google-chrome-stable)$"
-        "opacity 0.75 0.7,class:^(thunar)$"
-        "opacity 1.0 0.9,class:(Neovide)"
         "xray on,title:(Albert)"
       ];
 
@@ -244,4 +233,4 @@ with lib;
     enable = true;
     settings = lib.mkForce rice.hyprlock.settings;
   };
-}
+} 
