@@ -23,6 +23,9 @@ let
     powerline-fonts
     powerline-symbols
   ];
+  
+  # Define wallpaper path
+  wallpaperPath = ./assets/wallpapers/wallpaper.jpg;
 in
 {
   # Package management for this rice
@@ -198,7 +201,7 @@ in
   };
   # GDM Styling 
   gdm = {
-    background = ./assets/wallpapers/wallpaper.jpg;
+    background = wallpaperPath;
   };  
   # Hyprlock styling configuration
   hyprlock = {
@@ -212,7 +215,7 @@ in
       background = {
         blur_passes = 3;
         blur_size = 8;
-        path = "${./assets/wallpapers/wallpaper.jpg}";
+        path = "${wallpaperPath}";
       };
       input-field = {
         size = "250, 50";
@@ -250,8 +253,8 @@ in
   # Hyprpaper configuration
   hyprpaper = {
     settings = {
-      preload = ["~/axchios/rice/arctic/assets/wallpapers/wallpaper.jpg"];
-      wallpaper = ", ~/axchios/rice/arctic/assets/wallpapers/wallpaper.jpg";
+      preload = ["${toString wallpaperPath}"];
+      wallpaper = ", ${toString wallpaperPath}";
     };
   };
 
@@ -345,7 +348,7 @@ in
 
   # Global styling configuration
   stylix = {
-    image = ./assets/wallpapers/wallpaper.jpg;
+    image = wallpaperPath;
     enable = true;
     polarity = "dark";
     opacity.terminal = 0.95;

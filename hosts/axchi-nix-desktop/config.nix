@@ -45,6 +45,7 @@ in
     kernelParams = [
       "quiet"
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+      "nvidia.NVreg_UsePageAttributeTable=1"
     ];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     plymouth = {
@@ -67,6 +68,7 @@ in
       font = rice.grub.font;
       fontSize = rice.grub.fontSize;
     };
+
     loader.efi = { 
       canTouchEfiVariables = true;
     };
@@ -125,7 +127,6 @@ in
   };
 
   programs = {
-    firefox.enable = false;
     starship = {
       enable = true;
       settings = rice.starship.settings;
