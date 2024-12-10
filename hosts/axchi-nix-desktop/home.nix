@@ -1,6 +1,13 @@
-{ pkgs, username, config, lib, host, ... }:
+{
+  pkgs,
+  username,
+  config,
+  lib,
+  host,
+  ...
+}:
 let
-  inherit (import ../../hosts/${host}/variables.nix) gitUsername gitEmail;
+  inherit (import ./variables.nix) gitUsername gitEmail;
   rice = import ../../rice { inherit lib config username pkgs; };
 in
 {
@@ -11,18 +18,19 @@ in
 
   # Import Program Configurations
   imports = [
-    ../emoji.nix
-    ../fastfetch
-    ../hypr.nix
-    ../neovim.nix
-    ../swaync.nix
-    ../terminal.nix
-    ../waybar.nix
-    ../wlogout.nix
+    #inputs.hyprland.nixosModules.default
+    ../../config/emoji.nix
+    ../../config/fastfetch
+    ../../config/hypr.nix
+    ../../config/neovim.nix
+    ../../config/swaync.nix
+    ../../config/terminal.nix
+    ../../config/waybar.nix
+    ../../config/wlogout.nix
   ];
 
   home.file.".config/wlogout/icons" = {
-    source = ../wlogout;
+    source = ../../config/wlogout;
     recursive = true;
   };
   home.file.".config/swappy/config".text = ''
