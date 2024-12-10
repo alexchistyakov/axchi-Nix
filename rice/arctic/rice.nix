@@ -198,7 +198,7 @@ in
   };
   # GDM Styling 
   gdm = {
-    background = ./wallpaper/wallpaper.jpg;
+    background = ./assets/wallpapers/wallpaper.jpg;
   };  
   # Hyprlock styling configuration
   hyprlock = {
@@ -212,7 +212,7 @@ in
       background = {
         blur_passes = 3;
         blur_size = 8;
-        path = "${./wallpaper/wallpaper.jpg}";
+        path = "${./assets/wallpapers/wallpaper.jpg}";
       };
       input-field = {
         size = "250, 50";
@@ -250,8 +250,8 @@ in
   # Hyprpaper configuration
   hyprpaper = {
     settings = {
-      preload = ["~/axchios/rice/arctic/wallpaper/wallpaper.jpg"];
-      wallpaper = ", ~/axchios/rice/arctic/wallpaper/wallpaper.jpg";
+      preload = ["~/axchios/rice/arctic/assets/wallpapers/wallpaper.jpg"];
+      wallpaper = ", ~/axchios/rice/arctic/assets/wallpapers/wallpaper.jpg";
     };
   };
 
@@ -266,7 +266,7 @@ in
       };
       logo = {
         type = "kitty-direct";
-        source = ./nix.png;
+        source = ./assets/nix.png;
         height = 15;
         width = 34;
         padding = {
@@ -345,7 +345,7 @@ in
 
   # Global styling configuration
   stylix = {
-    image = ./wallpaper/wallpaper.jpg;
+    image = ./assets/wallpapers/wallpaper.jpg;
     enable = true;
     polarity = "dark";
     opacity.terminal = 0.95;
@@ -448,8 +448,8 @@ in
 
   # GRUB theme configuration
   grub = {
-    theme = lib.mkForce ./grub/vimix;
+    theme = lib.mkForce ./assets/grub/vimix;
     fontSize = 18;
-    font = lib.mkForce ./grub/vimix/terminus-16.pf2;
+    font = lib.mkForce ./assets/grub/vimix/terminus-16.pf2;
   };
 } 
