@@ -29,11 +29,6 @@ in
     ../../config/wlogout.nix
   ];
 
-  # Place Files Inside Home Directory
-  home.file."Pictures/Wallpapers" = {
-    source = ../../config/wallpapers;
-    recursive = true;
-  };
   home.file.".config/wlogout/icons" = {
     source = ../../config/wlogout;
     recursive = true;
