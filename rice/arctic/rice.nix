@@ -25,7 +25,7 @@ let
   ];
   
   # Define wallpaper path
-  wallpaperPath = ./assets/wallpapers/mountain_saturated_geometric.jpg;
+  wallpaperPath = ./assets/wallpapers/mountain_saturated_geometric_up.jpg;
 in
 {
   # Package management for this rice

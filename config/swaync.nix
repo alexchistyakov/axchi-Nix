@@ -9,14 +9,14 @@
     "positionY": "top",
     "control-center-positionX": "none",
     "control-center-positionY": "none",
-    "control-center-margin-top": 3,
-    "control-center-margin-bottom": 3,
-    "control-center-margin-right": 3,
-    "control-center-margin-left": 3,
+    "control-center-margin-top": 0,
+    "control-center-margin-bottom": 0,
+    "control-center-margin-right": 0,
+    "control-center-margin-left": 0,
     "control-center-width": 500,
     "control-center-height": 600,
+    "control-center-exclusive-zone": true,
     "fit-to-screen": true,
-
     "layer-shell": true,
     "layer": "overlay",
     "control-center-layer": "overlay",
@@ -88,17 +88,17 @@
 
     .control-center {
       background: #1e1e2e;
-      border-radius: 8px;
       margin: 0px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: all 200ms ease-out;
+      box-shadow: 0 0px 0px 5px rgba(0, 0, 0, 0.3);
+      transition: transform 200ms ease-out;
       transform: translateX(100%);
-      opacity: 1;
+      opacity: 1.0;
+      border-radius: 0px;
     }
 
     .control-center.visible {
       transform: translateX(0);
-      opacity: 1;
+      opacity: 1.0;
     }
 
     .widget-mpris {

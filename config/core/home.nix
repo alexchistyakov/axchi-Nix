@@ -19,14 +19,14 @@ in
   # Import Program Configurations
   imports = [
     #inputs.hyprland.nixosModules.default
-    ../../config/emoji.nix
-    ../../config/fastfetch
-    ../../config/hypr.nix
-    ../../config/neovim.nix
-    ../../config/swaync.nix
-    ../../config/terminal.nix
-    ../../config/waybar.nix
-    ../../config/wlogout.nix
+    ../emoji.nix
+    ../fastfetch
+    ../hypr.nix
+    ../neovim.nix
+    ../swaync.nix
+    ../terminal.nix
+    ../waybar.nix
+    ../wlogout.nix
   ];
 
   home.file.".config/wlogout/icons" = {
