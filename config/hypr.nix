@@ -27,7 +27,7 @@ with lib;
       # Environment variables
       env = [
         "NIXOS_OZONE_WL,1"
-        "NIXPKGS_ALLOW_UNFREE,1"
+        "NIXPKGS_ALLOW_U4FREE,1"
         "LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
         "GBM_BACKEND,nvidia-drm"
@@ -46,22 +46,21 @@ with lib;
         "SDL_VIDEODRIVER,wayland"
         "ELECTRON_OZONE_PLATFORM_HINT,auto"
         "MOZ_ENABLE_WAYLAND,1"
+        "__GL_THREADED_OPTIMIZATIONS,0"
       ];
 
       # Startup commands
       exec-once = [
+        "hyprlock"
         "dbus-update-activation-environment --systemd --all"
         "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "killall -q hyprpaper;sleep .5 && hyprpaper"
-        "hyprlock"
         "killall -q waybar;sleep .5 && waybar"
         "killall -q swaync;sleep .5 && swaync"
         "nm-applet --indicator"
         "lxqt-policykit-agent"
         "albert &"
       ];
-
-
 
       general = rice.hyprland.general;
 
@@ -109,6 +108,7 @@ with lib;
         "stayfocused,title:(VNC authentication)"
         "minsize 1 1,title:^()$,class:^(steam)$"
         "xray on,title:(Albert)"
+        "opacity 1.0 1.0,class:^(swaync)$"
       ];
 
       gestures = {

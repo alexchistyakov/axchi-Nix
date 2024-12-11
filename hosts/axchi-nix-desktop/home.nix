@@ -33,6 +33,7 @@ in
     source = ../../config/wlogout;
     recursive = true;
   };
+
   home.file.".config/swappy/config".text = ''
     [Default]
     save_dir=/home/${username}/Pictures/Screenshots
@@ -68,7 +69,7 @@ in
     };
   };
 
-  # Enable Qt (styling is handled in rice/arctic)
+  # Enable Qt (styling is handled in rice)
   gtk = rice.gtk;
   qt = rice.qt;
 

@@ -25,7 +25,7 @@ let
   ];
   
   # Define wallpaper path
-  wallpaperPath = ./assets/wallpapers/wallpaper.jpg;
+  wallpaperPath = ./assets/wallpapers/mountain_saturated.jpg;
 in
 {
   # Package management for this rice
@@ -136,14 +136,14 @@ in
       rounding = 15;
       blur = {
         enabled = true;
-        size = 8;
-        passes = 5;
+        size = 5;
+        passes = 2;
         new_optimizations = true;
         ignore_opacity = false;
         xray = false;
       };
-      active_opacity = 0.95;
-      inactive_opacity = 0.84;
+      active_opacity = 0.92;
+      inactive_opacity = 0.82;
       fullscreen_opacity = 1.0;
       shadow = {
         enabled = true;
@@ -155,7 +155,7 @@ in
 
     windowrulev2 = [
       "opacity 0.9 0.7,class:^(google-chrome-stable)$"
-      "opacity 0.75 0.7,class:^(thunar)$"
+      "opacity 0.75 0.72,class:^(thunar)$"
       "opacity 1.0 0.9,class:(Neovide)"
     ];
 
@@ -458,7 +458,13 @@ in
   # GRUB theme configuration
   grub = {
     theme = lib.mkForce ./assets/grub/vimix;
-    fontSize = 18;
-    font = lib.mkForce ./assets/grub/vimix/terminus-16.pf2;
+    fontSize = 16;
+    fonts = lib.mkForce [
+      ./assets/grub/vimix/dejavu_sans_16.pf2
+      ./assets/grub/vimix/terminus-16.pf2
+      ./assets/grub/vimix/terminus-14.pf2  # For smaller text
+      ./assets/grub/vimix/dejavu_sans_14.pf2  # For smaller text
+    ];
+    font = lib.mkForce ./assets/grub/vimix/dejavu_sans_16.pf2;  # Default font
   };
 } 

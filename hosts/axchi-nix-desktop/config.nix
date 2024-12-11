@@ -90,7 +90,7 @@ in
   drivers.amdgpu.enable = false;
   drivers.nvidia = {
     enable = true;
-    maxPerformance = true;
+    maxPerformance = false;
   };
   drivers.nvidia-prime = {
     enable = false;
@@ -98,6 +98,8 @@ in
     nvidiaBusID = "";
   };
   drivers.intel.enable = false;
+  # End of module options
+  
   vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
 
