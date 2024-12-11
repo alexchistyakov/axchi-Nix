@@ -44,7 +44,7 @@ in
     ];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     plymouth = {
-      enable = true;
+      enable = false;
     };
     # Needed For Some Steam Games
     kernel.sysctl = {
@@ -109,7 +109,7 @@ in
   networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
 
   # Set your time zone.
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/Denver";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -227,7 +227,6 @@ in
     tigervnc
     hyprpaper
     conda
-    plymouth
   ];
 
   environment.variables = {
@@ -238,7 +237,7 @@ in
   # Extra Portal Configuration
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
+    wlr.enable = false;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal

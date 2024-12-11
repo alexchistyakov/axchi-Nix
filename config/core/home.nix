@@ -7,7 +7,7 @@
   ...
 }:
 let
-  inherit (import ./variables.nix) gitUsername gitEmail;
+  inherit (import ../../hosts/${host}/variables.nix) gitUsername gitEmail;
   rice = import ../../rice { inherit lib config username pkgs; };
 in
 {

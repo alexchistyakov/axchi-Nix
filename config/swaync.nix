@@ -9,10 +9,10 @@
     "positionY": "top",
     "control-center-positionX": "none",
     "control-center-positionY": "none",
-    "control-center-margin-top": 4,
-    "control-center-margin-bottom": 4,
-    "control-center-margin-right": 4,
-    "control-center-margin-left": 4,
+    "control-center-margin-top": 3,
+    "control-center-margin-bottom": 3,
+    "control-center-margin-right": 3,
+    "control-center-margin-left": 3,
     "control-center-width": 500,
     "control-center-height": 600,
     "fit-to-screen": true,
@@ -55,7 +55,7 @@
       },
       "dnd": {
         "text": "Do Not Disturb"
-      },
+
       "label": {
         "max-lines": 5,
         "text": "Label Text"
@@ -69,22 +69,21 @@
   '';
   home.file.".config/swaync/style.css".text = ''
     * {
-      all: unset;
       font-size: 14px;
     }
 
     .notification-container {
-      background: #1e1e2e;
+      background-color: #1e1e2e;
       padding: 8px;
       margin: 4px;
     }
 
     .notification {
-      background: #1e1e2e;
+      background-color: #1e1e2e;
       padding: 8px;
       margin: 4px;
       border: 1px solid #313244;
-      border-radius: 8px;
+      border-radius: 8px 0px 0px 8px;
     }
 
     .control-center {
@@ -92,12 +91,14 @@
       border-radius: 8px;
       margin: 0px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: transform 200ms ease-out;
+      transition: all 200ms ease-out;
       transform: translateX(100%);
+      opacity: 1;
     }
 
-    .control-center.opened {
+    .control-center.visible {
       transform: translateX(0);
+      opacity: 1;
     }
 
     .widget-mpris {
