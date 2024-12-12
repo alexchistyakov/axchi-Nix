@@ -54,9 +54,6 @@ with lib;
         "hyprlock"
         "dbus-update-activation-environment --systemd --all"
         "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "killall -q hyprpaper;sleep .5 && hyprpaper"
-        "killall -q waybar;sleep .5 && waybar"
-        "killall -q dunst;sleep .5 && dunst"
         "nm-applet --indicator"
         "lxqt-policykit-agent"
         "albert &"
@@ -82,7 +79,10 @@ with lib;
 
       cursor.no_hardware_cursors = true;
 
-      xwayland.force_zero_scaling = true;
+      xwayland = {
+        force_zero_scaling = true;
+        #use_nearest_neighbor = true;
+      };
 
       render.explicit_sync = 1;
 
@@ -124,16 +124,15 @@ with lib;
         key_press_enables_dpms = true;
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
-        render_ahead_of_time = true;
-        render_ahead_safezone = 50;
+        render_ahead_of_time = false;
+        render_ahead_safezone = 1;
         vfr = true;
-        vrr = false;
+        vrr = true;
       };
 
       # Keybinds
       bind = [
         "${modifier},Return,exec,${terminal}"
-        "${modifier}SHIFT,Return,exec,alacritty"
         "${modifier},SPACE,exec,albert toggle"
         "${modifier}SHIFT,W,exec,web-search"
         "${modifier}ALT,W,exec,wallsetter"
