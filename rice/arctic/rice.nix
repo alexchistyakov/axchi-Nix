@@ -274,12 +274,14 @@ in
         };
       };
       logo = {
-        type = "kitty-direct";
+        # Commented out previous logo configuration for later use
+        #type = "kitty-direct";
+        type = "chafa";
         source = ./assets/nix.png;
         height = 15;
         width = 34;
         padding = {
-          top = 1;
+          top = 0;
           left = 2;
         };
       };
@@ -309,7 +311,6 @@ in
             type = "custom";
             format = "└──────────────────────────────────────────────────┘";
         }
-        "break"
         {
             type = "custom";
             format = "┌──────────────────── Software ────────────────────┐";
