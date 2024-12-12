@@ -54,6 +54,9 @@ with lib;
         "hyprlock"
         "dbus-update-activation-environment --systemd --all"
         "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "waybar"
+        "hyprpaper"
+        "dunst"
         "nm-applet --indicator"
         "lxqt-policykit-agent"
         "albert &"
@@ -81,7 +84,7 @@ with lib;
 
       xwayland = {
         force_zero_scaling = true;
-        #use_nearest_neighbor = true;
+        use_nearest_neighbor = true;
       };
 
       render.explicit_sync = 1;
