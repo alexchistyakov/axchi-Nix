@@ -489,12 +489,6 @@ in
   grub = {
     theme = lib.mkForce ./assets/grub/vimix;
     fontSize = 16;
-    fonts = lib.mkForce [
-      ./assets/grub/vimix/dejavu_sans_16.pf2
-      ./assets/grub/vimix/terminus-16.pf2
-      ./assets/grub/vimix/terminus-14.pf2  # For smaller text
-      ./assets/grub/vimix/dejavu_sans_14.pf2  # For smaller text
-    ];
-    font = lib.mkForce ./assets/grub/vimix/dejavu_sans_16.pf2;  # Default font
+    font = lib.mkForce ./assets/grub/vimix/terminus-16.pf2;  # Default font
   };
 } 
