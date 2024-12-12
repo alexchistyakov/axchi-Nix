@@ -142,7 +142,7 @@ in
         ignore_opacity = false;
         xray = false;
       };
-      active_opacity = 0.92;
+      active_opacity = 0.94;
       inactive_opacity = 0.82;
       fullscreen_opacity = 1.0;
       shadow = {
@@ -451,6 +451,36 @@ in
         tab_fade = 1;
         active_tab_font_style = "bold";
         inactive_tab_font_style = "bold";
+      };
+    };
+    alacritty = {
+      settings = {
+        window = {
+          opacity = 1.0;
+          padding = {
+            x = 4;
+            y = 4;
+          };
+        };
+        font = {
+          normal = {
+            family = "JetBrainsMono Nerd Font Mono";
+            style = "Regular";
+          };
+          bold = {
+            family = "JetBrainsMono Nerd Font Mono";
+            style = "Bold";
+          };
+          italic = {
+            family = "JetBrainsMono Nerd Font Mono";
+            style = "Italic";
+          };
+          bold_italic = {
+            family = "JetBrainsMono Nerd Font Mono";
+            style = "Bold Italic";
+          };
+          size = 13;
+        };
       };
     };
   };

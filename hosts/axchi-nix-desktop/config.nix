@@ -227,6 +227,7 @@ in
     tigervnc
     hyprpaper
     conda
+    alacritty
   ];
 
   environment.variables = {

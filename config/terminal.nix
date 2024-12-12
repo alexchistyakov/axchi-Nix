@@ -2,6 +2,22 @@
 
 {
   programs = {
+    alacritty = {
+      enable = true;
+      package = pkgs.alacritty;
+      settings = lib.mkForce (import ../rice { inherit lib config username pkgs; }).terminal.alacritty.settings // {
+        window = {
+          padding = {
+            x = 4;
+            y = 4;
+          };
+        };
+        terminal = {
+          osc52 = "CopyPaste";
+        };
+      };
+    };
+
     kitty = {
       enable = true;
       package = pkgs.kitty;
@@ -28,6 +44,7 @@
         #fi
       '';
       initExtra = ''
+        export TERM=alacritty-direct
         fastfetch
         if [ -f $HOME/.bashrc-personal ]; then
           source $HOME/.bashrc-personal

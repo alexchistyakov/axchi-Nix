@@ -131,6 +131,7 @@ with lib;
       # Keybinds
       bind = [
         "${modifier},Return,exec,${terminal}"
+        "${modifier}SHIFT,Return,exec,alacritty"
         "${modifier},SPACE,exec,albert toggle"
         "${modifier}SHIFT,W,exec,web-search"
         "${modifier}ALT,W,exec,wallsetter"
