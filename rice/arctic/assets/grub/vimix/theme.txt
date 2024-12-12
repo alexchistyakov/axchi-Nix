@@ -19,7 +19,7 @@ terminal-border: "0"
   top = 30%
   width = 40%
   height = 40%
-  #item_font = "Dejavu Sans Regular 14"
+  item_font = "Terminus Regular 16"
   item_color = "#cccccc"
   selected_item_color = "#ffffff"
   icon_width = 32

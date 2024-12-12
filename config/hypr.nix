@@ -56,7 +56,7 @@ with lib;
         "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "killall -q hyprpaper;sleep .5 && hyprpaper"
         "killall -q waybar;sleep .5 && waybar"
-        "killall -q swaync;sleep .5 && swaync"
+        "killall -q dunst;sleep .5 && dunst"
         "nm-applet --indicator"
         "lxqt-policykit-agent"
         "albert &"
@@ -109,6 +109,8 @@ with lib;
         "minsize 1 1,title:^()$,class:^(steam)$"
         "xray on,title:(Albert)"
         "opacity 1.0 1.0,class:^(swaync)$"
+        "rounding 15,class:^(Dunst)$"
+        "noshadow false,class:^(Dunst)$"
       ];
 
       gestures = {
@@ -135,7 +137,7 @@ with lib;
         "${modifier},SPACE,exec,albert toggle"
         "${modifier}SHIFT,W,exec,web-search"
         "${modifier}ALT,W,exec,wallsetter"
-        "${modifier}SHIFT,N,exec,swaync-client -rs"
+        "${modifier}SHIFT,N,exec,dunstctl history-pop"
         "${modifier},B,exec,${browser}"
         "${modifier},S,exec,screenshootin"
         "${modifier},D,exec,discord"

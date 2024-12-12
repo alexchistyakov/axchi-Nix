@@ -157,21 +157,16 @@ with lib;
         };
         "custom/notification" = {
           tooltip = false;
-          format = "{icon} {}";
+          format = "{}";
           format-icons = {
-            notification = "<span foreground='red'><sup></sup></span>";
-            none = "";
-            dnd-notification = "<span foreground='red'><sup></sup></span>";
-            dnd-none = "";
-            inhibited-notification = "<span foreground='red'><sup></sup></span>";
-            inhibited-none = "";
-            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
-            dnd-inhibited-none = "";
+            notification = "<span foreground='red'></span>";
+            none = "";
           };
           return-type = "json";
-          exec-if = "which swaync-client";
-          exec = "swaync-client -swb";
-          on-click = "sleep 0.1 && task-waybar";
+          exec-if = "which dunstctl";
+          exec = "dunstctl count | jq -R '{\"text\":\"\",\"class\":(if . == \"0\" then \"none\" else \"notification\" end)}'";
+          on-click = "dunstctl history-pop";
+          on-click-right = "dunstctl set-paused toggle";
           escape = true;
         };
         "battery" = {

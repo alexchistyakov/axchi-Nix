@@ -23,7 +23,7 @@ in
     ../fastfetch
     ../hypr.nix
     ../neovim.nix
-    ../swaync.nix
+    ../dunst.nix
     ../terminal.nix
     ../waybar.nix
     ../wlogout.nix

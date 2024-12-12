@@ -139,7 +139,7 @@ in
       enable = true;
       enableSSHSupport = true;
     };
-    virt-manager.enable = true;
+    virt-manager.enable = false;
     steam = {
       enable = true;
       gamescopeSession.enable = true;
@@ -175,7 +175,8 @@ in
     cmatrix
     lolcat
     htop
-    libvirt
+    #libvirt
+    #virt-viewer
     lxqt.lxqt-policykit
     lm_sensors
     unzip
@@ -198,7 +199,6 @@ in
     hyprpicker
     ninja
     brightnessctl
-    virt-viewer
     swappy
     appimage-run
     networkmanagerapplet
@@ -208,11 +208,9 @@ in
     nh
     nixfmt-rfc-style
     discord
-    libvirt
     grim
     slurp
     file-roller
-    swaynotificationcenter
     imv
     mpv
     gimp
@@ -228,6 +226,7 @@ in
     hyprpaper
     conda
     alacritty
+    papirus-icon-theme
   ];
 
   environment.variables = {
@@ -403,9 +402,10 @@ in
   };
 
   # Virtualization / Containers
-  virtualisation.libvirtd.enable = true;
+  # Disabled for now because I don't use them
+  virtualisation.libvirtd.enable = false;
   virtualisation.podman = {
-    enable = true;
+    enable = false;
     dockerCompat = true;
     defaultNetwork.settings.dns_enabled = true;
   };
