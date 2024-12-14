@@ -25,7 +25,7 @@ let
   ];
   
   # Define wallpaper path
-  wallpaperPath = ./assets/wallpapers/adwaita.jpg;
+  wallpaperPath = ./assets/wallpapers/adwaita-l.jpg;
 in
 {
   # Package management for this rice

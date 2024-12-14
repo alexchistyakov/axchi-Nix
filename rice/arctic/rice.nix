@@ -160,7 +160,7 @@ in
 
     windowrulev2 = [
       "opacity 0.9 0.7,class:^(google-chrome-stable)$"
-      "opacity 0.75 0.72,class:^(thunar)$"
+      "opacity 0.70 0.68,class:^(thunar)$"
       "opacity 1.0 0.9,class:(Neovide)"
     ];
 
