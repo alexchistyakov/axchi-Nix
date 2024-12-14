@@ -25,6 +25,7 @@ in
   ];
 
   nixpkgs.config.allowBroken = true;
+  nixpkgs.config.cudaSupport = true;
 
   boot = {
     # Kernel
@@ -153,6 +154,10 @@ in
         thunar-volman
       ];
     };
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -264,7 +269,7 @@ in
         user = "${username}";
       };
       sessionPackages = [
-        pkgs.hyprland
+        inputs.hyprland.packages.${pkgs.system}.hyprland
       ];
       defaultSession = "hyprland";
     };

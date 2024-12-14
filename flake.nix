@@ -4,7 +4,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland/main";
+    };
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     fine-cmdline = {
@@ -14,7 +16,7 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }@inputs:
+    { nixpkgs, home-manager, hyprland, ... }@inputs:
     let
       system = "nixos";
       host = "axchi-nix-desktop";
@@ -39,6 +41,7 @@
           modules = [
             ./hosts/${host}/config.nix
             inputs.stylix.nixosModules.stylix
+            hyprland.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = {

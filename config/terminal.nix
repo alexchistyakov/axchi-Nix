@@ -38,11 +38,6 @@
     bash = {
       enable = true;
       enableCompletion = true;
-      profileExtra = ''
-        #if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-        #  exec Hyprland
-        #fi
-      '';
       initExtra = ''
         export TERM=alacritty-direct
         fastfetch
@@ -58,7 +53,7 @@
       interactiveShellInit = ''
         # Vi mode
         fish_vi_key_bindings
-        source (/etc/profiles/per-user/axchi/bin/starship init fish --print-full-init | psub) 
+        source (/etc/profiles/per-user/axchi/bin/starship init fish --print-full-init | psub)
       '';      
       shellAliases = {
         sv = "sudo nvim";
@@ -70,6 +65,7 @@
         ls = "eza --icons";
         ll = "eza -lh --icons --grid --group-directories-first";
         la = "eza -lah --icons --grid --group-directories-first";
+        nd = "nix develop --show-trace";
         ".." = "cd ..";
       };
     };

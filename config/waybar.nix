@@ -215,7 +215,7 @@ with lib;
         }
 
         window#waybar {
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.6);
             transition-property: background-color;
             transition-duration: .5s;
         }

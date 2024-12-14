@@ -25,7 +25,7 @@ let
   ];
   
   # Define wallpaper path
-  wallpaperPath = ./assets/wallpapers/mountain_saturated_geometric_up.jpg;
+  wallpaperPath = ./assets/wallpapers/mountain_saturated_geometric_down.jpg;
 in
 {
   # Package management for this rice
@@ -136,14 +136,15 @@ in
       rounding = 15;
       blur = {
         enabled = true;
-        size = 5;
-        passes = 2;
+        size = 6;
+        passes = 3;
         new_optimizations = true;
-        ignore_opacity = false;
+        ignore_opacity = true;
         xray = false;
+        brightness = 0.75;
       };
-      active_opacity = 0.94;
-      inactive_opacity = 0.82;
+      active_opacity = 0.90;
+      inactive_opacity = 0.80;
       fullscreen_opacity = 1.0;
       shadow = {
         enabled = true;
@@ -152,6 +153,10 @@ in
         color = "0x66000000";
       };
     };
+
+    layerrule = [
+      "blur,waybar"
+    ];
 
     windowrulev2 = [
       "opacity 0.9 0.7,class:^(google-chrome-stable)$"
@@ -191,6 +196,7 @@ in
         "fadeSwitch, 1, 10, easeOutQuint"
         "fadeShadow, 1, 10, easeOutQuint"
         "workspaces, 1, 6.2831, easeOutExpo, slide"
+        #"workspaces, 1, 3.1415, easeOutCirc, slide"
         "specialWorkspace, 1, 3, md3_decel, slidevert"
       ];
     };

@@ -125,4 +125,6 @@ in
     };
     home-manager.enable = true;
   };
+
+  stylix.targets.fish.enable = true;
 } 

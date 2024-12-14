@@ -80,7 +80,9 @@ with lib;
         accel_profile = "flat";
       };
 
-      cursor.no_hardware_cursors = true;
+      cursor = {
+        no_hardware_cursors = true;
+      };
 
       xwayland = {
         force_zero_scaling = true;
@@ -127,8 +129,8 @@ with lib;
         key_press_enables_dpms = true;
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
-        render_ahead_of_time = false;
-        render_ahead_safezone = 1;
+        render_ahead_of_time = true;
+        render_ahead_safezone = 60;
         vfr = true;
         vrr = true;
       };

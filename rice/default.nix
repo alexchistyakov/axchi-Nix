@@ -7,6 +7,6 @@
 }:
 let
   # The currently active rice theme
-  activeRice = "arctic";
+  activeRice = "kindleflame";
 in
 import ./${activeRice}/rice.nix { inherit lib config username pkgs; } 
