@@ -3,12 +3,15 @@
   lib,
   host,
   config,
+  username,
   ...
 }:
 
 let
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
   inherit (import ../hosts/${host}/variables.nix) clock24h;
+  # Import the rice configuration to get the opacity
+  rice = import ../rice { inherit lib config username pkgs; };
 in
 with lib;
 {
@@ -215,7 +218,7 @@ with lib;
         }
 
         window#waybar {
-            background-color: rgba(0,0,0,0.6);
+            background-color: rgba(0,0,0,${toString rice.waybarOpacity});
             transition-property: background-color;
             transition-duration: .5s;
         }

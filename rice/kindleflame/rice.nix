@@ -478,4 +478,6 @@ in
     fontSize = 16;
     font = lib.mkForce ./assets/grub/vimix/terminus-16.pf2;  # Default font
   };
+
+  waybarOpacity = 0.45;  # Adjust this value as needed (0.0 to 1.0)
 } 
