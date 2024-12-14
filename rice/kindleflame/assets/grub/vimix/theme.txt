@@ -15,9 +15,9 @@ terminal-border: "0"
 
 # Show the boot menu
 + boot_menu {
-  left = 40%
+  left = 30%
   top = 30%
-  width = 30%
+  width = 40%
   height = 40%
   item_font = "Terminus Regular 16"
   item_color = "#cccccc"

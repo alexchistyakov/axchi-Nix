@@ -100,7 +100,6 @@ with lib;
         "float,swayimg|vlc|Viewnior|pavucontrol"
         "float,nwg-look|qt5ct|mpv"
         "float,zoom"
-        "dimaround,title:(Albert)"
         "dimaround,title:(VNC Viewer: Connection Details)"
         "dimaround,title:(VNC authentication)"
       ];
@@ -226,9 +225,10 @@ with lib;
 
       animations = rice.hyprland.animations;
       decoration = rice.hyprland.decoration;
-
+      layerrule = rice.hyprland.layerrule;
     };
   };
+
 
   services.hyprpaper = {
     enable = true;

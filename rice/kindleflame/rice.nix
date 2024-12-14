@@ -137,13 +137,13 @@ in
       blur = {
         enabled = true;
         size = 5;
-        passes = 2;
+        passes = 3;
         new_optimizations = true;
         ignore_opacity = false;
         xray = false;
       };
-      active_opacity = 0.94;
-      inactive_opacity = 0.82;
+      active_opacity = 0.90;
+      inactive_opacity = 0.80;
       fullscreen_opacity = 1.0;
       shadow = {
         enabled = true;
@@ -153,6 +153,9 @@ in
       };
     };
 
+    layerrule = [
+      "blur,waybar"
+    ];
     windowrulev2 = [
       "opacity 0.9 0.7,class:^(google-chrome-stable)$"
       "opacity 0.75 0.72,class:^(thunar)$"
@@ -364,9 +367,9 @@ in
       base00 = "0E060F"; # background
       base01 = "712336"; # color1
       base02 = "312E50"; # color2
-      base03 = "3A3B63"; # color3
+      base03 = "4F5099"; # color3
       base04 = "533351"; # color4
-      base05 = "d19e94"; # foreground
+      base05 = "F1C1B7"; # foreground
       base06 = "90272E"; # color6
       base07 = "d19e94"; # color7
       base08 = "926e67"; # color8
@@ -375,7 +378,7 @@ in
       base0B = "3A3B63"; # color11
       base0C = "533351"; # color12
       base0D = "44446C"; # color13
-      base0E = "90272E"; # color14
+      base0E = "c25121"; # color14
       base0F = "d19e94"; # color15
     };
     cursor = {
@@ -440,7 +443,7 @@ in
     alacritty = {
       settings = {
         window = {
-          opacity = 1.0;
+          opacity = 0.95;
           padding = {
             x = 4;
             y = 4;
