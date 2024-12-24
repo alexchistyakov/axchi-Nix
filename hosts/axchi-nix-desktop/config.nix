@@ -51,8 +51,6 @@ in
     kernel.sysctl = {
       "vm.max_map_count" = 2147483642;
     };
-
-
     # Bootloader.
     loader.grub = { 
       enable = true;
@@ -70,8 +68,8 @@ in
     };
     # Make /tmp a tmpfs
     tmp = {
-      useTmpfs = false;
-      tmpfsSize = "30%";
+      useTmpfs = true;
+      tmpfsSize = "50%";
     };
     # Appimage Support
     binfmt.registrations.appimage = {
@@ -229,6 +227,7 @@ in
     fish
     tigervnc
     hyprpaper
+    hyprlang
     conda
     alacritty
     papirus-icon-theme

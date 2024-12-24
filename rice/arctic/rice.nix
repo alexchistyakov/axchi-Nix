@@ -155,7 +155,7 @@ in
     };
 
     layerrule = [
-      "blur,waybar"
+      #"blur,waybar"
     ];
 
     windowrulev2 = [
@@ -499,5 +499,5 @@ in
     fontSize = 16;
     font = lib.mkForce ./assets/grub/vimix/terminus-16.pf2;  # Default font
   };
-  waybarOpacity = 0.6;
+  waybarOpacity = 0.3;
 } 

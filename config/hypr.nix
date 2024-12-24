@@ -76,16 +76,16 @@ with lib;
           disable_while_typing = true;
           scroll_factor = 0.8;
         };
-        sensitivity = 0;
+        sensitivity = 0.9;
         accel_profile = "flat";
       };
 
       cursor = {
-        no_hardware_cursors = true;
+        no_hardware_cursors = false;
       };
 
       xwayland = {
-        force_zero_scaling = true;
+        force_zero_scaling = false;
         use_nearest_neighbor = true;
       };
 
@@ -100,6 +100,7 @@ with lib;
         "float,swayimg|vlc|Viewnior|pavucontrol"
         "float,nwg-look|qt5ct|mpv"
         "float,zoom"
+        "float,class:(nmtui)"
         "dimaround,title:(VNC Viewer: Connection Details)"
         "dimaround,title:(VNC authentication)"
       ];
@@ -115,6 +116,9 @@ with lib;
         "opacity 1.0 1.0,class:^(swaync)$"
         "rounding 15,class:^(Dunst)$"
         "noshadow false,class:^(Dunst)$"
+        "float,title:(nmtui)"
+        "move 70% 5%,title:(nmtui)"
+        "size 25% 40%,title:(nmtui)"
       ];
 
       gestures = {
@@ -129,7 +133,7 @@ with lib;
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
         render_ahead_of_time = true;
-        render_ahead_safezone = 60;
+        render_ahead_safezone = 70;
         vfr = true;
         vrr = true;
       };
@@ -155,7 +159,7 @@ with lib;
         "${modifier},P,pseudo,"
         "${modifier}SHIFT,J,togglesplit,"
         "${modifier},F,fullscreen,"
-        "${modifier}SHIFT,T,togglefloating,"
+        "${modifier},T,togglefloating,"
         "${modifier}SHIFT,C,exit,"
         "${modifier}SHIFT,left,movewindow,l"
         "${modifier}SHIFT,right,movewindow,r"

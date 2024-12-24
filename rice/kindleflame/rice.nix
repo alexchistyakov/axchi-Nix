@@ -136,8 +136,8 @@ in
       rounding = 15;
       blur = {
         enabled = true;
-        size = 5;
-        passes = 3;
+        size = 7;
+        passes = 2;
         new_optimizations = true;
         ignore_opacity = false;
         xray = false;
@@ -154,12 +154,13 @@ in
     };
 
     layerrule = [
-      "blur,waybar"
+      #"blur,waybar"
     ];
     windowrulev2 = [
       "opacity 0.9 0.7,class:^(google-chrome-stable)$"
       "opacity 0.75 0.72,class:^(thunar)$"
       "opacity 1.0 0.9,class:(Neovide)"
+      "dimaround, title:(Albert)"
     ];
 
     animations = {
@@ -188,12 +189,12 @@ in
         "windowsIn, 1, 6, winIn, slide"
         "windowsOut, 1, 5, winOut, slide"
         "windowsMove, 1, 2, wind, slide"
-        "border, 1, 10, default"
+        "border, 1, 12, default"
         "fade, 1, 10, easeOutQuint"
         "fadeDim, 1, 10, easeOutQuint"
         "fadeSwitch, 1, 10, easeOutQuint"
         "fadeShadow, 1, 10, easeOutQuint"
-        "workspaces, 1, 6.2831, easeOutExpo, slide"
+        "workspaces, 1, 6.3831, easeOutExpo, slide"
         #"workspaces, 1, 3.1415, easeOutCirc, slide"
         "specialWorkspace, 1, 3, md3_decel, slidevert"
       ];
@@ -479,5 +480,5 @@ in
     font = lib.mkForce ./assets/grub/vimix/terminus-16.pf2;  # Default font
   };
 
-  waybarOpacity = 0.45;  # Adjust this value as needed (0.0 to 1.0)
+  waybarOpacity = 0.6;  # Adjust this value as needed (0.0 to 1.0)
 } 

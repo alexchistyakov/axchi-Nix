@@ -9,7 +9,9 @@
 
 let
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
-  inherit (import ../hosts/${host}/variables.nix) clock24h;
+  inherit (import ../hosts/${host}/variables.nix) 
+    clock24h
+    terminal;
   # Import the rice configuration to get the opacity
   rice = import ../rice { inherit lib config username pkgs; };
 in
@@ -83,10 +85,14 @@ with lib;
             "󰤥"
             "󰤨"
           ];
-          format-ethernet = " {bandwidthDownOctets}";
-          format-wifi = "{icon}  {signalStrength}%";
-          format-disconnected = "󰤮";
-          tooltip = false;
+          format-ethernet = "󰈀";
+          format-wifi = "󰤨  {signalStrength}%";
+          format-disconnected = "󰤮 ";
+          tooltip-format = "{ifname} via {gwaddr}";
+          tooltip-format-wifi = "{essid} ({signalStrength}%)";
+          tooltip-format-ethernet = "{ifname}";
+          tooltip-format-disconnected = "Disconnected";
+          on-click = "${terminal} --class nmtui -e nmtui";
         };
         "group/hardware" = {
           orientation = "inherit";
