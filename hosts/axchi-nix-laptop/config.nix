@@ -1,21 +1,22 @@
 {
+  lib,
+  username,
   config,
   pkgs,
   host,
-  username,
+  inputs,
   options,
-  lib,
   ...
 }:
 let
   inherit (import ./variables.nix) keyboardLayout;
+  rice = import ../../rice { inherit lib config username pkgs; };
 in
 {
   imports = [
     ./hardware.nix
     ./users.nix
     ../../modules/amd-drivers.nix
-    ../../modules/apple-silicon-support
     ../../modules/nvidia-drivers.nix
     ../../modules/nvidia-prime-drivers.nix
     ../../modules/intel-drivers.nix
@@ -23,23 +24,52 @@ in
     ../../modules/local-hardware-clock.nix
   ];
 
+  nixpkgs.config.allowBroken = true;
+  nixpkgs.config.cudaSupport = true;
+
   boot = {
     # Kernel
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_zen;
     # This is for OBS Virtual Cam Support
-    kernelModules = [ "v4l2loopback" ];
+    consoleLogLevel = 3;
+    kernelModules = [ 
+      "v4l2loopback"
+    ];
+    initrd = {
+      verbose = false;  # Reduce boot messages
+      systemd.enable = true;  # Use systemd in initrd
+    };
+    kernelParams = [
+      "quiet"
+      "loglevel=3"
+    ];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+    plymouth = {
+      enable = false;
+    };
     # Needed For Some Steam Games
     kernel.sysctl = {
       "vm.max_map_count" = 2147483642;
     };
     # Bootloader.
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader.grub = { 
+      enable = true;
+      device = "nodev";
+      useOSProber = true;
+      efiSupport = true;
+      theme = rice.grub.theme;
+      gfxmodeEfi = "1920x1080, auto";
+      font = rice.grub.font;
+      fontSize = rice.grub.fontSize;
+    };
+
+    loader.efi = { 
+      canTouchEfiVariables = true;
+    };
     # Make /tmp a tmpfs
     tmp = {
-      useTmpfs = false;
-      tmpfsSize = "30%";
+      useTmpfs = true;
+      tmpfsSize = "50%";
     };
     # Appimage Support
     binfmt.registrations.appimage = {
@@ -50,83 +80,35 @@ in
       mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
-    plymouth.enable = true;
   };
 
   # Styling Options
-  stylix = {
-    enable = true;
-    image = ../../config/wallpapers/beautifulmountainscape.jpg;
-    # base16Scheme = {
-    #   base00 = "232136";
-    #   base01 = "2a273f";
-    #   base02 = "393552";
-    #   base03 = "6e6a86";
-    #   base04 = "908caa";
-    #   base05 = "e0def4";
-    #   base06 = "e0def4";
-    #   base07 = "56526e";
-    #   base08 = "eb6f92";
-    #   base09 = "f6c177";
-    #   base0A = "ea9a97";
-    #   base0B = "3e8fb0";
-    #   base0C = "9ccfd8";
-    #   base0D = "c4a7e7";
-    #   base0E = "f6c177";
-    #   base0F = "56526e";
-    # };
-    polarity = "dark";
-    opacity.terminal = 0.8;
-    cursor.package = pkgs.bibata-cursors;
-    cursor.name = "Bibata-Modern-Ice";
-    cursor.size = 24;
-    fonts = {
-      monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-        name = "JetBrainsMono Nerd Font Mono";
-      };
-      sansSerif = {
-        package = pkgs.montserrat;
-        name = "Montserrat";
-      };
-      serif = {
-        package = pkgs.montserrat;
-        name = "Montserrat";
-      };
-      sizes = {
-        applications = 12;
-        terminal = 15;
-        desktop = 11;
-        popups = 12;
-      };
-    };
-  };
+  stylix = rice.stylix;
 
   # Extra Module Options
   drivers.amdgpu.enable = false;
-  drivers.nvidia.enable = false;
+  drivers.nvidia = {
+    enable = true;
+    maxPerformance = false;
+  };
   drivers.nvidia-prime = {
     enable = false;
     intelBusID = "";
     nvidiaBusID = "";
   };
-  drivers.intel.enable = false;
+  drivers.intel.enable = true;
+  # End of module options
+  
   vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
-  # Apple Hardware
-  hardware.asahi.useExperimentalGPUDriver = true;
-  hardware.asahi.peripheralFirmwareDirectory = ../../modules/firmware;
 
   # Enable networking
-  networking.wireless.iwd = {
-    enable = true;
-    settings.General.EnableNetworkConfiguration = true;
-  };
+  networking.networkmanager.enable = true;
   networking.hostName = host;
   networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
 
   # Set your time zone.
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/Denver";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -144,75 +126,9 @@ in
   };
 
   programs = {
-    firefox.enable = false;
     starship = {
       enable = true;
-      settings = {
-        add_newline = false;
-        buf = {
-          symbol = " ";
-        };
-        c = {
-          symbol = " ";
-        };
-        directory = {
-          read_only = " 󰌾";
-        };
-        docker_context = {
-          symbol = " ";
-        };
-        fossil_branch = {
-          symbol = " ";
-        };
-        git_branch = {
-          symbol = " ";
-        };
-        golang = {
-          symbol = " ";
-        };
-        hg_branch = {
-          symbol = " ";
-        };
-        hostname = {
-          ssh_symbol = " ";
-        };
-        lua = {
-          symbol = " ";
-        };
-        memory_usage = {
-          symbol = "󰍛 ";
-        };
-        meson = {
-          symbol = "󰔷 ";
-        };
-        nim = {
-          symbol = "󰆥 ";
-        };
-        nix_shell = {
-          symbol = " ";
-        };
-        nodejs = {
-          symbol = " ";
-        };
-        ocaml = {
-          symbol = " ";
-        };
-        package = {
-          symbol = "󰏗 ";
-        };
-        python = {
-          symbol = " ";
-        };
-        rust = {
-          symbol = " ";
-        };
-        swift = {
-          symbol = " ";
-        };
-        zig = {
-          symbol = " ";
-        };
-      };
+      settings = rice.starship.settings;
     };
     dconf.enable = true;
     seahorse.enable = true;
@@ -222,13 +138,23 @@ in
       enable = true;
       enableSSHSupport = true;
     };
-    virt-manager.enable = true;
+    virt-manager.enable = false;
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
     thunar = {
       enable = true;
       plugins = with pkgs.xfce; [
         thunar-archive-plugin
         thunar-volman
       ];
+    };
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
     };
   };
 
@@ -238,7 +164,12 @@ in
     mutableUsers = true;
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; 
+    let
+      ricePackagesList = rice.packages;
+    in
+    ricePackagesList ++ [
+    # Existing packages
     vim
     wget
     killall
@@ -247,8 +178,8 @@ in
     cmatrix
     lolcat
     htop
-    brave
-    libvirt
+    #libvirt
+    #virt-viewer
     lxqt.lxqt-policykit
     lm_sensors
     unzip
@@ -271,48 +202,51 @@ in
     hyprpicker
     ninja
     brightnessctl
-    virt-viewer
     swappy
     appimage-run
+    networkmanagerapplet
     yad
     inxi
     playerctl
     nh
     nixfmt-rfc-style
-    libvirt
-    swww
+    discord
     grim
     slurp
     file-roller
-    swaynotificationcenter
     imv
     mpv
     gimp
     pavucontrol
     tree
+    spotify
     neovide
-    greetd.tuigreet
+    albert
+    code-cursor
+    google-chrome
+    fish
+    tigervnc
+    hyprpaper
+    hyprlang
+    conda
+    alacritty
+    papirus-icon-theme
   ];
 
-  fonts = {
-    packages = with pkgs; [
-      noto-fonts-emoji
-      noto-fonts-cjk
-      font-awesome
-      symbola
-      material-icons
-    ];
-  };
-
   environment.variables = {
-    ZANEYOS_VERSION = "2.2";
-    ZANEYOS = "true";
+    AXCHIOS_VERSION = "0.0.1";
+    AXCHIOS = "true";
+    LIBVA_DRIVER_NAME = "nvidia";
+    XDG_SESSION_TYPE = "wayland";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    AQ_DRM_DEVICES = "/dev/dri/by-path/pci-0000:01:00.0-card:/dev/dri/card0";
   };
 
   # Extra Portal Configuration
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
+    wlr.enable = false;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal
@@ -327,24 +261,43 @@ in
   # Services to start
   services = {
     xserver = {
-      enable = false;
+      enable = true;
       xkb = {
         layout = "${keyboardLayout}";
         variant = "";
       };
     };
-    greetd = {
+    displayManager = {
+      autoLogin = {
+        enable = true;
+        user = "${username}";
+      };
+      sessionPackages = [
+        inputs.hyprland.packages.${pkgs.system}.hyprland
+      ];
+      defaultSession = "hyprland";
+    };
+    #greetd = {
+    #  enable = true;
+    #  vt = 3;
+    #  settings = #{
+    #    default_session = {
+    #      command = "Hyprland";
+    #      user = "${username}";
+    #    };
+    #    initial_session = {
+    #      command = "Hyprland";
+    #      user = "${username}";
+    #    };
+    #  };
+    #};
+    tlp = {
       enable = true;
-      vt = 3;
       settings = {
-        default_session = {
-          # Wayland Desktop Manager is installed only for user ryan via home-manager!
-          user = username;
-          # .wayland-session is a script generated by home-manager, which links to the current wayland compositor(sway/hyprland or others).
-          # with such a vendor-no-locking script, we can switch to another wayland compositor without modifying greetd's config here.
-          # command = "$HOME/.wayland-session"; # start a wayland session directly without a login manager
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland"; # start Hyprland with a TUI login manager
-        };
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MAX_PERF_ON_AC = 100;
       };
     };
     smartd = {
@@ -397,15 +350,21 @@ in
   };
 
   # Extra Logitech Support
-  hardware.logitech.wireless.enable = false;
-  hardware.logitech.wireless.enableGraphical = false;
+  hardware.logitech.wireless.enable = true;
+  hardware.logitech.wireless.enableGraphical = true;
 
   # Bluetooth Support
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
+
+  # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
-  
+
+  # AMD CPU stuff
+  hardware.cpu.amd.updateMicrocode = true;
+  powerManagement.cpuFreqGovernor = "performance";
+
   # Security / Polkit
   security.rtkit.enable = true;
   security.polkit.enable = true;
@@ -414,7 +373,7 @@ in
       if (
         subject.isInGroup("users")
           && (
-            action.id == "org.freedesktop.login1.reboot" ||
+            action.id == "org.freedesktop.login1.retrueboot" ||
             action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
             action.id == "org.freedesktop.login1.power-off" ||
             action.id == "org.freedesktop.login1.power-off-multiple-sessions"
@@ -441,6 +400,8 @@ in
       ];
       substituters = [ "https://hyprland.cachix.org" ];
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      cores = 0;
+      max-jobs = "auto";
     };
     gc = {
       automatic = true;
@@ -450,9 +411,10 @@ in
   };
 
   # Virtualization / Containers
-  virtualisation.libvirtd.enable = true;
+  # Disabled for now because I don't use them
+  virtualisation.libvirtd.enable = false;
   virtualisation.podman = {
-    enable = true;
+    enable = false;
     dockerCompat = true;
     defaultNetwork.settings.dns_enabled = true;
   };
@@ -460,7 +422,6 @@ in
   # OpenGL
   hardware.graphics = {
     enable = true;
-    enable32Bit = false;
   };
 
   console.keyMap = "${keyboardLayout}";

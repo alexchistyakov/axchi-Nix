@@ -12,6 +12,7 @@ in
     "${username}" = {
       homeMode = "755";
       isNormalUser = true;
+      initialPassword = "1234";
       description = "${gitUsername}";
       extraGroups = [
         "networkmanager"
@@ -19,12 +20,12 @@ in
         "libvirtd"
         "scanner"
         "lp"
+        "video"
+        "gdm"
       ];
       shell = pkgs.bash;
       ignoreShellProgramCheck = true;
       packages = with pkgs; [
-        webcord
-        zeroad
       ];
     };
     # "newuser" = {
