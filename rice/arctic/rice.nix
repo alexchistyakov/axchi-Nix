@@ -141,7 +141,7 @@ in
         new_optimizations = true;
         ignore_opacity = true;
         xray = false;
-        brightness = 0.75;
+        brightness = 0.8;
       };
       active_opacity = 0.90;
       inactive_opacity = 0.80;
@@ -258,7 +258,7 @@ in
         position = "0, -20";
         halign = "center";
         valign = "center";
-        monitor = "HDMI-A-1";
+        #monitor = "HDMI-A-1";
       };
     };
   };
@@ -499,5 +499,5 @@ in
     fontSize = 16;
     font = lib.mkForce ./assets/grub/vimix/terminus-16.pf2;  # Default font
   };
-  waybarOpacity = 0.3;
+  waybarOpacity = 0.5;
 } 

@@ -7,6 +7,7 @@
     hyprland = {
       url = "github:hyprwm/Hyprland/main";
     };
+    hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     fine-cmdline = {
@@ -16,10 +17,10 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, hyprland, ... }@inputs:
+    { nixpkgs, home-manager, hyprland, hyprland-qtutils, ... }@inputs:
     let
       system = "nixos";
-      host = "axchi-nix-desktop";
+      host = "axchi-nix-laptop";
       username = "axchi";
       pkgs = import nixpkgs {
         system = "x86_64-linux";

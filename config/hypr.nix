@@ -72,9 +72,9 @@ with lib;
         ];
         follow_mouse = 1;
         touchpad = {
-          natural_scroll = true;
+          natural_scroll = false;
           disable_while_typing = true;
-          scroll_factor = 0.8;
+          scroll_factor = 0.6;
         };
         sensitivity = 0.9;
         accel_profile = "flat";
@@ -112,18 +112,22 @@ with lib;
         "stayfocused,title:(VNC Viewer: Connection Details)"
         "stayfocused,title:(VNC authentication)"
         "minsize 1 1,title:^()$,class:^(steam)$"
-        "xray on,title:(Albert)"
+        "xray,title:(Albert)"
+        "nodim on,title:(Albert)"
         "opacity 1.0 1.0,class:^(swaync)$"
         "rounding 15,class:^(Dunst)$"
         "noshadow false,class:^(Dunst)$"
-        "float,title:(nmtui)"
-        "move 70% 5%,title:(nmtui)"
-        "size 25% 40%,title:(nmtui)"
+        "float,class:(nmtui)"
+        "move 70% 5%,class:(nmtui)"
+        "size 25% 40%,class:(nmtui)"
       ];
 
       gestures = {
         workspace_swipe = true;
         workspace_swipe_fingers = 3;
+        workspace_swipe_invert = false;
+        workspace_swipe_min_fingers = true;
+        workspace_swipe_distance = 750;
       };
 
       misc = {

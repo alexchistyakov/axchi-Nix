@@ -11,7 +11,8 @@ let
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
   inherit (import ../hosts/${host}/variables.nix) 
     clock24h
-    terminal;
+    terminal
+    displayBattery;
   # Import the rice configuration to get the opacity
   rice = import ../rice { inherit lib config username pkgs; };
 in
@@ -38,8 +39,7 @@ with lib;
           "pulseaudio"
           "bluetooth"
           "network"
-          "clock"
-        ];
+        ] ++ (if displayBattery then [ "battery" ] else []) ++ [ "clock" ];
 
         "hyprland/workspaces" = {
           format = "{name}";
@@ -54,7 +54,7 @@ with lib;
         "clock" = {
           format = if clock24h == true then '' {:L%H:%M} '' else '' {:L%I:%M %p} '';
           tooltip = true;
-          tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
+          tooltip-format = "<big>{:%A, %d %B %Y }</big>\n<tt><small>{calendar}</small></tt>";
         };
         "hyprland/window" = {
           max-length = 100;

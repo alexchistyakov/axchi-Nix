@@ -4,6 +4,7 @@
   config,
   lib,
   host,
+  inputs,
   ...
 }:
 let
@@ -90,6 +91,7 @@ in
       inherit pkgs;
       inherit host;
     })
+    inputs.hyprland-qtutils.packages."${pkgs.system}".default
   ];
 
   services = {
