@@ -8,8 +8,9 @@
   ...
 }:
 let
-  inherit (import ../../hosts/${host}/variables.nix) gitUsername gitEmail;
-  rice = import ../../rice { inherit lib config username pkgs; };
+  variables = import ../../hosts/${host}/variables.nix;
+  inherit (variables) gitUsername gitEmail;
+  rice = import ../../rice { inherit lib config username pkgs variables; };
 in
 {
   # Home Manager Settings

@@ -9,8 +9,9 @@
   ...
 }:
 let
-  inherit (import ./variables.nix) keyboardLayout;
-  rice = import ../../rice { inherit lib config username pkgs; };
+  variables = import ./variables.nix;
+  inherit (variables) keyboardLayout;
+  rice = import ../../rice { inherit lib config username pkgs variables; };
 in
 {
   imports = [

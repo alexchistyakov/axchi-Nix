@@ -19,4 +19,8 @@
   terminal = "alacritty"; # Set Default System Terminal
   keyboardLayout = "us";
   displayBattery = false;
+
+  # Hyprlock Settings
+  hyprlockInputSize = "250, 50"; # Standard input field size
+  hyprlockMonitor = "HDMI-A-1"; # Primary desktop display
 }

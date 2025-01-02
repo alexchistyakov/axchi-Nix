@@ -3,6 +3,7 @@
   config,
   username,
   pkgs,
+  variables,
   ...
 }:
 
@@ -231,7 +232,7 @@ in
         path = "${wallpaperPath}";
       };
       input-field = {
-        size = "250, 50";
+        size = variables.hyprlockInputSize;
         outline_thickness = 0;
         dots_size = 0.25; # Scale of input-field height, 0.2 - 0.8
         dots_spacing = 0.15; # Scale of dots' absolute size, 0.0 - 1.0
@@ -258,7 +259,7 @@ in
         position = "0, -20";
         halign = "center";
         valign = "center";
-        #monitor = "HDMI-A-1";
+        monitor = variables.hyprlockMonitor;
       };
     };
   };

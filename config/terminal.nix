@@ -1,11 +1,15 @@
 { pkgs, lib, config, username, host, ... }:
 
+let
+  variables = import ../hosts/${host}/variables.nix;
+  rice = import ../rice { inherit lib config username pkgs variables; };
+in
 {
   programs = {
     alacritty = {
       enable = true;
       package = pkgs.alacritty;
-      settings = lib.mkForce (import ../rice { inherit lib config username pkgs; }).terminal.alacritty.settings // {
+      settings = lib.mkForce rice.terminal.alacritty.settings // {
         window = {
           padding = {
             x = 4;
@@ -21,7 +25,7 @@
     kitty = {
       enable = true;
       package = pkgs.kitty;
-      settings = lib.mkForce (import ../rice { inherit lib config username pkgs; }).terminal.kitty.settings;
+      settings = lib.mkForce rice.terminal.kitty.settings;
       extraConfig = ''
         tab_bar_style fade
         tab_fade 1

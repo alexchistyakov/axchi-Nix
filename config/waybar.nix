@@ -4,6 +4,7 @@
   host,
   config,
   username,
+  variables,
   ...
 }:
 
@@ -14,7 +15,7 @@ let
     terminal
     displayBattery;
   # Import the rice configuration to get the opacity
-  rice = import ../rice { inherit lib config username pkgs; };
+  rice = import ../rice { inherit lib config username pkgs variables; };
 in
 with lib;
 {

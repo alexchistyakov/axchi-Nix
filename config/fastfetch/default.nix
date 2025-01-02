@@ -3,10 +3,12 @@
   config,
   username,
   pkgs,
+  host,
   ...
 }:
 let
-  rice = import ../../rice { inherit lib config username pkgs; };
+  variables = import ../../hosts/${host}/variables.nix;
+  rice = import ../../rice { inherit lib config username pkgs variables; };
 in
 {
   programs.fastfetch = {

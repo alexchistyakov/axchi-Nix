@@ -9,8 +9,9 @@
   ...
 }:
 let
-  inherit (import ./variables.nix) keyboardLayout;
-  rice = import ../../rice { inherit lib config username pkgs; };
+  variables = import ./variables.nix;
+  inherit (variables) keyboardLayout;
+  rice = import ../../rice { inherit lib config username pkgs variables; };
 in
 {
   imports = [
@@ -88,13 +89,13 @@ in
   # Extra Module Options
   drivers.amdgpu.enable = false;
   drivers.nvidia = {
-    enable = true;
-    maxPerformance = false;
+    enable = true; 
+    maxPerformance = false; # Doesn't work, don't enable pls
   };
   drivers.nvidia-prime = {
-    enable = false;
-    intelBusID = "";
-    nvidiaBusID = "";
+    enable = true;  # Enable NVIDIA Prime
+    intelBusID = "PCI:0:2:0";  # Bus ID for Intel GPU
+    nvidiaBusID = "PCI:1:0:0";  # Bus ID for NVIDIA GPU
   };
   drivers.intel.enable = true;
   # End of module options
@@ -236,11 +237,9 @@ in
   environment.variables = {
     AXCHIOS_VERSION = "0.0.1";
     AXCHIOS = "true";
-    LIBVA_DRIVER_NAME = "nvidia";
-    XDG_SESSION_TYPE = "wayland";
-    GBM_BACKEND = "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    AQ_DRM_DEVICES = "/dev/dri/by-path/pci-0000:01:00.0-card:/dev/dri/card0";
+    # Add these variables for better Optimus support
+    #WLR_NO_HARDWARE_CURSORS = "1";  # Fix cursor issues
+    NIXOS_OZONE_WL = "1";  # Better Wayland support
   };
 
   # Extra Portal Configuration
@@ -295,9 +294,30 @@ in
       enable = true;
       settings = {
         CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
         CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
         CPU_MIN_PERF_ON_AC = 0;
         CPU_MAX_PERF_ON_AC = 100;
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_MAX_PERF_ON_BAT = 20;
+
+       #Optional helps save long term battery health
+       #START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
+       #STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+      };
+    };
+    auto-cpufreq.enable = true;
+    auto-cpufreq.settings = {
+      battery = {
+        governor = "powersave";
+        turbo = "never";
+      };
+      charger = {
+        governor = "performance";
+        turbo = "auto";
       };
     };
     smartd = {

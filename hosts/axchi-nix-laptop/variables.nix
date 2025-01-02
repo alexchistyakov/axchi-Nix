@@ -5,9 +5,6 @@
 
   # Hyprland Settings
   extraMonitorSettings = [
-    #"DP-1,1920x1090@60.0,3840x1201,1.0"
-    #"DP-1,transform,1"
-    #"DP-2,1920x1080@60.0,966x0,1.0"
     "eDP-1,3840x2400@59.99Hz, 0x1080,1.333333"
   ];
 
@@ -19,4 +16,8 @@
   terminal = "alacritty"; # Set Default System Terminal
   keyboardLayout = "us";
   displayBattery = true;
+
+  # Hyprlock Settings
+  hyprlockInputSize = "350, 60"; # Larger input field for laptop's high DPI screen
+  hyprlockMonitor = "eDP-1"; # Primary laptop display
 }

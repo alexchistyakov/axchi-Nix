@@ -8,12 +8,13 @@
 }:
 
 let
-  inherit (import ../hosts/${host}/variables.nix)
+  variables = import ../hosts/${host}/variables.nix;
+  inherit (variables)
     browser
     terminal
     extraMonitorSettings
     keyboardLayout;
-  rice = import ../rice { inherit lib config username pkgs; };
+  rice = import ../rice { inherit lib config username pkgs variables; };
   modifier = "SUPER";
 in
 with lib;
