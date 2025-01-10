@@ -27,6 +27,7 @@ in
 
   nixpkgs.config.allowBroken = true;
   nixpkgs.config.cudaSupport = true;
+  nixpkgs.config.allowUnfree = true;
 
   boot = {
     # Kernel
@@ -43,6 +44,8 @@ in
     kernelParams = [
       "quiet"
       "loglevel=3"
+      # Required for OpenCL to work
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     ];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     plymouth = {
@@ -158,8 +161,6 @@ in
       xwayland.enable = true;
     };
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   users = {
     mutableUsers = true;

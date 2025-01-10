@@ -26,7 +26,8 @@ in
   ];
 
   nixpkgs.config.allowBroken = true;
-  nixpkgs.config.cudaSupport = true;
+  nixpkgs.config.cudaSupport = false;
+  nixpkgs.config.allowUnfree = true;
 
   boot = {
     # Kernel
@@ -43,6 +44,9 @@ in
     kernelParams = [
       "quiet"
       "loglevel=3"
+      
+      # Required for OpenCL to work
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     ];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     plymouth = {
@@ -159,8 +163,6 @@ in
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   users = {
     mutableUsers = true;
   };
@@ -237,6 +239,7 @@ in
   environment.variables = {
     AXCHIOS_VERSION = "0.0.1";
     AXCHIOS = "true";
+    #CUDA_NVCC_ALLOW_UNSUPPORTED_COMPILER = "1";
   };
 
   # Extra Portal Configuration

@@ -20,7 +20,7 @@
     { nixpkgs, home-manager, hyprland, hyprland-qtutils, ... }@inputs:
     let
       system = "nixos";
-      host = "axchi-nix-laptop";
+      host = "axchi-nix-desktop";
       username = "axchi";
       pkgs = import nixpkgs {
         system = "x86_64-linux";
