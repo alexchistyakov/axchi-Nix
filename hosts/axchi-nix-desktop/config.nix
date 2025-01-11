@@ -23,6 +23,7 @@ in
     ../../modules/intel-drivers.nix
     ../../modules/vm-guest-services.nix
     ../../modules/local-hardware-clock.nix
+    ../../config/vm.nix
   ];
 
   nixpkgs.config.allowBroken = true;
@@ -46,7 +47,7 @@ in
       "loglevel=3"
       
       # Required for OpenCL to work
-      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+      #"nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     ];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     plymouth = {
@@ -143,7 +144,7 @@ in
       enable = true;
       enableSSHSupport = true;
     };
-    virt-manager.enable = false;
+    virt-manager.enable = true;
     steam = {
       enable = true;
       gamescopeSession.enable = true;
