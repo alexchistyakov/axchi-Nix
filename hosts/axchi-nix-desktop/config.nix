@@ -410,15 +410,6 @@ in
     };
   };
 
-  # Virtualization / Containers
-  # Disabled for now because I don't use them
-  virtualisation.libvirtd.enable = false;
-  virtualisation.podman = {
-    enable = false;
-    dockerCompat = true;
-    defaultNetwork.settings.dns_enabled = true;
-  };
-
   # OpenGL
   hardware.graphics = {
     enable = true;

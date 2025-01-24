@@ -44,10 +44,4 @@
 
   # Add necessary kernel modules
   boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
-
-  # Optional: Enable nested virtualization
-  boot.extraModprobeConfig = ''
-    options kvm_intel nested=1
-    options kvm_amd nested=1
-  '';
 } 
