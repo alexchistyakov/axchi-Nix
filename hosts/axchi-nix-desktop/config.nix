@@ -37,6 +37,9 @@ in
     consoleLogLevel = 3;
     kernelModules = [ 
       "v4l2loopback"
+      "vfio_pci"
+      "vfio"
+      "vfio_iommu_type1"
     ];
     initrd = {
       verbose = false;  # Reduce boot messages

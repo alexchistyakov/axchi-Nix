@@ -448,7 +448,7 @@ in
   qt = {
     enable = true;
     style.name = "adwaita";
-    platformTheme.name = "gtk4";
+    #platformTheme.name = "gtk4";
   };
 
   # Terminal styling

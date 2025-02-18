@@ -4,10 +4,13 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
+
     hyprland = {
       url = "github:hyprwm/Hyprland/main";
     };
-    hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
+    hyprland-qt-support = {
+      url = "github:hyprwm/hyprland-qt-support";
+    };  
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     fine-cmdline = {
@@ -17,16 +20,13 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, hyprland, hyprland-qtutils, ... }@inputs:
+    { nixpkgs, home-manager, hyprland, hyprland-qt-support, ... }@inputs:
     let
       system = "nixos";
       host = "axchi-nix-desktop";
       username = "axchi";
       pkgs = import nixpkgs {
         system = "x86_64-linux";
-        config = {
-          allowUnfree = true;
-        };
       };
     in
     with pkgs;
@@ -40,6 +40,11 @@
             inherit host;
           };
           modules = [
+            ({ config, ... }: {
+              nixpkgs.config = {
+                allowUnfree = true;
+              };
+            })
             ./hosts/${host}/config.nix
             inputs.stylix.nixosModules.stylix
             hyprland.nixosModules.default
@@ -50,7 +55,7 @@
                 inherit inputs;
                 inherit host;
               };
-              home-manager.useGlobalPkgs = true;
+              #home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
               home-manager.users.${username} = import ./config/core/home.nix;

@@ -72,8 +72,8 @@ in
   };
 
   # Enable Qt (styling is handled in rice)
-  gtk = rice.gtk;
-  qt = rice.qt;
+  gtk = lib.mkForce rice.gtk;
+  qt = lib.mkForce rice.qt;
 
   # Scripts
   home.packages = [
@@ -92,7 +92,6 @@ in
       inherit pkgs;
       inherit host;
     })
-    inputs.hyprland-qtutils.packages."${pkgs.system}".default
   ];
 
   services = {

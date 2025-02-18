@@ -121,6 +121,10 @@ with lib;
         "float,class:(nmtui)"
         "move 70% 5%,class:(nmtui)"
         "size 25% 40%,class:(nmtui)"
+        "float,class:^(.virt-manager-wrapped)$,title:^(Virtual Machine Manager)$"
+        "size 516 449,class:^(.virt-manager-wrapped)$,title:^(Virtual Machine Manager)$"
+        "move 41% 40,class:^(.virt-manager-wrapped)$,title:^(Virtual Machine Manager)$"
+        "fullscreen,class:^(virt-viewer)$,title:^(MicroWin11 on QEMU/KVM)$"
       ];
 
       gestures = {
@@ -148,6 +152,7 @@ with lib;
         "${modifier},Return,exec,${terminal}"
         "${modifier},SPACE,exec,albert toggle"
         "${modifier}SHIFT,W,exec,web-search"
+        "${modifier},W,exec,hyprctl dispatch workspace empty && virt-viewer -f -c qemu:///system MicroWin11"
         "${modifier}ALT,W,exec,wallsetter"
         "${modifier}SHIFT,N,exec,dunstctl history-pop"
         "${modifier},B,exec,${browser}"
@@ -156,6 +161,7 @@ with lib;
         "${modifier},O,exec,obs"
         "${modifier},C,exec,hyprpicker -a"
         "${modifier},G,exec,gimp"
+        "${modifier},Z,exec,steam"
         "${modifier}SHIFT,G,exec,godot4"
         "${modifier},E,exec,thunar"
         "${modifier},M,exec,spotify"

@@ -70,6 +70,7 @@ in
         ll = "eza -lh --icons --grid --group-directories-first";
         la = "eza -lah --icons --grid --group-directories-first";
         nd = "nix develop --show-trace";
+        nixrepair = "sudo nix-store --verify --check-contents --repair";
         ".." = "cd ..";
       };
     };
