@@ -56,7 +56,7 @@
   ];
 
   boot.kernelModules = [
-    "kvm-amd"
+    "kvm-amd" "kvm-intel"
   ];
 
   # Load VFIO related modules
@@ -66,4 +66,9 @@
     "vfio_iommu_type1"
   ];
 
+    # Optional: Enable nested virtualization
+  boot.extraModprobeConfig = ''
+    options kvm_intel nested=1
+    options kvm_amd nested=1
+  '';
 } 

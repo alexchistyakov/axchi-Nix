@@ -93,20 +93,26 @@ with lib;
       render.explicit_sync = 1;
 
       # Window rules
-      windowrule = [
-        "noborder,^(wofi)$"
-        "center,^(wofi)$"
-        "center,^(steam)$"
-        "float,nm-connection-editor|blueman-manager"
-        "float,swayimg|vlc|Viewnior|pavucontrol"
-        "float,nwg-look|qt5ct|mpv"
-        "float,zoom"
+      windowrule = []; # Empty as we're converting all to windowrulev2
+
+      windowrulev2 = rice.hyprland.windowrulev2 ++ [
+        # Converted from windowrule to windowrulev2
+        "center,class:^(steam)$"
+        "float,class:^(nm-connection-editor)$"
+        "float,class:^(blueman-manager)$"
+        "float,class:^(swayimg)$"
+        "float,class:^(vlc)$"
+        "float,class:^(Viewnior)$"
+        "float,class:^(pavucontrol)$"
+        "float,class:^(nwg-look)$"
+        "float,class:^(qt5ct)$"
+        "float,class:^(mpv)$"
+        "float,class:^(zoom)$"
         "float,class:(nmtui)"
         "dimaround,title:(VNC Viewer: Connection Details)"
         "dimaround,title:(VNC authentication)"
-      ];
-
-      windowrulev2 = rice.hyprland.windowrulev2 ++ [
+        
+        # Existing windowrulev2 entries
         "center,title:(VNC Viewer: Connection Details)"
         "center,title:(VNC authentication)"
         "stayfocused,title:^()$,class:^(steam)$"
@@ -125,6 +131,14 @@ with lib;
         "size 516 449,class:^(.virt-manager-wrapped)$,title:^(Virtual Machine Manager)$"
         "move 41% 40,class:^(.virt-manager-wrapped)$,title:^(Virtual Machine Manager)$"
         "fullscreen,class:^(virt-viewer)$,title:^(MicroWin11 on QEMU/KVM)$"
+        
+        # Fix for Steam dropdowns
+        "stayfocused,class:^(steam)$,title:^((?!Steam).)*$"
+        
+        # Fix for app popups to stay at cursor
+        "move onscreen cursor,class:^(xdg-desktop-portal)$"
+        "move onscreen cursor,class:^(xdg-desktop-portal-gtk)$"
+        "move onscreen cursor,class:^(.*?)(.exe)$"
       ];
 
       gestures = {

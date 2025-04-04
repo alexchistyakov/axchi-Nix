@@ -27,7 +27,7 @@ in
   ];
 
   nixpkgs.config.allowBroken = true;
-  nixpkgs.config.cudaSupport = false;
+  nixpkgs.config.cudaSupport = true;
   nixpkgs.config.allowUnfree = true;
 
   boot = {
