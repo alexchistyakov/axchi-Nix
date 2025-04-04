@@ -18,6 +18,8 @@ in
   home.homeDirectory = "/home/${username}";
   home.stateVersion = "23.11";
 
+  programs.starship.settings = rice.starship.settings;
+
   # Import Program Configurations
   imports = [
     #inputs.hyprland.nixosModules.default
@@ -74,6 +76,7 @@ in
   # Enable Qt (styling is handled in rice)
   gtk = lib.mkForce rice.gtk;
   qt = lib.mkForce rice.qt;
+
 
   # Scripts
   home.packages = [
