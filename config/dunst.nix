@@ -10,7 +10,7 @@
         width = 300;
         height = "(0,300)";
         origin = "top-center";
-        offset = "30x30";
+        offset = "30x6";
         scale = 0;
         notification_limit = 20;
         progress_bar = true;
