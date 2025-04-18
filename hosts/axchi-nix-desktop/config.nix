@@ -14,6 +14,7 @@ let
   rice = import ../../rice { inherit lib config username pkgs variables; };
 in
 {
+  # ========= MOVE TO config/core/system.nix =========
   imports = [
     ./hardware.nix
     ./users.nix
@@ -48,9 +49,7 @@ in
     kernelParams = [
       "quiet"
       "loglevel=3"
-      
-      # Required for OpenCL to work
-      #"nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+
     ];
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     plymouth = {
@@ -94,20 +93,6 @@ in
   # Styling Options
   stylix = rice.stylix;
 
-  # Extra Module Options
-  drivers.amdgpu.enable = false;
-  drivers.nvidia = {
-    enable = true;
-    maxPerformance = false;
-  };
-  drivers.nvidia-prime = {
-    enable = false;
-    intelBusID = "";
-    nvidiaBusID = "";
-  };
-  drivers.intel.enable = false;
-  # End of module options
-  
   vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
 
@@ -238,6 +223,9 @@ in
     conda
     alacritty
     papirus-icon-theme
+    guestfs-tools
+    windsurf
+    telegram-desktop
   ];
 
   environment.variables = {
@@ -419,6 +407,23 @@ in
   };
 
   console.keyMap = "${keyboardLayout}";
+  # ====================================================================
+
+  # Extra Module Options
+  drivers.amdgpu.enable = false;
+  drivers.nvidia = {
+    enable = true;
+    maxPerformance = false;
+  };
+  drivers.nvidia-prime = {
+    enable = false;
+    intelBusID = "";
+    nvidiaBusID = "";
+  };
+  drivers.intel.enable = false;
+  # End of module options
+  
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

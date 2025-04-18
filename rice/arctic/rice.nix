@@ -145,7 +145,7 @@ in
         brightness = 0.8;
       };
       active_opacity = 0.85;
-      inactive_opacity = 0.80;
+      inactive_opacity = 0.77;
       fullscreen_opacity = 1.0;
       shadow = {
         enabled = true;

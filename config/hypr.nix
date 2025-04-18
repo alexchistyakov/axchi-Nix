@@ -31,7 +31,7 @@ with lib;
         "NIXPKGS_ALLOW_U4FREE,1"
         "LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
-        "GBM_BACKEND,nvidia-drm"
+        #"GBM_BACKEND,nvidia-drm"
         "NVD_BACKEND,direct"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "WLR_RENDERER,vulkan"
@@ -83,6 +83,7 @@ with lib;
 
       cursor = {
         no_hardware_cursors = false;
+        min_refresh_rate = 100;
       };
 
       xwayland = {
@@ -131,6 +132,7 @@ with lib;
         "size 516 449,class:^(.virt-manager-wrapped)$,title:^(Virtual Machine Manager)$"
         "move 41% 40,class:^(.virt-manager-wrapped)$,title:^(Virtual Machine Manager)$"
         "fullscreen,class:^(virt-viewer)$,title:^(MicroWin11 on QEMU/KVM)$"
+        "noshadow, title:^(Albert)$"
         
         # Fix for Steam dropdowns
         "stayfocused,class:^(steam)$,title:^((?!Steam).)*$"
@@ -155,8 +157,8 @@ with lib;
         key_press_enables_dpms = true;
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
-        render_ahead_of_time = true;
-        render_ahead_safezone = 70;
+        render_ahead_of_time = false;
+        render_ahead_safezone = 5;
         vfr = true;
         vrr = true;
       };

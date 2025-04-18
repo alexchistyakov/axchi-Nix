@@ -43,12 +43,12 @@ in
         line_break = {
           disabled = true;
         };
-        format = "$username $directory$git_branch$character";
+        format = "$username $directory$git_branch$character";
         #format = "$username| $directory$git_branch|$character";
         #format = "$username$hostname| $directory$git_branch|$character";
       
         username = {
-          format = "[ $user ](bg:white fg:black bold)";
+          format = "[ $user ](bg:white fg:black bold)[](fg:white bg:black)";
           style_user = "white";
           show_always = true;
         };
@@ -137,20 +137,20 @@ in
       rounding = 15;
       blur = {
         enabled = true;
-        size = 7;
-        passes = 2;
+        size = 8;
+        passes = 8;
         new_optimizations = true;
         ignore_opacity = false;
         xray = false;
       };
-      active_opacity = 0.90;
-      inactive_opacity = 0.80;
+      active_opacity = 0.9;
+      inactive_opacity = 0.8;
       fullscreen_opacity = 1.0;
       shadow = {
         enabled = true;
         range = 30;
-        render_power = 3;
-        color = "0x66000000";
+        render_power = 5;
+        color = "0x11000000";
       };
     };
 
@@ -159,7 +159,7 @@ in
     ];
     windowrulev2 = [
       "opacity 0.9 0.7,class:^(google-chrome-stable)$"
-      "opacity 0.75 0.72,class:^(thunar)$"
+      "opacity 0.7 0.62,class:^(thunar)$"
       "opacity 1.0 0.9,class:(Neovide)"
       "dimaround, title:(Albert)"
     ];
@@ -299,19 +299,19 @@ in
         }
         {
             type = "cpu";
-            key = "│  ";
+            key = "   ";
         }
         {
             type = "gpu";
-            key = "│ 󰍛 ";
+            key = "  󰍛 ";
         }
         {
             type = "memory";
-            key = "│ 󰑭 ";
+            key = "  󰑭 ";
         }
         {
             "type"= "disk";
-            "key"= "│ 󰋊 ";
+            "key"= "  󰋊 ";
         }
         {
             type = "custom";
@@ -327,15 +327,15 @@ in
         }
         {
             type = "kernel";
-            key = "│ ├ ";
+            key = "  ├ ";
         }
         {
             type = "packages";
-            key = "│ ├󰏖 ";
+            key = "  ├󰏖 ";
         }
         {
             type = "shell";
-            key = "│ └ ";
+            key = "  └ ";
         }
         {
             type = "custom";
@@ -368,19 +368,19 @@ in
     base16Scheme = {
       base00 = "0E060F"; # background
       base01 = "712336"; # color1
-      base02 = "312E50"; # color2
+      base02 = "7d95ab"; # color2
       base03 = "4F5099"; # color3
-      base04 = "533351"; # color4
-      base05 = "F1C1B7"; # foreground
+      base04 = "7C4268"; # color4
+      base05 = "dec0ba"; # foreground
       base06 = "90272E"; # color6
       base07 = "d19e94"; # color7
-      base08 = "926e67"; # color8
+      base08 = "db1435"; # color8
       base09 = "712336"; # color9
-      base0A = "312E50"; # color10
-      base0B = "3A3B63"; # color11
-      base0C = "533351"; # color12
-      base0D = "44446C"; # color13
-      base0E = "c25121"; # color14
+      base0A = "c4a55c"; # color10
+      base0D = "5b5ec7"; # color11
+      base0C = "bd7333"; # color12
+      base0B = "8d8dcc"; # color13
+      base0E = "cc6f47"; # color14
       base0F = "d19e94"; # color15
     };
     cursor = {
