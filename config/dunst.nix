@@ -21,12 +21,12 @@
         progress_bar_corner_radius = 10;
         icon_corner_radius = 0;
         indicate_hidden = true;
-        transparency = 0;
+        transparency = 50;
         separator_height = 2;
         padding = 10;
         horizontal_padding = 8;
         text_icon_padding = 0;
-        frame_width = 1;
+        frame_width = 0;
         frame_color = "#eeeeee";
         gap_size = 0;
         separator_color = "frame";
