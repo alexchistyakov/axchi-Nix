@@ -93,9 +93,6 @@ with lib;
 
       render.explicit_sync = 1;
 
-      # Window rules
-      windowrule = []; # Empty as we're converting all to windowrulev2
-
       windowrulev2 = rice.hyprland.windowrulev2 ++ [
         # Converted from windowrule to windowrulev2
         "center,class:^(steam)$"
@@ -256,7 +253,13 @@ with lib;
 
       animations = rice.hyprland.animations;
       decoration = rice.hyprland.decoration;
-      layerrule = rice.hyprland.layerrule;
+      layerrule = rice.hyprland.layerrule ++ [
+        #"blur,waybar"
+        "animation slidefade 80%, notifications"
+        "blur, notifications"
+        "ignorezero, notifications"
+        #"xray, notifications"
+      ];
     };
   };
 

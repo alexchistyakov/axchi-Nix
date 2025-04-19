@@ -5,13 +5,13 @@
     enable = true;
     settings = lib.mkForce {
       global = {
-        monitor = 0;
-        follow = "none";
-        width = 300;
-        height = "(0,300)";
+        monitor = 2; # MOVE TO HOST CONFIG
+        follow = "none"; # MOVE MOST OF THIS TO RICE
+        width = 500;
+        height = "(0,500)";
         origin = "top-center";
-        offset = "30x6";
-        scale = 0;
+        offset = "30x10";
+        scale = 1;
         notification_limit = 20;
         progress_bar = true;
         progress_bar_height = 10;
@@ -19,15 +19,15 @@
         progress_bar_min_width = 150;
         progress_bar_max_width = 300;
         progress_bar_corner_radius = 10;
-        icon_corner_radius = 0;
+        icon_corner_radius = 10;
         indicate_hidden = true;
-        transparency = 50;
+        transparency = 25;
         separator_height = 2;
-        padding = 10;
-        horizontal_padding = 8;
+        padding = 20;
+        horizontal_padding = 20;
         text_icon_padding = 0;
-        frame_width = 0;
-        frame_color = "#eeeeee";
+        frame_width = 1;
+        frame_color = "#333333";
         gap_size = 0;
         separator_color = "frame";
         sort = true;
@@ -70,19 +70,19 @@
       };
 
       urgency_low = {
-        background = "#000000CC";
+        background = "#d19e9455";
         foreground = "#FFFFFF";
         timeout = 3;
       };
 
       urgency_normal = {
-        background = "#000000CC";
+        background = "#d19e9455";
         foreground = "#FFFFFF";
         timeout = 3;
       };
 
       urgency_critical = {
-        background = "#900000CC";
+        background = "#90000055";
         foreground = "#ffffff";
         frame_color = "#ffffff";
         timeout = 5;

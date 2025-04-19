@@ -156,6 +156,10 @@ in
 
     layerrule = [
       #"blur,waybar"
+      "animation slidefade 80%, notifications"
+      "blur, notifications"
+      "ignorezero, notifications"
+      "xray, notifications"
     ];
     windowrulev2 = [
       "opacity 0.9 0.7,class:^(google-chrome-stable)$"
