@@ -10,7 +10,7 @@
         width = 500;
         height = "(0,500)";
         origin = "top-center";
-        offset = "30x10";
+        offset = "30x30";
         scale = 1;
         notification_limit = 20;
         progress_bar = true;
@@ -31,7 +31,7 @@
         gap_size = 0;
         separator_color = "frame";
         sort = true;
-        font = "Fira Sans Semibold 9";
+        font = "Fira Sans Semibold 11";
         line_height = 1;
         markup = "full";
         format = "<b>%s</b>\\n%b";
@@ -70,13 +70,13 @@
       };
 
       urgency_low = {
-        background = "#d19e9455";
+        background = "#d4beba55";
         foreground = "#FFFFFF";
         timeout = 3;
       };
 
       urgency_normal = {
-        background = "#d19e9455";
+        background = "#d4beba55";
         foreground = "#FFFFFF";
         timeout = 3;
       };
