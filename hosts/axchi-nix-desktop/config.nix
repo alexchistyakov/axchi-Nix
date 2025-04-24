@@ -226,6 +226,7 @@ in
     guestfs-tools
     windsurf
     telegram-desktop
+    nodejs
   ];
 
   environment.variables = {
