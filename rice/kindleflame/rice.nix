@@ -149,18 +149,13 @@ in
       shadow = {
         enabled = true;
         range = 30;
-        render_power = 5;
+        render_power = 20;
         color = "0x11000000";
       };
     };
 
-    layerrule = [
-      #"blur,waybar"
-      "animation slidefade 80%, notifications"
-      "blur, notifications"
-      "ignorezero, notifications"
-      "xray, notifications"
-    ];
+    layerrule = [];
+
     windowrulev2 = [
       "opacity 0.9 0.7,class:^(google-chrome-stable)$"
       "opacity 0.7 0.62,class:^(thunar)$"
