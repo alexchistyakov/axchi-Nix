@@ -227,6 +227,7 @@ in
     windsurf
     telegram-desktop
     nodejs
+    kdePackages.kolourpaint
   ];
 
   environment.variables = {
