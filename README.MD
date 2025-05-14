@@ -2,6 +2,12 @@
 
 This repository contains my personal NixOS configuration files for an operating system that I daily drive.
 
+## Screenshots
+
+![Screenshot 1](screenshots/swappy-20250125-004133.png)
+
+![Screenshot 2](screenshots/swappy-20250418-003645.png)
+
 ## Features
 
 - Fully riced Hyprland setup (tested to run on an NVIDIA GPU)
