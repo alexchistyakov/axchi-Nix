@@ -5,10 +5,11 @@ This repository contains my personal NixOS configuration files for an operating 
 ## Screenshots
 
 ![Screenshot 1](screenshots/swappy-20250125-004133.png)
-
+'arctic' rice enabled
 ![Screenshot 2](screenshots/swappy-20250418-003645.png)
+'kindleflame' rice enabled
 
-## Features
+## Quick Overview + Features
 
 - Fully riced Hyprland setup (tested to run on an NVIDIA GPU)
     - Hyprland, Hyprpaper and Hyprlock
@@ -24,8 +25,11 @@ This repository contains my personal NixOS configuration files for an operating 
 - Thunar as the file explorer
 - Comprehensive Neovim/Neovide configs
 - Dunst for a simple notification manager
+- Waybar for the top bar
 - Essentials: Chrome, Spotify, Discord, GIMP, KolourPaint
 - Cursor AI IDE for coding
+- SUPER + C for a color picker
+- SUPER + S to take a screenshot
 
 ## System Structure
 
@@ -33,7 +37,7 @@ This repository contains my personal NixOS configuration files for an operating 
 - **hosts/**: Machine-specific configurations
   - `axchi-nix-desktop/`: Desktop configuration
   - `axchi-nix-laptop/`: Laptop configuration
-  - `default/`: Default/fallback configuration
+  - `default/`: Default/fallback configuration (BROKEN)
 - **modules/**: Hardware and system service modules
   - Hardware drivers (nvidia, intel, amd)
   - Specialized hardware support (apple-silicon)
