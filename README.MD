@@ -41,8 +41,8 @@ This repository contains my personal NixOS configuration files for an operating 
 ### Installation Steps
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/axchios.git
-   cd axchios
+   git clone https://github.com/alexchistyakov/axchi-Nix
+   cd axchi-Nix
    ```
 
 2. **Create or Select a Host Configuration**
