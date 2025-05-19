@@ -24,5 +24,5 @@
 
   # Hyprlock Settings
   hyprlockInputSize = "250, 50"; # Standard input field size
-  hyprlockMonitor = "HDMI-A-1"; # Primary desktop display
+  hyprlockMonitor = "DP-1"; # Primary desktop display
 }
