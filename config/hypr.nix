@@ -29,7 +29,7 @@ with lib;
       env = [
         "NIXOS_OZONE_WL,1"
         "NIXPKGS_ALLOW_U4FREE,1"
-        "LIBVA_DRIVER_NAME,nvidia"
+        #"LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
         #"GBM_BACKEND,nvidia-drm"
         "NVD_BACKEND,direct"
@@ -47,7 +47,7 @@ with lib;
         "SDL_VIDEODRIVER,wayland"
         "ELECTRON_OZONE_PLATFORM_HINT,auto"
         "MOZ_ENABLE_WAYLAND,1"
-        "__GL_THREADED_OPTIMIZATIONS,0"
+        "__GL_THREADED_OPTIMIZATIONS,1"
       ];
 
       # Startup commands

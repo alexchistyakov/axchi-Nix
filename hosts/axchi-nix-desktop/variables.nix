@@ -5,12 +5,12 @@
 
   # Hyprland Settings
   extraMonitorSettings = [
-    "DP-1,1920x1090@60.0,-1201x1201,1.0"
-    "DP-1,transform,1"
-    "DP-3,1920x1090@60.0,3840x1201,1.0"
+    "HDMI-A-1,1920x1080@60.0,-1201x1201,1.0"
+    "HDMI-A-1,transform,1"
+    "DP-3,1920x1080@60.0,3840x1201,1.0"
     "DP-3,transform,3"
     "DP-2,1920x1080@60.0,966x0,1.0"
-    "HDMI-A-1,3840x2160@120Hz, 0x1080,1.0"
+    "DP-1,3840x2160@120Hz, 0x1080,1.0"
   ];
 
   # Waybar Settings

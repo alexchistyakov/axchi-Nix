@@ -412,7 +412,13 @@ in
   # ====================================================================
 
   # Extra Module Options
-  drivers.amdgpu.enable = false;
+  drivers.amdgpu = {
+    enable = true;
+    enableVulkan = true;
+    enableOpenCL = true;
+    optimizePerformance = true;
+  };
+  
   drivers.nvidia = {
     enable = true;
     maxPerformance = false;

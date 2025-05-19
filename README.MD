@@ -55,8 +55,8 @@ This repository contains my personal NixOS configuration files for an operating 
    To create your own configuration, use the available hardware modules in the `modules/` directory:
    
    - `nvidia-drivers.nix`: Support for NVIDIA GPUs
-   - `intel-drivers.nix`: Support for Intel integrated graphics and CPUs
-   - `amd-drivers.nix`: Support for AMD GPUs + CPUs
+   - `intel-drivers.nix`: Support for Intel integrated graphics
+   - `amd-drivers.nix`: Support for AMD GPUs
    - `nvidia-prime-drivers.nix`: Support for NVIDIA Optimus (laptop with dual GPU)
    - `local-hardware-clock.nix`: Hardware clock configuration
    - `vm-guest-services.nix`: Support for running as a VM guest
