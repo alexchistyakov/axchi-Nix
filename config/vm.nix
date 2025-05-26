@@ -22,6 +22,9 @@
       onShutdown = "shutdown";
     };
     spiceUSBRedirection.enable = true;
+    docker = {
+      enable = true;
+    };
   };
   
   services.spice-vdagentd.enable = true;
@@ -51,7 +54,7 @@
   # Enable IOMMU
   boot.kernelParams = [
     "amd_iommu=on"  # Use intel_iommu=on if you have an Intel CPU
-    #"vfio-pci.ids=10de:2786,10de:22bc"  # NVIDIA RTX 4070 GPU and its audio controller
+    "vfio-pci.ids=10de:2786,10de:22bc"  # NVIDIA RTX 4070 GPU and its audio controller
     #"video=efifb:off"  # Disable EFI framebuffer to prevent conflicts
   ];
 
