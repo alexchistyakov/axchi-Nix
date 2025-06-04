@@ -10,7 +10,7 @@
     "DP-3,1920x1080@60.0,3840x1201,1.0"
     "DP-3,transform,3"
     "DP-1,1920x1080@60.0,966x0,1.0"
-    "DP-2,3840x2160@120Hz, 0x1080,1.0"
+    "DP-2,3840x2160@240Hz, 0x1080,1.0"
   ];
 
   # Waybar Settings
@@ -24,5 +24,5 @@
 
   # Hyprlock Settings
   hyprlockInputSize = "250, 50"; # Standard input field size
-  hyprlockMonitor = "DP-1"; # Primary desktop display
+  hyprlockMonitor = "DP-2"; # Primary desktop display
 }

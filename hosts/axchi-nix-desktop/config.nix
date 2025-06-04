@@ -238,6 +238,7 @@ in
     telegram-desktop
     nodejs
     kdePackages.kolourpaint
+    solaar
   ];
 
   environment.variables = {
@@ -416,6 +417,10 @@ in
   # OpenGL
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      amdvlk
+    ];
   };
 
   console.keyMap = "${keyboardLayout}";

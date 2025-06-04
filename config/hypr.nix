@@ -33,8 +33,7 @@ with lib;
         "XDG_SESSION_TYPE,wayland"
         #"GBM_BACKEND,nvidia-drm"
         "NVD_BACKEND,direct"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-        "WLR_RENDERER,vulkan"
+        #"__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "__GL_GSYNC_ALLOWED,1"
         "__GL_VRR_ALLOWED,1"
         "XCURSOR_SIZE,24"
@@ -61,6 +60,7 @@ with lib;
         "nm-applet --indicator"
         "lxqt-policykit-agent"
         "albert &"
+        "solaar &"
       ];
 
       general = rice.hyprland.general;
@@ -83,7 +83,7 @@ with lib;
 
       cursor = {
         no_hardware_cursors = false;
-        min_refresh_rate = 100;
+        use_cpu_buffer = true;
       };
 
       xwayland = {
