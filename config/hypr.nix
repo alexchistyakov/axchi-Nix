@@ -60,7 +60,6 @@ with lib;
         "nm-applet --indicator"
         "lxqt-policykit-agent"
         "albert &"
-        "solaar &"
       ];
 
       general = rice.hyprland.general;
