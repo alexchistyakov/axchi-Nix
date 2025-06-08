@@ -239,6 +239,7 @@ in
     nodejs
     kdePackages.kolourpaint
     solaar
+    mission-center 
   ];
 
   environment.variables = {
