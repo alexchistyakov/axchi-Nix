@@ -5,7 +5,7 @@
 
   # Hyprland Settings
   extraMonitorSettings = [
-    "HDMI-A-1,1920x1080@60.0,-1201x1201,1.0"
+    "HDMI-A-1,1920x1080@60.0,-1080x1201,1.0"
     "HDMI-A-1,transform,1"
     "DP-3,1920x1080@60.0,3840x1201,1.0"
     "DP-3,transform,3"
