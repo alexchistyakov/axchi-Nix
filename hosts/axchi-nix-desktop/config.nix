@@ -240,6 +240,7 @@ in
     kdePackages.kolourpaint
     solaar
     mission-center 
+    godot
   ];
 
   environment.variables = {
