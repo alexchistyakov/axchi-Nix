@@ -166,7 +166,7 @@ with lib;
         "${modifier}SHIFT,W,exec,web-search"
         "${modifier},W,exec,hyprctl dispatch workspace empty && virt-viewer -f -c qemu:///system MicroWin11"
         "${modifier}ALT,W,exec,wallsetter"
-        "${modifier}SHIFT,N,exec,dunstctl history-pop"
+        "${modifier}SHIFT,N,movetoworkspace,empty"
         "${modifier},B,exec,${browser}"
         "${modifier},S,exec,screenshootin"
         "${modifier},D,exec,discord"
