@@ -355,6 +355,11 @@ in
     disabledDefaultBackends = [ "escl" ];
   };
 
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+  };
+
   # Extra Logitech Support
   hardware.logitech.wireless.enable = true;
   hardware.logitech.wireless.enableGraphical = true;
