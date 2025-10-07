@@ -4,7 +4,7 @@
   programs = {
     rofi = {
       enable = true;
-      package = pkgs.rofi;
+      #package = pkgs.rofi;
       extraConfig = {
         modi = "drun,filebrowser,run";
         show-icons = true;

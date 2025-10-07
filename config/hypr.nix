@@ -59,7 +59,7 @@ with lib;
         "dunst"
         "nm-applet --indicator"
         "lxqt-policykit-agent"
-        "albert &"
+        "QT_QPA_PLATFORM=xcb albert"
       ];
 
       general = rice.hyprland.general;
@@ -89,8 +89,6 @@ with lib;
         force_zero_scaling = false;
         use_nearest_neighbor = true;
       };
-
-      render.explicit_sync = 1;
 
       windowrulev2 = rice.hyprland.windowrulev2 ++ [
         # Converted from windowrule to windowrulev2
@@ -139,13 +137,10 @@ with lib;
         "move onscreen cursor,class:^(.*?)(.exe)$"
       ];
 
-      gestures = {
-        workspace_swipe = true;
-        workspace_swipe_fingers = 3;
-        workspace_swipe_invert = false;
-        workspace_swipe_min_fingers = true;
-        workspace_swipe_distance = 750;
-      };
+      # Gestures (new syntax as of Hyprland 0.51)
+      gesture = [
+        "3, horizontal, workspace"
+      ];
 
       misc = {
         initial_workspace_tracking = 0;
@@ -153,8 +148,6 @@ with lib;
         key_press_enables_dpms = true;
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
-        render_ahead_of_time = true;
-        render_ahead_safezone = 70;
         vfr = true;
         vrr = true;
       };
