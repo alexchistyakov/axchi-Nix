@@ -42,6 +42,7 @@ in
       "vfio"
       "vfio_iommu_type1"
     ];
+
     initrd = {
       verbose = false;  # Reduce boot messages
       systemd.enable = true;  # Use systemd in initrd
@@ -133,6 +134,17 @@ in
     starship = {
       enable = true;
       settings = rice.starship.settings;
+    };
+    obs-studio ={ 
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+        obs-vaapi #optional AMD hardware acceleration
+        obs-gstreamer
+        obs-vkcapture
+      ];
     };
     dconf.enable = true;
     seahorse.enable = true;
@@ -241,6 +253,9 @@ in
     solaar
     mission-center 
     godot
+    zoom
+    slack
+    audacity
   ];
 
   environment.variables = {
@@ -425,9 +440,6 @@ in
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [
-      amdvlk
-    ];
   };
 
   console.keyMap = "${keyboardLayout}";

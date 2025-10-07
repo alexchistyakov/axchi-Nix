@@ -30,9 +30,6 @@ in
       extraPackages = mkIf cfg.enableOpenCL (with pkgs; [ 
         rocmPackages.clr.icd
       ]);
-      extraPackages32 = mkIf cfg.enableVulkan (with pkgs; [
-        driversi686Linux.amdvlk
-      ]);
     };
 
     # ROCm setup for compute capabilities
