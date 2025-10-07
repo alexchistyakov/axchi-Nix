@@ -258,6 +258,10 @@ in
     audacity
   ];
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+  ];
+
   environment.variables = {
     AXCHIOS_VERSION = "0.0.1";
     AXCHIOS = "true";
