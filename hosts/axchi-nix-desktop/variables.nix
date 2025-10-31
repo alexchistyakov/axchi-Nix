@@ -17,7 +17,7 @@
   clock24h = false;
 
   # Program Options
-  browser = "google-chrome-stable"; # Set Default Browser (google-chrome-stable for google-chrome)
+  browser = "google-chrome-stable --disable-features=WaylandWpColorManagerV1"; # Set Default Browser (google-chrome-stable for google-chrome)
   terminal = "alacritty"; # Set Default System Terminal
   keyboardLayout = "us";
   displayBattery = false;

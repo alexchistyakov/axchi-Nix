@@ -11,12 +11,6 @@
       qemu = {
         swtpm.enable = true; 
         package = pkgs.qemu;
-        ovmf = {
-          enable = true;
-          packages = with pkgs; [
-            OVMFFull.fd
-          ];
-        };
       };
       onBoot = "ignore";
       onShutdown = "shutdown";

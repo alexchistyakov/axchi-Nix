@@ -69,6 +69,7 @@ in
       gfxmodeEfi = "1920x1080, auto";
       font = rice.grub.font;
       fontSize = rice.grub.fontSize;
+      timeout = -1;
       extraEntries = ''
         menuentry "macOS" --class macosx {
           insmod chain
@@ -256,6 +257,7 @@ in
     zoom
     slack
     audacity
+    zip
   ];
 
   programs.nix-ld.enable = true;

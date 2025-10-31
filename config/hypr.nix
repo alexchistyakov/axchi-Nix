@@ -59,7 +59,7 @@ with lib;
         "dunst"
         "nm-applet --indicator"
         "lxqt-policykit-agent"
-        "QT_QPA_PLATFORM=xcb albert"
+        "albert"
       ];
 
       general = rice.hyprland.general;
