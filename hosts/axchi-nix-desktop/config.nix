@@ -258,6 +258,7 @@ in
     slack
     audacity
     zip
+    graphviz
   ];
 
   programs.nix-ld.enable = true;
