@@ -60,31 +60,32 @@ in
       "vm.max_map_count" = 2147483642;
     };
     # Bootloader.
-    loader.grub = { 
-      enable = true;
-      device = "nodev";
-      useOSProber = true;
-      efiSupport = true;
-      theme = rice.grub.theme;
-      gfxmodeEfi = "1920x1080, auto";
-      font = rice.grub.font;
-      fontSize = rice.grub.fontSize;
+    loader = {
       timeout = -1;
-      extraEntries = ''
-        menuentry "macOS" --class macosx {
-          insmod chain
-          insmod fat
-          insmod part_gpt
-          insmod search_fs_uuid
-          
-          search --fs-uuid --no-floppy --set=root 67E3-17ED 
-          chainloader ($root)/EFI/OC/OpenCore.efi
-        }
-      '';
-    };
-
-    loader.efi = { 
-      canTouchEfiVariables = true;
+      grub = { 
+        enable = true;
+        device = "nodev";
+        useOSProber = true;
+        efiSupport = true;
+        theme = rice.grub.theme;
+        gfxmodeEfi = "1920x1080, auto";
+        font = rice.grub.font;
+        fontSize = rice.grub.fontSize;
+        extraEntries = ''
+          menuentry "macOS" --class macosx {
+            insmod chain
+            insmod fat
+            insmod part_gpt
+            insmod search_fs_uuid
+            
+            search --fs-uuid --no-floppy --set=root 67E3-17ED 
+            chainloader ($root)/EFI/OC/OpenCore.efi
+          }
+        '';
+      };
+      efi = { 
+        canTouchEfiVariables = true;
+      };
     };
     # Make /tmp a tmpfs
     tmp = {
@@ -137,7 +138,7 @@ in
       settings = rice.starship.settings;
     };
     obs-studio ={ 
-      enable = true;
+      enable = false;
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
         obs-backgroundremoval
@@ -164,7 +165,7 @@ in
     };
     thunar = {
       enable = true;
-      plugins = with pkgs.xfce; [
+      plugins = with pkgs; [
         thunar-archive-plugin
         thunar-volman
       ];
@@ -392,7 +393,7 @@ in
   services.blueman.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   # AMD CPU stuff
   hardware.cpu.amd.updateMicrocode = true;

@@ -247,9 +247,9 @@ with lib;
       decoration = rice.hyprland.decoration;
       layerrule = rice.hyprland.layerrule ++ [
         #"blur,waybar"
-        "animation slidefade 80%, notifications"
-        "blur, notifications"
-        "ignorezero, notifications"
+        "animation slidefade 80%, match:namespace notifications"
+        "blur on, match:namespace notifications"
+        "ignore_alpha a, match:namespace notifications"
         #"xray, notifications"
       ];
     };

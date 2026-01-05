@@ -21,12 +21,6 @@ in
     hardware.graphics = {
       enable = true;
       enable32Bit = true;
-    };
-
-    # For compatibility with older NixOS versions
-    hardware.opengl = {
-      enable = true;
-      driSupport32Bit = cfg.enableVulkan;
       extraPackages = mkIf cfg.enableOpenCL (with pkgs; [ 
         rocmPackages.clr.icd
       ]);
@@ -57,7 +51,7 @@ in
       radeontop     # Monitor GPU utilization
       clinfo        # OpenCL information
       vulkan-tools  # Vulkan utilities
-      glxinfo       # OpenGL information
+      mesa-demos
     ]);
   };
 }

@@ -22,7 +22,6 @@
   outputs =
     { nixpkgs, home-manager, hyprland, hyprland-qt-support, ... }@inputs:
     let
-      system = "nixos";
       host = "axchi-nix-desktop";
       username = "axchi";
       pkgs = import nixpkgs {
@@ -34,7 +33,6 @@
       nixosConfigurations = {
         "${host}" = nixpkgs.lib.nixosSystem {
           specialArgs = {
-	    inherit system;
             inherit inputs;
             inherit username;
             inherit host;

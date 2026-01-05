@@ -13,7 +13,7 @@ let
     bibata-cursors
     montserrat
     # Font packages
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     noto-fonts-cjk-sans
     font-awesome
     # symbola  # Commented out as noted in original config
@@ -426,7 +426,6 @@ in
   # Qt Theme Configuration
   qt = {
     enable = true;
-    style.name = "adwaita";
     platformTheme.name = "gtk4";
   };
 
