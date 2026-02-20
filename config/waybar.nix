@@ -31,6 +31,7 @@ with lib;
         modules-left = [
           #"custom/startmenu"
           "custom/exit"
+          "custom/sleep"
           "idle_inhibitor"
           "hyprland/workspaces"
         ];
@@ -146,6 +147,12 @@ with lib;
           tooltip = false;
           format = "";
           on-click = "hyprlock";
+        };
+        "custom/sleep" = {
+          tooltip = true;
+          tooltip-format = "Sleep mode (screen & LEDs off)";
+          format = "󰒲";
+          on-click = "sleep-mode";
         };
         "custom/startmenu" = {
           tooltip = false;
@@ -319,11 +326,11 @@ with lib;
           font-size:14px;
           color:#FFFFFF;
         }
-        #custom-exit {
+        #custom-exit, #custom-sleep {
           margin-right: 8px;
           margin-left: 5px;
         }
-        #custom-exit:hover {
+        #custom-exit:hover, #custom-sleep:hover {
           color: rgba(153,213,255,1);
         }
         #bluetooth, #bluetooth.on, #bluetooth.connected {

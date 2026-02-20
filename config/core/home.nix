@@ -95,6 +95,8 @@ in
     (import ../../scripts/web-search.nix { inherit pkgs; })
     (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
     (import ../../scripts/screenshootin.nix { inherit pkgs; })
+    (import ../../scripts/sleep-mode.nix { inherit pkgs; })
+    (import ../../scripts/wake-mode.nix { inherit pkgs; })
     (import ../../scripts/list-hypr-bindings.nix {
       inherit pkgs;
       inherit host;
@@ -105,7 +107,7 @@ in
     hypridle = {
       settings = {
         general = {
-          after_sleep_cmd = "hyprctl dispatch dpms on";
+          after_sleep_cmd = "wake-mode";
           ignore_dbus_inhibit = false;
           lock_cmd = "hyprlock";
           };
@@ -116,8 +118,8 @@ in
           }
           {
             timeout = 1200;
-            on-timeout = "hyprctl dispatch dpms off";
-            on-resume = "hyprctl dispatch dpms on";
+            on-timeout = "sleep-mode";
+            on-resume = "wake-mode";
           }
         ];
       };

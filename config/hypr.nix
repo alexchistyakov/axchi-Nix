@@ -55,11 +55,11 @@ with lib;
         "dbus-update-activation-environment --systemd --all"
         "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "waybar"
-        "hyprpaper"
         "dunst"
         "nm-applet --indicator"
         "lxqt-policykit-agent"
         "albert"
+        "hyprpaper"
       ];
 
       general = rice.hyprland.general;

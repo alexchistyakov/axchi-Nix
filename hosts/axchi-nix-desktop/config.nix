@@ -41,6 +41,7 @@ in
       "vfio_pci"
       "vfio"
       "vfio_iommu_type1"
+      "i2c-dev"
     ];
 
     initrd = {
@@ -260,6 +261,13 @@ in
     audacity
     zip
     graphviz
+    libreoffice
+    freerdp
+    remmina
+    gnumake
+    awscli2
+    uv
+    openrgb-with-all-plugins
   ];
 
   programs.nix-ld.enable = true;
@@ -296,6 +304,13 @@ in
         variant = "";
       };
     };
+    xrdp = {
+      enable = true;
+      defaultWindowManager = "startplasma-x11";
+      openFirewall = true;
+    };
+    udev.packages = [pkgs.openrgb];
+    gnome.gnome-remote-desktop.enable = true; 
     displayManager = {
       autoLogin = {
         enable = true;
@@ -386,6 +401,13 @@ in
   # Extra Logitech Support
   hardware.logitech.wireless.enable = true;
   hardware.logitech.wireless.enableGraphical = true;
+
+  # OpenRGB for LED control
+  services.hardware.openrgb = {
+    enable = true;
+    motherboard = "amd";
+  };
+  hardware.i2c.enable = true;
 
   # Bluetooth Support
   hardware.bluetooth.enable = true;
