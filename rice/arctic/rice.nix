@@ -159,11 +159,11 @@ in
       #"blur,waybar"
     ];
 
-    windowrulev2 = [
-      "opacity 0.9 0.7,class:^(google-chrome-stable)$"
-      "opacity 0.70 0.68,class:^(thunar)$"
-      "opacity 1.0 0.9,class:(Neovide)"
-      "dimaround, title:(Albert)"
+    windowrule = [
+      "opacity 0.9 0.7, match:class ^(google-chrome-stable)$"
+      "opacity 0.70 0.68, match:class ^(thunar)$"
+      "opacity 1.0 0.9, match:class (Neovide)"
+      "dim_around on, match:title (Albert)"
     ];
 
     animations = {

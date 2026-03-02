@@ -156,11 +156,11 @@ in
 
     layerrule = [];
 
-    windowrulev2 = [
-      "opacity 0.9 0.7,class:^(google-chrome-stable)$"
-      "opacity 0.7 0.62,class:^(thunar)$"
-      "opacity 1.0 0.9,class:(Neovide)"
-      "dimaround, title:(Albert)"
+    windowrule = [
+      "opacity 0.9 0.7, match:class ^(google-chrome-stable)$"
+      "opacity 0.7 0.62, match:class ^(thunar)$"
+      "opacity 1.0 0.9, match:class (Neovide)"
+      "dim_around on, match:title (Albert)"
     ];
 
     animations = {
