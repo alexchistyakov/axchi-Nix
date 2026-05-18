@@ -487,4 +487,5 @@ in
   };
 
   waybarOpacity = 0.6;  # Adjust this value as needed (0.0 to 1.0)
+  waybarNotificationColor = "#f5c8c8";  # very light pale red
 } 

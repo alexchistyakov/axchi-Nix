@@ -176,7 +176,7 @@ with lib;
           tooltip = false;
           format = "{}";
           format-icons = {
-            notification = "<span foreground='red'></span>";
+            notification = "<span foreground='${rice.waybarNotificationColor}'></span>";
             none = "";
           };
           return-type = "json";

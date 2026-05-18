@@ -507,4 +507,5 @@ in
     font = lib.mkForce ./assets/grub/vimix/terminus-16.pf2;  # Default font
   };
   waybarOpacity = 0.5;
+  waybarNotificationColor = "#c8d8f5";  # very light pale blue
 } 
