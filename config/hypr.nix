@@ -137,8 +137,12 @@ with lib;
       ];
 
       # Gestures (new syntax as of Hyprland 0.51)
+      # 2-finger drag = move active window (mirrors SUPER + left-click drag).
+      # 3-finger drag = resize active window (mirrors SUPER + right-click drag).
       gesture = [
-        "3, horizontal, workspace"
+        "4, horizontal, workspace"
+        "2, swipe, move"
+        "3, swipe, resize"
       ];
 
       misc = {
