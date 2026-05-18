@@ -17,27 +17,6 @@ Clean, minimal, my daily driver.
 'kindleflame' rice enabled
 ![Screenshot 2](screenshots/swappy-20250418-003645.png)
 
-## Quick Overview + Features
-
-- Modular support for a wide range of hardware
-  - Tested on: Intel CPU, Intel integrated graphics, AMD CPU, NVIDIA GPU
-- Fully riced Hyprland setup (tested to run on an NVIDIA GPU)
-    - Hyprland, Hyprpaper and Hyprlock
-- GRUB Bootloader for multi-boot
-- Linux-zen kernel for lower latency and extra-crisp desktop experience
-- NVIDIA and CUDA set up for PyTorch and other GPU accelerated training of ML models (and actively used for that)
-- Separated rice files for easily swapping themes (Hyprland, GRUB bootloader, Waybar and others in one place!)
-    - Easily declare new rices and swap between them
-- Customized terminal with Vim-style navigation (Alacritty as the terminal emulator)
-- Albert as the launcher (SUPER + SPACE to bring up) - basically Spotlight search but more customizable
-- Everything designed to be within quick access with shortcuts (check hypr.nix in config/core)
-- Thunar as the file explorer
-- Comprehensive Neovim/Neovide configs
-- Dunst for a simple notification manager
-- Waybar for the top bar
-- Essentials: Chrome, Spotify, Discord, GIMP, KolourPaint
-- Cursor AI IDE for coding
-
 ## Quick Start
 
 Everything starts from **one place**: Albert, the launcher (Spotlight search if you've ever used a Mac, but sexier). 
@@ -68,11 +47,43 @@ SUPER+E. Yeah. It's Thunar and it's good
 
 ### Launch Terminal
 
-SUPER+ENTER.
+**`SUPER + Return`** — open Alacritty.
 
-- Fish shell for crisp autocomplete
-- Press ESC while in terminal to enter Vim-style navigation
-- Vim is decked out too.
+- Fish shell with crisp autocomplete
+- Press **Esc** to enter Vim-style navigation (command-line editing)
+- Neovim is configured too
+
+### NixOS command aliases
+
+These short Fish aliases live in `config/terminal.nix` and point at your flake under `~/axchios` (hostname is set per machine in `hosts/`):
+
+| Alias | What it does |
+|-------|----------------|
+| `fr` | **F**lake **r**ebuild — apply your current config (`nh os switch` for this host, no input update) |
+| `fu` | **F**lake **u**pdate — update flake inputs, then rebuild and switch (`nh os switch --update`) |
+| `ncg` | **N**ix **c**ollect **g**arbage — remove old generations (user + system), then refresh the boot profile |
+| `nixrepair` | Verify the Nix store and repair corrupted paths (`nix-store --verify --check-contents --repair`) |
+
+## Quick Overview + Features
+
+- Modular support for a wide range of hardware
+  - Tested on: Intel CPU, Intel integrated graphics, AMD CPU, NVIDIA GPU
+- Fully riced Hyprland setup (tested to run on an NVIDIA GPU)
+    - Hyprland, Hyprpaper and Hyprlock
+- GRUB Bootloader for multi-boot
+- Linux-zen kernel for lower latency and extra-crisp desktop experience
+- NVIDIA and CUDA set up for PyTorch and other GPU accelerated training of ML models (and actively used for that)
+- Separated rice files for easily swapping themes (Hyprland, GRUB bootloader, Waybar and others in one place!)
+    - Easily declare new rices and swap between them
+- Customized terminal with Vim-style navigation (Alacritty as the terminal emulator)
+- Albert as the launcher (SUPER + SPACE to bring up) - basically Spotlight search but more customizable
+- Everything designed to be within quick access with shortcuts (check hypr.nix in config/core)
+- Thunar as the file explorer
+- Comprehensive Neovim/Neovide configs
+- Dunst for a simple notification manager
+- Waybar for the top bar
+- Essentials: Chrome, Spotify, Discord, GIMP, KolourPaint
+- Cursor AI IDE for coding
 
 ## Installation
 
