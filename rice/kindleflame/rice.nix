@@ -264,8 +264,12 @@ in
   # Hyprpaper configuration
   hyprpaper = {
     settings = {
-      preload = ["${toString wallpaperPath}"];
-      wallpaper = ", ${toString wallpaperPath}";
+      wallpaper = [
+        {
+          monitor = "";
+          path = "${toString wallpaperPath}";
+        }
+      ];
     };
   };
 
