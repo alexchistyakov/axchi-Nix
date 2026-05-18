@@ -30,14 +30,8 @@ in
     ../dunst.nix
     ../terminal.nix
     ../waybar.nix
-    ../wlogout.nix
     ../albert.nix
   ];
-
-  home.file.".config/wlogout/icons" = {
-    source = ../../config/wlogout;
-    recursive = true;
-  };
 
   home.file.".config/swappy/config".text = ''
     [Default]
