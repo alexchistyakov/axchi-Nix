@@ -12,7 +12,6 @@ in
     "${username}" = {
       homeMode = "755";
       isNormalUser = true;
-      initialPassword = "1234";
       description = "${gitUsername}";
       extraGroups = [
         "networkmanager"

@@ -17,7 +17,7 @@
 
   # ===== Hardware-specific kernel params =====
   boot.kernelParams = [
-    # Required for OpenCL to work alongside NVIDIA suspend/resume
+    # Required for NVIDIA suspend/resume to preserve framebuffer
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
   ];
 
@@ -34,7 +34,11 @@
   };
   drivers.intel.enable = true;
 
-  # ===== Power management (battery + AC profiles) =====
+  # ===== Security: do not auto-login on a portable device =====
+  services.displayManager.autoLogin.enable = lib.mkForce false;
+
+  # ===== Power management =====
+  # TLP only (auto-cpufreq would fight it for governor control).
   services.tlp = {
     enable = true;
     settings = {
@@ -48,20 +52,18 @@
       CPU_MAX_PERF_ON_AC = 100;
       CPU_MIN_PERF_ON_BAT = 0;
       CPU_MAX_PERF_ON_BAT = 20;
+
+      # Uncomment to extend battery lifespan (caps charge at 80%).
+      # Many laptops only honor BAT0; check your hardware via `tlp-stat -b`.
+      # START_CHARGE_THRESH_BAT0 = 40;
+      # STOP_CHARGE_THRESH_BAT0 = 80;
     };
   };
 
-  services.auto-cpufreq = {
-    enable = true;
-    settings = {
-      battery = {
-        governor = "powersave";
-        turbo = "never";
-      };
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-      };
-    };
-  };
+  # Intel thermal management daemon — useful on Intel laptops to avoid
+  # aggressive throttling under sustained load.
+  services.thermald.enable = true;
+
+  # Firmware updates via `fwupdmgr refresh && fwupdmgr update`.
+  services.fwupd.enable = true;
 }

@@ -58,6 +58,9 @@
   # ===== CPU vendor microcode =====
   hardware.cpu.amd.updateMicrocode = true;
 
+  # ===== Power: desktop is always on AC, pin governor =====
+  powerManagement.cpuFreqGovernor = "performance";
+
   # ===== Peripherals / motherboard =====
   hardware.i2c.enable = true;
   hardware.logitech.wireless = {

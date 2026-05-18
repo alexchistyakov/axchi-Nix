@@ -346,8 +346,6 @@ in
     };
   };
 
-  powerManagement.cpuFreqGovernor = "performance";
-
   security.rtkit.enable = true;
   security.polkit.enable = true;
   security.polkit.extraConfig = ''
