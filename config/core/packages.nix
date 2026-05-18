@@ -1,0 +1,97 @@
+{
+  lib,
+  username,
+  config,
+  pkgs,
+  host,
+  ...
+}:
+let
+  variables = import ../../hosts/${host}/variables.nix;
+  rice = import ../../rice { inherit lib config username pkgs variables; };
+in
+{
+  environment.systemPackages =
+    rice.packages
+    ++ (with pkgs; [
+      vim
+      wget
+      killall
+      eza
+      git
+      cmatrix
+      lolcat
+      htop
+      lxqt.lxqt-policykit
+      lm_sensors
+      unzip
+      unrar
+      libnotify
+      v4l-utils
+      ydotool
+      duf
+      ncdu
+      wl-clipboard
+      pciutils
+      ffmpeg
+      socat
+      cowsay
+      ripgrep
+      lshw
+      bat
+      pkg-config
+      meson
+      hyprpicker
+      ninja
+      brightnessctl
+      swappy
+      appimage-run
+      networkmanagerapplet
+      yad
+      inxi
+      playerctl
+      nh
+      nixfmt
+      discord
+      grim
+      slurp
+      file-roller
+      imv
+      mpv
+      gimp
+      pavucontrol
+      tree
+      spotify
+      neovide
+      albert
+      code-cursor
+      google-chrome
+      fish
+      tigervnc
+      hyprpaper
+      hyprlang
+      conda
+      alacritty
+      papirus-icon-theme
+      guestfs-tools
+      telegram-desktop
+      nodejs
+      kdePackages.kolourpaint
+      solaar
+      mission-center
+      godot
+      zoom
+      slack
+      audacity
+      zip
+      graphviz
+      libreoffice
+      freerdp
+      remmina
+      gnumake
+      awscli2
+      uv
+      openrgb-with-all-plugins
+      databricks-cli
+    ]);
+}

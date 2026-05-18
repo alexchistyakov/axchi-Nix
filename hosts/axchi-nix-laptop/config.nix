@@ -34,9 +34,6 @@
   };
   drivers.intel.enable = true;
 
-  # ===== Security: do not auto-login on a portable device =====
-  services.displayManager.autoLogin.enable = lib.mkForce false;
-
   # ===== Power management =====
   # TLP only (auto-cpufreq would fight it for governor control).
   services.tlp = {

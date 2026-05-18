@@ -15,6 +15,8 @@ let
 in
 {
   imports = [
+    ./programs.nix
+    ./packages.nix
     ../../modules/amd-drivers.nix
     ../../modules/nvidia-drivers.nix
     ../../modules/nvidia-prime-drivers.nix
@@ -98,142 +100,7 @@ in
     LC_TIME = "en_US.UTF-8";
   };
 
-  programs = {
-    starship = {
-      enable = true;
-      settings = rice.starship.settings;
-    };
-    obs-studio = {
-      enable = false;
-      plugins = with pkgs.obs-studio-plugins; [
-        wlrobs
-        obs-backgroundremoval
-        obs-pipewire-audio-capture
-        obs-vaapi
-        obs-gstreamer
-        obs-vkcapture
-      ];
-    };
-    dconf.enable = true;
-    seahorse.enable = true;
-    fuse.userAllowOther = true;
-    mtr.enable = true;
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
-    virt-manager.enable = true;
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
-    thunar = {
-      enable = true;
-      plugins = with pkgs; [
-        thunar-archive-plugin
-        thunar-volman
-      ];
-    };
-    hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
-    nix-ld = {
-      enable = true;
-      libraries = with pkgs; [
-      ];
-    };
-  };
-
   users.mutableUsers = true;
-
-  environment.systemPackages = with pkgs;
-    let
-      ricePackagesList = rice.packages;
-    in
-    ricePackagesList ++ [
-      vim
-      wget
-      killall
-      eza
-      git
-      cmatrix
-      lolcat
-      htop
-      lxqt.lxqt-policykit
-      lm_sensors
-      unzip
-      unrar
-      libnotify
-      v4l-utils
-      ydotool
-      duf
-      ncdu
-      wl-clipboard
-      pciutils
-      ffmpeg
-      socat
-      cowsay
-      ripgrep
-      lshw
-      bat
-      pkg-config
-      meson
-      hyprpicker
-      ninja
-      brightnessctl
-      swappy
-      appimage-run
-      networkmanagerapplet
-      yad
-      inxi
-      playerctl
-      nh
-      nixfmt
-      discord
-      grim
-      slurp
-      file-roller
-      imv
-      mpv
-      gimp
-      pavucontrol
-      tree
-      spotify
-      neovide
-      albert
-      code-cursor
-      google-chrome
-      fish
-      tigervnc
-      hyprpaper
-      hyprlang
-      conda
-      alacritty
-      papirus-icon-theme
-      guestfs-tools
-      telegram-desktop
-      nodejs
-      kdePackages.kolourpaint
-      solaar
-      mission-center
-      godot
-      zoom
-      slack
-      audacity
-      zip
-      graphviz
-      libreoffice
-      freerdp
-      remmina
-      gnumake
-      awscli2
-      uv
-      openrgb-with-all-plugins
-      databricks-cli
-    ];
 
   environment.variables = {
     AXCHIOS_VERSION = "0.0.1";
