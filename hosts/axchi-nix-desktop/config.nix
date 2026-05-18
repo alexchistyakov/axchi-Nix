@@ -268,6 +268,7 @@ in
     awscli2
     uv
     openrgb-with-all-plugins
+    databricks-cli
   ];
 
   programs.nix-ld.enable = true;
