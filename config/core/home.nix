@@ -103,6 +103,10 @@ in
       inherit pkgs;
       inherit host;
     })
+    (import ../../scripts/move-to-empty-workspace.nix { inherit pkgs; })
+    (import ../../scripts/new-workspace-on-monitor.nix { inherit pkgs; })
+    (import ../../scripts/scatter-app-windows.nix { inherit pkgs; })
+    (import ../../scripts/scatter-app-to-empty-monitors.nix { inherit pkgs; })
   ];
 
   services = {

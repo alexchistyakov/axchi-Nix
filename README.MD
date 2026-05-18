@@ -1,6 +1,12 @@
 # axchios NixOS Configuration
 
-This repository contains my personal NixOS configuration files for an operating system that I daily drive.
+A simple and fast NixOS build designed to be almost entirely keyboard (shortcut) based. This build is specifically designed for easy ricing (including the boot loader)
+
+Easy modules for setting this up on any hardware and simplified laptop/desktop setup (including ones with a touch screen)
+
+Enough terminal prettification and tweaks to make your grandma feel comfortable using it
+
+Clean, minimal, my daily driver.
 
 ## Screenshots
 
@@ -32,6 +38,42 @@ This repository contains my personal NixOS configuration files for an operating 
 - Essentials: Chrome, Spotify, Discord, GIMP, KolourPaint
 - Cursor AI IDE for coding
 
+## Quick Start
+
+Everything starts from **one place**: Albert, the launcher (Spotlight search if you've ever used a Mac, but sexier). 
+
+### Open Albert
+
+- **`SUPER + SPACE`** — open or close Albert from anywhere
+- **Click the search icon** on the Waybar (top bar) — same thing, if you prefer the mouse
+
+### Launch apps
+
+SUPER+SPACE
+
+With Albert open, start typing the name of what you want. Albert finds installed applications automatically — no menus to dig through.
+
+Albert is not just an app launcher. The same search field also handles:
+
+- **Files** — type a filename or path to open it
+- **Calculator** — type a math expression (e.g. `42 * 17`) for an instant answer
+- **Browser** — search bookmarks and browsing history
+- **Docs** — look up manual pages and documentation
+
+You really don't need to know anything else, Albert can launch all your apps for you.
+
+### Launch file explorer
+
+SUPER+E. Yeah. It's Thunar and it's good
+
+### Launch Terminal
+
+SUPER+ENTER.
+
+- Fish shell for crisp autocomplete
+- Press ESC while in terminal to enter Vim-style navigation
+- Vim is decked out too.
+
 ## Installation
 
 ### Prerequisites
@@ -49,8 +91,8 @@ This repository contains my personal NixOS configuration files for an operating 
    
    You will most likely need to create your own host configuration based on your hardware. Example configurations are provided in the `hosts/` directory:
    
-   - `axchi-nix-desktop`: Example configuration for desktop with NVIDIA GPU and AMD Ryzen
-   - `axchi-nix-laptop`: Example configuration for laptop with Intel CPU, Intel integrated graphics and NVIDIA mobile GPU
+   - `axchi-nix-desktop`: Example configuration for desktop 
+   - `axchi-nix-laptop`: Example configuration for laptop 
    
    To create your own configuration, use the available hardware modules in the `modules/` directory:
    
@@ -155,22 +197,21 @@ This repository contains my personal NixOS configuration files for an operating 
 - `SUPER + mouse_wheel`: Switch workspaces
 - `SUPER + TAB`: Switch to next monitor workspace
 - `SUPER + SHIFT + Tab`: Switch to previous monitor workspace
-- `SUPER + N`: Switch to empty workspace
+- `SUPER + N`: Switch to empty workspace (global; may jump to another monitor)
+- `SUPER + ALT + N`: Open a new workspace on the focused monitor (always creates a fresh workspace; does not reuse an empty one)
+- `SUPER + ALT + SHIFT + N`: Move the focused window to an empty workspace on the focused monitor (reuses an empty workspace on that monitor when one exists, otherwise creates one)
+- `SUPER + ALT + SHIFT + Return`: Scatter windows — move every window of the focused app's class on the current workspace to its own workspace on the same monitor
+- `SUPER + ALT + SHIFT + SPACE`: Scatter to empty monitors — move windows of the same app on the current workspace to distinct monitors that have no windows (one per monitor; never creates new workspaces)
 - `ALT + Tab`: Cycle through windows
-
-### Media Controls
-- `XF86AudioRaiseVolume`: Increase volume
-- `XF86AudioLowerVolume`: Decrease volume
-- `XF86AudioMute`: Toggle mute
-- `XF86AudioPlay/Pause`: Play/pause media
-- `XF86AudioNext`: Next track
-- `XF86AudioPrev`: Previous track
-- `XF86MonBrightnessDown`: Decrease brightness
-- `XF86MonBrightnessUp`: Increase brightness
 
 ### Mouse Bindings
 - `SUPER + Left Mouse Button`: Move window
 - `SUPER + Right Mouse Button`: Resize window
+
+### Touchpad Gestures
+- **4-finger horizontal swipe**: Switch workspaces (left/right)
+- **2-finger drag**: Move the active window (same as `SUPER + Left Mouse Button`)
+- **3-finger drag**: Resize the active window (same as `SUPER + Right Mouse Button`)
 
 ## Special thanks:
 
