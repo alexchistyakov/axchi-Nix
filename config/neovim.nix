@@ -14,6 +14,8 @@ in
       vimAlias = true;
       vimdiffAlias = true;
       withNodeJs = true;
+      withRuby = true;
+      withPython3 = true;
       extraPackages = with pkgs; [
         lua-language-server
         gopls
@@ -63,7 +65,7 @@ in
         set noemoji
         nnoremap : <cmd>FineCmdline<CR>
       '';
-      extraLuaConfig = ''
+      initLua = ''
         ${builtins.readFile ./nvim/options.lua}
         ${builtins.readFile ./nvim/keymaps.lua}
         ${builtins.readFile ./nvim/plugins/alpha.lua}

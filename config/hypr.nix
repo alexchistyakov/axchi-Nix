@@ -23,6 +23,7 @@ with lib;
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
+    configType = "hyprlang";
 
     settings = {
       # Environment variables
@@ -146,7 +147,6 @@ with lib;
         key_press_enables_dpms = true;
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
-        vfr = true;
         vrr = true;
       };
 
@@ -171,7 +171,7 @@ with lib;
         "${modifier},V,exec,vncviewer"
         "${modifier},Q,killactive,"
         "${modifier},P,pseudo,"
-        "${modifier}SHIFT,J,togglesplit,"
+        "${modifier}SHIFT,J,layoutmsg,togglesplit"
         "${modifier},F,fullscreen,"
         "${modifier},T,togglefloating,"
         "${modifier}SHIFT,C,exit,"
@@ -247,7 +247,7 @@ with lib;
         #"blur,waybar"
         "animation slidefade 80%, match:namespace notifications"
         "blur on, match:namespace notifications"
-        "ignore_alpha a, match:namespace notifications"
+        "ignore_alpha 0.5, match:namespace notifications"
         #"xray, notifications"
       ];
     };

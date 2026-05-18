@@ -211,7 +211,7 @@ in
     inxi
     playerctl
     nh
-    nixfmt-rfc-style
+    nixfmt
     discord
     grim
     slurp
@@ -273,7 +273,7 @@ in
         user = "${username}";
       };
       sessionPackages = [
-        inputs.hyprland.packages.${pkgs.system}.hyprland
+        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
       ];
       defaultSession = "hyprland";
     };
