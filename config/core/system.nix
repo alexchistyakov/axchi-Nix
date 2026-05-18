@@ -214,7 +214,6 @@ in
       alacritty
       papirus-icon-theme
       guestfs-tools
-      windsurf
       telegram-desktop
       nodejs
       kdePackages.kolourpaint

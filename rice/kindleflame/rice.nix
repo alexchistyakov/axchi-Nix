@@ -488,4 +488,46 @@ in
 
   waybarOpacity = 0.6;  # Adjust this value as needed (0.0 to 1.0)
   waybarNotificationColor = "#f5c8c8";  # very light pale red
+
+  # Albert launcher look & feel (consumed by config/albert.nix)
+  albert.widgetsboxmodel = {
+    alwaysOnTop = true;
+    clearOnHide = false;
+    clientShadow = true;
+    disable_input_method = true;
+    displayScrollbar = false;
+    followCursor = true;
+    hideOnFocusLoss = true;
+    historySearch = true;
+    quitOnClose = false;
+    showCentered = true;
+    systemShadow = true;
+
+    action_item_padding = 6;
+    action_item_selection_border_radius = 11;
+    action_item_selection_border_width = 0;
+
+    input_border_radius = 11;
+    input_font_size = 18;
+    input_padding = 5;
+
+    itemCount = 5;
+
+    result_item_horizontal_spacing = 6;
+    result_item_icon_size = 39;
+    result_item_padding = 6;
+    result_item_selection_border_radius = 11;
+    result_item_selection_border_width = 0;
+    result_item_subtext_font_size = 8;
+    result_item_text_font_size = 13;
+    result_item_vertical_spacing = 2;
+
+    window_border_radius = 10;
+    window_border_width = 1;
+    window_padding = 7;
+    window_shadow_offset = 0;
+    window_shadow_size = 30;
+    window_spacing = 7;
+    window_width = 640;
+  };
 } 

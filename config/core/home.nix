@@ -31,6 +31,7 @@ in
     ../terminal.nix
     ../waybar.nix
     ../wlogout.nix
+    ../albert.nix
   ];
 
   home.file.".config/wlogout/icons" = {
