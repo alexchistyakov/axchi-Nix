@@ -44,11 +44,24 @@ in
       enableCompletion = true;
       initExtra = ''
         export TERM=alacritty-direct
-        fastfetch
         if [ -f $HOME/.bashrc-personal ]; then
           source $HOME/.bashrc-personal
         fi
-        fish
+
+        # Skip the rest for non-interactive bash (scripts, `bash -c '...'`).
+        case $- in *i*) ;; *) return ;; esac
+
+        # Only launch fish for top-level interactive shells.
+        # Subshells from nix-shell, nix develop, conda, etc. stay in bash so
+        # their env vars and tooling resolve correctly.
+        if [ -z "$IN_NIX_SHELL" ] \
+           && [ -z "$NIX_BUILD_TOP" ] \
+           && [ -z "$CONDA_DEFAULT_ENV" ] \
+           && [ -z "$CONDA_PREFIX" ] \
+           && [ "$SHLVL" = "1" ]; then
+          fastfetch
+          exec fish
+        fi
       '';
     };
 
